@@ -9,24 +9,45 @@ namespace Calculator_of_triangular_matrix
 {
     class Matrix
     {
-        int n;
-        double V;
-        char type;  //----------------------------------------FIX ME
-        double[] packed_form;
-        DataTable table;
+        private int n;
+        private double v;
+        private Category type;
+        private double[] packed_form;
+        private DataTable table;
         
-        public Matrix()
+        public Matrix(int n, double V, Category type, double[] packed_form)
         {
-            this.n = 0;
-            this.V = 0;
-            this.type = '0'; //---------------------------------FIX ME
-            this.packed_form = null;
+            this.n = n;
+            this.v = V;
+            this.type = type;
+            this.packed_form = packed_form;
             this.table = null;
         }
 
-        /*public static Matrix New_m(int sp, char name_m)
+        public int N { get; }
+        public double V { get; }
+        public Category Type { get; }
+        public double[] Packed_form { get; }
+        public DataTable Table { get; set; } 
+
+        public static Matrix New_m(int sp)
         {
-            //--------------------------------------------------FIX ME
-        }*/
+            switch (sp)
+            {
+                case 0: // c клавиатуры
+
+                    break;
+                case 1: // из текстового файла
+
+                    break;
+                case 2: // случайным образом
+
+                    break;
+                default:
+
+                    break;
+            }
+
+        }
     }
 }
