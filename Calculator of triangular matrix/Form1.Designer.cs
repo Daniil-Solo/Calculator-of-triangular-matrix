@@ -65,13 +65,13 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.очисткаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.закрепитьПоверхДургихОконToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.очиститьИсториюСообщенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.очиститьВсеМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.началоРаботыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обАвтореToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.закрепитьПоверхДургихОконToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -532,6 +532,12 @@
             this.очисткаToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.очисткаToolStripMenuItem.Text = "Сервис";
             // 
+            // закрепитьПоверхДургихОконToolStripMenuItem
+            // 
+            this.закрепитьПоверхДургихОконToolStripMenuItem.Name = "закрепитьПоверхДургихОконToolStripMenuItem";
+            this.закрепитьПоверхДургихОконToolStripMenuItem.Size = new System.Drawing.Size(306, 26);
+            this.закрепитьПоверхДургихОконToolStripMenuItem.Text = "Закрепить поверх других окон";
+            // 
             // очиститьИсториюСообщенийToolStripMenuItem
             // 
             this.очиститьИсториюСообщенийToolStripMenuItem.Name = "очиститьИсториюСообщенийToolStripMenuItem";
@@ -571,12 +577,6 @@
             this.обАвтореToolStripMenuItem.Name = "обАвтореToolStripMenuItem";
             this.обАвтореToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.обАвтореToolStripMenuItem.Text = "Об авторе";
-            // 
-            // закрепитьПоверхДургихОконToolStripMenuItem
-            // 
-            this.закрепитьПоверхДургихОконToolStripMenuItem.Name = "закрепитьПоверхДургихОконToolStripMenuItem";
-            this.закрепитьПоверхДургихОконToolStripMenuItem.Size = new System.Drawing.Size(306, 26);
-            this.закрепитьПоверхДургихОконToolStripMenuItem.Text = "Закрепить поверх других окон";
             // 
             // Form1
             // 
