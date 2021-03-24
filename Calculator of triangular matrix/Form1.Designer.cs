@@ -96,12 +96,12 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.1108F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.8892F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1334, 728);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1334, 726);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -120,14 +120,14 @@
             this.tableLayoutPanel2.Controls.Add(this.button8, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 440);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 439);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 4;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.46931F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 29.24188F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32.85199F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 28.15884F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(432, 285);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(432, 284);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // button1
@@ -195,7 +195,7 @@
             this.button7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button7.Location = new System.Drawing.Point(3, 206);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(138, 76);
+            this.button7.Size = new System.Drawing.Size(138, 75);
             this.button7.TabIndex = 6;
             this.button7.Text = "button7";
             this.button7.UseVisualStyleBackColor = true;
@@ -205,7 +205,7 @@
             this.button8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button8.Location = new System.Drawing.Point(147, 206);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(138, 76);
+            this.button8.Size = new System.Drawing.Size(138, 75);
             this.button8.TabIndex = 7;
             this.button8.Text = "button8";
             this.button8.UseVisualStyleBackColor = true;
@@ -240,7 +240,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.728337F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.22014F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.665106F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(432, 431);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(432, 430);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // label2
@@ -276,7 +276,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 393);
+            this.label3.Location = new System.Drawing.Point(3, 392);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(210, 38);
             this.label3.TabIndex = 3;
@@ -285,7 +285,7 @@
             // button9
             // 
             this.button9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button9.Location = new System.Drawing.Point(219, 396);
+            this.button9.Location = new System.Drawing.Point(219, 395);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(210, 32);
             this.button9.TabIndex = 4;
@@ -301,7 +301,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(426, 329);
+            this.dataGridView1.Size = new System.Drawing.Size(426, 328);
             this.dataGridView1.TabIndex = 5;
             // 
             // tableLayoutPanel4
@@ -323,7 +323,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.728337F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.75175F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.665106F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(444, 431);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(444, 430);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // label4
@@ -361,7 +361,7 @@
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Location = new System.Drawing.Point(3, 392);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(216, 39);
+            this.label5.Size = new System.Drawing.Size(216, 38);
             this.label5.TabIndex = 3;
             this.label5.Text = "label5";
             // 
@@ -370,7 +370,7 @@
             this.button10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button10.Location = new System.Drawing.Point(225, 395);
             this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(216, 33);
+            this.button10.Size = new System.Drawing.Size(216, 32);
             this.button10.TabIndex = 4;
             this.button10.Text = "button10";
             this.button10.UseVisualStyleBackColor = true;
@@ -406,7 +406,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.494145F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 78.92271F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.430913F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(440, 431);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(440, 430);
             this.tableLayoutPanel5.TabIndex = 3;
             // 
             // label6
@@ -442,7 +442,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Location = new System.Drawing.Point(3, 394);
+            this.label7.Location = new System.Drawing.Point(3, 393);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(214, 37);
             this.label7.TabIndex = 3;
@@ -451,7 +451,7 @@
             // button11
             // 
             this.button11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button11.Location = new System.Drawing.Point(223, 397);
+            this.button11.Location = new System.Drawing.Point(223, 396);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(214, 31);
             this.button11.TabIndex = 4;
@@ -467,7 +467,7 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.RowHeadersWidth = 51;
             this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(434, 332);
+            this.dataGridView3.Size = new System.Drawing.Size(434, 331);
             this.dataGridView3.TabIndex = 5;
             // 
             // tableLayoutPanel6
@@ -479,12 +479,12 @@
             this.tableLayoutPanel6.Controls.Add(this.label8, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.textBox1, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(441, 440);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(441, 439);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.833922F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 91.16608F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(890, 285);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(890, 284);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
             // label8
@@ -506,7 +506,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(884, 254);
+            this.textBox1.Size = new System.Drawing.Size(884, 253);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "textBox1";
             // 
@@ -518,7 +518,7 @@
             this.помощьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1334, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1334, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
