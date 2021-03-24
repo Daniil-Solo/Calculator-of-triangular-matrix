@@ -10,14 +10,23 @@ using System.Windows.Forms;
 
 namespace Calculator_of_triangular_matrix
 {
+    enum Category
+        {
+            none = 0,
+            top_left,
+            top_right,
+            bot_left,
+            bot_right
+        }
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
-            Matrix A = new Matrix();
-            Matrix B = new Matrix();
-            Matrix C = new Matrix();
+            Matrix A = new Matrix(0, 0, Category.none, null);
+            Matrix B = new Matrix(0, 0, Category.none, null);
+            Matrix C = new Matrix(0, 0, Category.none, null);
         }
 
         private void закрепитьПоверхДургихОконToolStripMenuItem_Click(object sender, EventArgs e)
