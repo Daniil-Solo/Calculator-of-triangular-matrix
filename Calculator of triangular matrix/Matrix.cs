@@ -35,7 +35,7 @@ namespace Calculator_of_triangular_matrix
             switch (sp)
             {
                 case 0: // c клавиатуры
-
+                    
                     break;
                 case 1: // из текстового файла
 
@@ -47,7 +47,12 @@ namespace Calculator_of_triangular_matrix
 
                     break;
             }
-
+            int n = (int)DataTransfer.data[0];
+            double v = (double)DataTransfer.data[1];
+            Category type = (Category)DataTransfer.data[2];
+            double[] packed_form = (double[])DataTransfer.data[3];
+            Matrix tempMatrix = new Matrix(n, v, type, packed_form);
+            return tempMatrix;
         }
     }
 }
