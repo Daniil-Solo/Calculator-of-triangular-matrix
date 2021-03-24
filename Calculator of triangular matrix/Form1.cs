@@ -15,6 +15,9 @@ namespace Calculator_of_triangular_matrix
         public Form1()
         {
             InitializeComponent();
+            Matrix A = new Matrix();
+            Matrix B = new Matrix();
+            Matrix C = new Matrix();
         }
 
         private void закрепитьПоверхДургихОконToolStripMenuItem_Click(object sender, EventArgs e)
