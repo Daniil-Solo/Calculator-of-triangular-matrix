@@ -16,5 +16,10 @@ namespace Calculator_of_triangular_matrix
         {
             InitializeComponent();
         }
+
+        private void закрепитьПоверхДургихОконToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TopMost = !TopMost;
+        }
     }
 }

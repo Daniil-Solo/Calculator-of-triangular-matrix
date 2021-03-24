@@ -537,6 +537,7 @@
             this.закрепитьПоверхДургихОконToolStripMenuItem.Name = "закрепитьПоверхДургихОконToolStripMenuItem";
             this.закрепитьПоверхДургихОконToolStripMenuItem.Size = new System.Drawing.Size(306, 26);
             this.закрепитьПоверхДургихОконToolStripMenuItem.Text = "Закрепить поверх других окон";
+            this.закрепитьПоверхДургихОконToolStripMenuItem.Click += new System.EventHandler(this.закрепитьПоверхДургихОконToolStripMenuItem_Click);
             // 
             // очиститьИсториюСообщенийToolStripMenuItem
             // 
