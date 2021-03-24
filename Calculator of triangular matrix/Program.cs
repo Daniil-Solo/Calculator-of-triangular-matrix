@@ -22,5 +22,17 @@ namespace Calculator_of_triangular_matrix
     public static class DataTransfer
     {
         public static object[] data { get; set; }
+        public static void dataNull()
+        {
+            for (int i = 0; i < 4; i++)
+                data[i] = null;
+        }
+        public static bool isFull()
+        {
+            bool result = true;
+            for (int i = 0; i < 4; i++)
+                result &= (data[i] != null);
+            return result;
+        }
     }
 }
