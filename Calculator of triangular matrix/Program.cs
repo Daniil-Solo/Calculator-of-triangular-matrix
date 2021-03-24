@@ -19,4 +19,8 @@ namespace Calculator_of_triangular_matrix
             Application.Run(new Form1());
         }
     }
+    public static class DataTransfer
+    {
+        public static object[] data { get; set; }
+    }
 }
