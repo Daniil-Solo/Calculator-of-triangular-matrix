@@ -24,9 +24,9 @@ namespace Calculator_of_triangular_matrix
             this.table = null;
         }
 
-        public static Matrix New_m(int sp, char name_m)
+        /*public static Matrix New_m(int sp, char name_m)
         {
             //--------------------------------------------------FIX ME
-        }
+        }*/
     }
 }

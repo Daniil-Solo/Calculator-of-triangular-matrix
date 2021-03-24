@@ -8,9 +8,9 @@ namespace Calculator_of_triangular_matrix
 {
     class Operations
     {
-        public static Matrix Summ(Matrix A, Matrix B)
+        /*public static Matrix Summ(Matrix A, Matrix B)
         {
             // ------------------------------------------- FIX ME
-        }
+        }*/
     }
 }
