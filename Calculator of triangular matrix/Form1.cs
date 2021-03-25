@@ -22,19 +22,15 @@ namespace Calculator_of_triangular_matrix
     public partial class Form1 : Form
     {
         History_message ourHistory = new History_message("Программа готова к работе");
-
+        Matrix A = new Matrix('A', 0, 0, Category.none, null);
+        Matrix B = new Matrix('B', 0, 0, Category.none, null);
+        Matrix C = new Matrix('C', 0, 0, Category.none, null);
+        
         public Form1()
         {
             InitializeComponent();
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
-
-            Matrix A = new Matrix('A', 0, 0, Category.none, null);
-            Matrix B = new Matrix('B', 0, 0, Category.none, null);
-            Matrix C = new Matrix('C', 0, 0, Category.none, null);
-            ourHistory = ourHistory.Add("Матрица успешно загружена");
-            ourHistory = ourHistory.Add("Произошла ошибка при загрузке");
-            textBox1.Text = ourHistory.Print(3);
         }
 
         private void закрепитьПоверхДургихОконToolStripMenuItem_Click(object sender, EventArgs e)
@@ -42,38 +38,77 @@ namespace Calculator_of_triangular_matrix
             TopMost = !TopMost;
         }
 
+        // Создание матрицы
+        // Принимает на вход способ создания, историю сообщения и имя матрицы
+        // Возвращает ссылку на новую матрицу
+        // Пример вызова: Matrix A = Form1.New_m(i, Our_history, A.Name);
+        private Matrix New_m(int sp, History_message ourHistory, Matrix M)
+        {
+            DataTransfer.dataNull();
+            switch (sp)
+            {
+                case 0: // c клавиатуры
+
+                    ourHistory.Add("Матрица " + M.Name + " создается способом: считывание с клавиатуры");
+                    // Form1.Hide()
+                    // Form2.Show() - считываем инфу в DataTransfer
+                    //      -> Form2.Hide()
+                    //         Form3.Show() - считываем инфу в DataTransfer
+                    //              -> Form3.Hide()
+                    //                 Form1.Show()
+                    break;
+                case 1: // из текстового файла
+
+                    if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                        return M;
+                    ourHistory.Add("Матрица " + M.Name + " создается способом: считывание из текстового файла");
+                    string filename = openFileDialog1.FileName;
+                    M.OpenFromFileToDataTransfer(filename, ourHistory);
+                    break;
+                case 2: // случайным образом
+
+                    ourHistory.Add("Матрица " + M.Name + " создается способом: случайное задание");
+                    // Form1.Hide()
+                    // Form2.Show() - считываем инфу в DataTransfer
+                    //      -> Form2.Hide()
+                    //         Form3.Show() - считываем инфу в DataTransfer
+                    //              -> Form3.Hide()
+                    //                 Form1.Show()
+                    break;
+                default:
+                    // pass
+                    break;
+            }
+            if (DataTransfer.isFull())
+            {
+                ourHistory.Add("Матрица успешно создана");
+                int n = (int)DataTransfer.data[0];
+                double v = (double)DataTransfer.data[1];
+                Category type = (Category)DataTransfer.data[2];
+                double[] packed_form = (double[])DataTransfer.data[3];
+                Matrix tempMatrix = new Matrix(M.Name, n, v, type, packed_form);
+                DataTransfer.dataNull();
+                return tempMatrix;
+            }
+            else
+            {
+                ourHistory.Add("Матрица не создана");
+                DataTransfer.dataNull();
+                return new Matrix(M.Name, 0, 0, Category.none, null);
+            }
+        }
+
         // Сохранение матрицы в файл
         // На вход принимает матрицу и историю сообщений
         // На выходе ничего не возвращает
+        // Пример вызова: Save_m(A, ourHistory)
         private void Save_m(Matrix M, History_message ourHistory)
         {
             // Если отменено сохранение, то выходит из функции
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
-            
             string filename = saveFileDialog1.FileName;
-            ourHistory.Add("Сохранение матрицы " + M.Name);
-            
-            StreamWriter f = null;
-            try
-            {
-                f = new StreamWriter(filename);
-            }
-            catch
-            {
-                ourHistory.Add("Ошибка при сохранении");
-            }
-            
-            /*
-             Добавить строки в файл с помощью f.WriteLine("Строка");
-                Первая строка: размерность
-                Вторая строка: значение V
-                Третья строка: тип матрицы
-                Следующую строки: строки с элементами через пробел
-             */
-            
-            f.Close();
-            ourHistory.Add("Матрица сохранена по адресу " + filename);
+            M.Save(filename, ourHistory);
         }
     }
 }
