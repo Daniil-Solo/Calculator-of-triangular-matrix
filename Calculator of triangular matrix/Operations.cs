@@ -35,6 +35,7 @@ namespace Calculator_of_triangular_matrix
         {
             if (A.Type == B.Type && A.N == B.N)
             {
+                history.Add("Выполнение операции A+B");
                 int sizePackedForm = A.N * (A.N + 1) / 2;
                 Matrix Result = new Matrix('C', A.N, A.V + B.V, A.Type, new double[sizePackedForm]);
             
@@ -42,6 +43,7 @@ namespace Calculator_of_triangular_matrix
                 {
                     Result.Packed_form[i]=A.Packed_form[i]+B.Packed_form[i];
                 }
+                history.Add("Операция успешно выполнена");
                 return Result;
             }
             else
