@@ -252,7 +252,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(426, 25);
             this.label2.TabIndex = 0;
-            this.label2.Text = "label2";
+            this.label2.Text = "матрица А";
             // 
             // comboBox1
             // 
