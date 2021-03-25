@@ -34,7 +34,7 @@ namespace Calculator_of_triangular_matrix
         public static Matrix Summ(Matrix A, Matrix B)
         {
             int sizePackedForm = A.N * (A.N + 1) / 2;
-            Matrix C = new Matrix('C', A.N, A.V, A.Type, new double[sizePackedForm]);
+            Matrix C = new Matrix('C', A.N, A.V + B.V, A.Type, new double[sizePackedForm]);
             
             for (int i = 0; i < sizePackedForm; i++)
             {
