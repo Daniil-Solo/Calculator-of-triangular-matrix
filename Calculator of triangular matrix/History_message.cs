@@ -31,11 +31,12 @@ namespace Calculator_of_triangular_matrix
             this.msg_next = null;
         }
 
-     // Методы
-        
-        // Добавление нового сообщения в начало стека 
+        // Методы
+
+        // *******Добавление нового сообщения в начало стека******* 
         // Принимает на вход текст нового сообщения
         // Возвращает ссылку на стек с сообщениями
+        // Пример вызова: myHistory = myHistory.Add();
         public History_message Add(String text)
         {
             History_message newMessage = new History_message(text);
@@ -43,9 +44,10 @@ namespace Calculator_of_triangular_matrix
             return newMessage;
         }
 
-        // Вывод последних k сообщений
+        // *******Вывод последних k сообщений*******
         // Принимает на вход число сообщений, которы нужно вывести
         // Возвращает строку, состоящую из последних k сообщений
+        // Пример вызова: myHistory.Print(4);
         public String Print(int k)
         {
             History_message p = this;
@@ -57,6 +59,20 @@ namespace Calculator_of_triangular_matrix
                 k--;
             }
             return result;
+        }
+
+        //*******Очистка истории*******
+        // Не принимает на вход параметров
+        // Возвращает указатель на конец стека (начало работы с программой)
+        // Пример вызова: myHistory = myHistory.Clear_history();
+        public History_message Clear_history()
+        {
+            History_message p = this;
+            /*
+             удалить все элементы кроме последнего, который
+                содержит текст "Программа готова к работе"
+            */
+            return p;
         }
     }
 }

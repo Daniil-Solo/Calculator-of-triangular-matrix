@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Data;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,18 @@ namespace Calculator_of_triangular_matrix
 {
     class Matrix
     {
+    // Поля
+        private char name;
         private int n;
         private double v;
         private Category type;
         private double[] packed_form;
         private DataTable table;
-        
-        public Matrix(int n, double V, Category type, double[] packed_form)
+    
+    // Конструктор    
+        public Matrix(char name, int n, double V, Category type, double[] packed_form)
         {
+            this.name = name;
             this.n = n;
             this.v = V;
             this.type = type;
@@ -24,66 +29,158 @@ namespace Calculator_of_triangular_matrix
             this.table = null;
         }
 
-        public int N { get; }
-        public double V { get; }
-        public Category Type { get; }
-        public double[] Packed_form { get; }
-        public DataTable Table { get; set; } 
+    // Аксессоры
+        public char Name { get { return name; } }
+        public int N { get { return n; } }
+        public double V { get { return v; } }
+        public Category Type { get { return type; } }
+        public double[] Packed_form { get { return packed_form; } }
+        public DataTable Table { get { return table; } set { table = value; } }
 
-        public static Matrix New_m(int sp, History_message Our_history)
+    // Методы
+
+        // Создание матрицы частично реализовано в коде формы начального окна
+        public void OpenFromFileToDataTransfer(string filename, History_message ourHistory)
         {
-            DataTransfer.dataNull();
-            switch (sp)
+            StreamReader f = null;
+            try
             {
-                case 0: // c клавиатуры
-
-                    // Form1.Hide()
-                    // Form2.Show() - считываем инфу в DataTransfer
-                    //      -> Form2.Hide()
-                    //         Form3.Show() - считываем инфу в DataTransfer
-                    //              -> Form3.Hide()
-                    //                 Form1.Show()
-                    break;
-                case 1: // из текстового файла
-
-                    // Вызов проводника
-                    // Попытка считывания - обработчик исключения
-                    // Считываем инфу в DataTransfer
-                    // Или ничего не считываем
-                    break;
-                case 2: // случайным образом
-                    // Form1.Hide()
-                    // Form2.Show() - считываем инфу в DataTransfer
-                    //      -> Form2.Hide()
-                    //         Form3.Show() - считываем инфу в DataTransfer
-                    //              -> Form3.Hide()
-                    //                 Form1.Show()
-
-                    break;
-                default:
-
-
-                    break;
+                f = new StreamReader(filename);
             }
-            if (DataTransfer.isFull())
+            catch
             {
-                // формируется сообщение об успешной записи
-                // формируется сообщение о типе
-                // добавление сообщения в Our_history
-                int n = (int)DataTransfer.data[0];
-                double v = (double)DataTransfer.data[1];
-                Category type = (Category)DataTransfer.data[2];
-                double[] packed_form = (double[])DataTransfer.data[3];
-                Matrix tempMatrix = new Matrix(n, v, type, packed_form);
-                return tempMatrix;
+                ourHistory.Add("Ошибка при открытии файла " + filename);
+                return;
             }
-            else
+            int N;
+            double V;
+            Category Type;
+            double[] PackedForm;
+            bool success;
+            
+            success = Int32.TryParse(f.ReadLine(), out N);
+            if (!success)
             {
-                // формируется сообщение о неудаче
-                // формируется сообщение о типе
-                // добавление сообщения в Our_history
-                return new Matrix(0, 0, Category.none, null);
+                ourHistory.Add("Неверный формат размерности");
+                return;
             }
+            DataTransfer.data[0] = N;
+            success = Double.TryParse(f.ReadLine(), out V);
+            if (!success)
+            {
+                ourHistory.Add("Неверный формат значения V");
+                return;
+            }
+            DataTransfer.data[1] = V;
+            success = Category.TryParse(f.ReadLine(), out Type);
+            if (!success || Type == Category.none)
+            {
+                ourHistory.Add("Неверный формат типа");
+                return;
+            }
+            DataTransfer.data[2] = Type;
+            PackedForm = new double[N * (N + 1) / 2];
+            int k = 0;
+            try
+            {
+                for (int i = 0; i < N; i++)
+                {
+                    string[] splittedStroka = f.ReadLine().Split(' ');
+                    switch (Type)
+                    {
+                        case Category.top_right:
+                            for (int j = i; j < N; j++)
+                            {
+                                success = Double.TryParse(splittedStroka[j], out V);
+                                if (!success)
+                                {
+                                    ourHistory.Add("Неверный формат значимого элемента");
+                                    return;
+                                }
+                                PackedForm[k] = V;
+                                k++;
+                            }
+                            break;
+                        case Category.bot_left:
+                            for (int j = 0; j < i+1; j++)
+                            {
+                                success = Double.TryParse(splittedStroka[j], out V);
+                                if (!success)
+                                {
+                                    ourHistory.Add("Неверный формат значимого элемента");
+                                    return;
+                                }
+                                PackedForm[k] = V;
+                                k++;
+                            }
+                            break;
+                        case Category.top_left:
+                            for (int j = 0; j < N - i; j++)
+                            {
+                                success = Double.TryParse(splittedStroka[j], out V);
+                                if (!success)
+                                {
+                                    ourHistory.Add("Неверный формат значимого элемента");
+                                    return;
+                                }
+                                PackedForm[k] = V;
+                                k++;
+                            }
+                            break;
+                        case Category.bot_right:
+                            for (int j = N - i - 1; j < N; j++)
+                            {
+                                success = Double.TryParse(splittedStroka[j], out V);
+                                if (!success)
+                                {
+                                    ourHistory.Add("Неверный формат значимого элемента");
+                                    return;
+                                }
+                                PackedForm[k] = V;
+                                k++;
+                            }
+                            break;
+                    }
+                   
+                    
+                }
+            }
+            catch
+            {
+                ourHistory.Add("Недостаточно строк в матрице");
+                return;
+            }
+            DataTransfer.data[3] = PackedForm;
+            f.Close();
+            ourHistory.Add("Матрица сохранена по адресу " + filename);
         }
+
+        // Сохранение матрицы частично реализовано в коде формы начального окна
+        public void Save(string filename, History_message ourHistory)
+        {
+            ourHistory.Add("Сохранение матрицы " + name);
+            StreamWriter f = null;
+            try
+            {
+                f = new StreamWriter(filename);
+            }
+            catch
+            {
+                ourHistory.Add("Ошибка при сохранении");
+                return;
+            }
+
+            /*
+             Добавить строки в файл с помощью f.WriteLine("Строка");
+                Первая строка: размерность
+                Вторая строка: значение V
+                Третья строка: тип матрицы
+                Следующую строки: строки с элементами через пробел
+             */
+
+            f.Close();
+            ourHistory.Add("Матрица сохранена по адресу " + filename);
+        }
+           
     }
 }
