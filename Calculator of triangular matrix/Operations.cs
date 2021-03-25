@@ -31,7 +31,7 @@ namespace Calculator_of_triangular_matrix
         }
 
 
-        public static Matrix Summ(Matrix A, Matrix B, Matrix C)
+        public static Matrix Summ(Matrix A, Matrix B, Matrix C, History_message history)
         {
             if (A.Type == B.Type && A.N == B.N)
             {
@@ -46,7 +46,7 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                // отправка сообщения
+                history.Add("Не совпадает типы ил размерности матриц");
                 return C;
             }
         }
