@@ -9,14 +9,18 @@ namespace Calculator_of_triangular_matrix
 {
     class Matrix
     {
+    // Поля
+        private char name;
         private int n;
         private double v;
         private Category type;
         private double[] packed_form;
         private DataTable table;
-        
-        public Matrix(int n, double V, Category type, double[] packed_form)
+    
+    // Конструктор    
+        public Matrix(char name, int n, double V, Category type, double[] packed_form)
         {
+            this.name = name;
             this.n = n;
             this.v = V;
             this.type = type;
@@ -24,19 +28,27 @@ namespace Calculator_of_triangular_matrix
             this.table = null;
         }
 
-        public int N { get; }
-        public double V { get; }
-        public Category Type { get; }
-        public double[] Packed_form { get; }
-        public DataTable Table { get; set; } 
+    // Аксессоры
+        public char Name { get { return name; } }
+        public int N { get { return n; } }
+        public double V { get { return v; } }
+        public Category Type { get { return type; } }
+        public double[] Packed_form { get { return packed_form; } }
+        public DataTable Table { get { return table; } set { table = value; } }
 
-        public static Matrix New_m(int sp, History_message Our_history)
+    // Методы
+
+        // Создание матрицы
+        // Принимает на вход способ создания, историю сообщения и имя матрицы
+        // Возвращает ссылку на новую матрицу
+        public static Matrix New_m(int sp, History_message Our_history, char name)
         {
             DataTransfer.dataNull();
             switch (sp)
             {
                 case 0: // c клавиатуры
 
+                    Our_history.Add("Матрица" + name + "успешно создана");
                     // Form1.Hide()
                     // Form2.Show() - считываем инфу в DataTransfer
                     //      -> Form2.Hide()
@@ -61,28 +73,23 @@ namespace Calculator_of_triangular_matrix
 
                     break;
                 default:
-
-
+                    // pass
                     break;
             }
             if (DataTransfer.isFull())
             {
-                // формируется сообщение об успешной записи
-                // формируется сообщение о типе
-                // добавление сообщения в Our_history
+                Our_history.Add("Матрица успешно создана");
                 int n = (int)DataTransfer.data[0];
                 double v = (double)DataTransfer.data[1];
                 Category type = (Category)DataTransfer.data[2];
                 double[] packed_form = (double[])DataTransfer.data[3];
-                Matrix tempMatrix = new Matrix(n, v, type, packed_form);
+                Matrix tempMatrix = new Matrix(name, n, v, type, packed_form);
                 return tempMatrix;
             }
             else
             {
-                // формируется сообщение о неудаче
-                // формируется сообщение о типе
-                // добавление сообщения в Our_history
-                return new Matrix(0, 0, Category.none, null);
+                Our_history.Add("Матрица не создана");
+                return new Matrix(name, 0, 0, Category.none, null);
             }
         }
     }
