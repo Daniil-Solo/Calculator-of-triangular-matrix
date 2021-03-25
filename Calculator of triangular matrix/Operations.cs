@@ -31,16 +31,24 @@ namespace Calculator_of_triangular_matrix
         }
 
 
-        public static Matrix Summ(Matrix A, Matrix B)
+        public static Matrix Summ(Matrix A, Matrix B, Matrix C)
         {
-            int sizePackedForm = A.N * (A.N + 1) / 2;
-            Matrix C = new Matrix('C', A.N, A.V + B.V, A.Type, new double[sizePackedForm]);
-            
-            for (int i = 0; i < sizePackedForm; i++)
+            if (A.Type == B.Type && A.N == B.N)
             {
-                C.Packed_form[i]=A.Packed_form[i]+B.Packed_form[i];
+                int sizePackedForm = A.N * (A.N + 1) / 2;
+                Matrix Result = new Matrix('C', A.N, A.V + B.V, A.Type, new double[sizePackedForm]);
+            
+                for (int i = 0; i < sizePackedForm; i++)
+                {
+                    Result.Packed_form[i]=A.Packed_form[i]+B.Packed_form[i];
+                }
+                return Result;
             }
-           return C;
+            else
+            {
+                // отправка сообщения
+                return C;
+            }
         }
 
 
