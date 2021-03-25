@@ -41,14 +41,15 @@ namespace Calculator_of_triangular_matrix
         // Создание матрицы
         // Принимает на вход способ создания, историю сообщения и имя матрицы
         // Возвращает ссылку на новую матрицу
-        public static Matrix New_m(int sp, History_message Our_history, char name)
+        // Пример вызова: Matrix A = Matrix.New_m(i, Our_history, A.Name);
+        public static Matrix New_m(int sp, History_message ourHistory, char name)
         {
             DataTransfer.dataNull();
             switch (sp)
             {
                 case 0: // c клавиатуры
 
-                    Our_history.Add("Матрица" + name + "успешно создана");
+                    ourHistory.Add("Матрица " + name + " создается способом: считывание с клавиатуры");
                     // Form1.Hide()
                     // Form2.Show() - считываем инфу в DataTransfer
                     //      -> Form2.Hide()
@@ -58,12 +59,15 @@ namespace Calculator_of_triangular_matrix
                     break;
                 case 1: // из текстового файла
 
+                    ourHistory.Add("Матрица " + name + " создается способом: считывание из текстового файла");
                     // Вызов проводника
                     // Попытка считывания - обработчик исключения
                     // Считываем инфу в DataTransfer
                     // Или ничего не считываем
                     break;
                 case 2: // случайным образом
+
+                    ourHistory.Add("Матрица " + name + " создается способом: случайное задание");
                     // Form1.Hide()
                     // Form2.Show() - считываем инфу в DataTransfer
                     //      -> Form2.Hide()
@@ -78,7 +82,7 @@ namespace Calculator_of_triangular_matrix
             }
             if (DataTransfer.isFull())
             {
-                Our_history.Add("Матрица успешно создана");
+                ourHistory.Add("Матрица успешно создана");
                 int n = (int)DataTransfer.data[0];
                 double v = (double)DataTransfer.data[1];
                 Category type = (Category)DataTransfer.data[2];
@@ -88,9 +92,12 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                Our_history.Add("Матрица не создана");
+                ourHistory.Add("Матрица не создана");
                 return new Matrix(name, 0, 0, Category.none, null);
             }
         }
+
+        // Сохранение матрицы реализовано в коде формы начального окна
+           
     }
 }
