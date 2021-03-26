@@ -63,14 +63,16 @@
             this.label_history = new System.Windows.Forms.Label();
             this.message_history = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.сервис = new System.Windows.Forms.ToolStripMenuItem();
-            this.закрепитьПоверхДургихОкон = new System.Windows.Forms.ToolStripMenuItem();
-            this.очиститьИсториюСообщений = new System.Windows.Forms.ToolStripMenuItem();
-            this.очиститьВсеМатрицы = new System.Windows.Forms.ToolStripMenuItem();
-            this.помощь = new System.Windows.Forms.ToolStripMenuItem();
-            this.началоРаботы = new System.Windows.Forms.ToolStripMenuItem();
-            this.справка = new System.Windows.Forms.ToolStripMenuItem();
-            this.обАвторе = new System.Windows.Forms.ToolStripMenuItem();
+            this.очисткаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.закрепитьПоверхДургихОконToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.очиститьИсториюСообщенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.очиститьВсеМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.началоРаботыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.обАвтореToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -611,7 +613,9 @@
             this.обАвторе.Size = new System.Drawing.Size(224, 26);
             this.обАвторе.Text = "Об авторе";
             // 
-            // Main_menu
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -687,6 +691,8 @@
         private System.Windows.Forms.ComboBox comboBox_B1;
         private System.Windows.Forms.ComboBox comboBox_A2;
         private System.Windows.Forms.Button safe_A;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 
