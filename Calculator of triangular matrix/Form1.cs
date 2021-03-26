@@ -25,7 +25,7 @@ namespace Calculator_of_triangular_matrix
         Matrix A = new Matrix('A', 0, 0, Category.none, null);
         Matrix B = new Matrix('B', 0, 0, Category.none, null);
         Matrix C = new Matrix('C', 0, 0, Category.none, null);
-        
+
         public Main_menu()
         {
             InitializeComponent();
@@ -38,6 +38,10 @@ namespace Calculator_of_triangular_matrix
             TopMost = !TopMost;
         }
 
+        private void ShowMatrix(Matrix M)
+        {
+
+        }
 
         // Создание матрицы
         // Принимает на вход способ создания, историю сообщения и имя матрицы
