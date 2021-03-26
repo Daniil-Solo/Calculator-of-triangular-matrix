@@ -25,7 +25,8 @@ namespace Calculator_of_triangular_matrix
         Matrix A = new Matrix('A', 0, 0, Category.none, null);
         Matrix B = new Matrix('B', 0, 0, Category.none, null);
         Matrix C = new Matrix('C', 0, 0, Category.none, null);
-        
+        int kol_sms = 10;// количество выводимых сообщений
+
         public Main_menu()
         {
             InitializeComponent();
@@ -43,14 +44,14 @@ namespace Calculator_of_triangular_matrix
         // Принимает на вход способ создания, историю сообщения и имя матрицы
         // Возвращает ссылку на новую матрицу
         // Пример вызова: Matrix A = Form1.New_m(i, Our_history, A.Name);
-        private Matrix New_m(int sp, History_message ourHistory, Matrix M)
+        private Matrix New_m(int sp, ref History_message ourHistory, Matrix M)
         {
             DataTransfer.dataNull();
             switch (sp)
             {
                 case 0: // c клавиатуры
 
-                    ourHistory.Add("Матрица " + M.Name + " создается способом: считывание с клавиатуры");
+                    ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: считывание с клавиатуры");
                     // Form1.Hide()
                     // Form2.Show() - считываем инфу в DataTransfer
                     //      -> Form2.Hide()
@@ -62,13 +63,13 @@ namespace Calculator_of_triangular_matrix
 
                     if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                         return M;
-                    ourHistory.Add("Матрица " + M.Name + " создается способом: считывание из текстового файла");
+                    ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: считывание из текстового файла");
                     string filename = openFileDialog1.FileName;
-                    M.OpenFromFileToDataTransfer(filename, ourHistory);
+                    M.OpenFromFileToDataTransfer(filename, ref ourHistory);
                     break;
                 case 2: // случайным образом
 
-                    ourHistory.Add("Матрица " + M.Name + " создается способом: случайное задание");
+                    ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: случайное задание");
                     // Form1.Hide()
                     // Form2.Show() - считываем инфу в DataTransfer
                     //      -> Form2.Hide()
@@ -82,7 +83,7 @@ namespace Calculator_of_triangular_matrix
             }
             if (DataTransfer.isFull())
             {
-                ourHistory.Add("Матрица успешно создана");
+                ourHistory = ourHistory.Add("Матрица успешно создана");
                 int n = (int)DataTransfer.data[0];
                 double v = (double)DataTransfer.data[1];
                 Category type = (Category)DataTransfer.data[2];
@@ -93,7 +94,7 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                ourHistory.Add("Матрица не создана");
+                ourHistory = ourHistory.Add("Матрица не создана");
                 DataTransfer.dataNull();
                 return new Matrix(M.Name, 0, 0, Category.none, null);
             }
@@ -115,6 +116,19 @@ namespace Calculator_of_triangular_matrix
         private void safe_A_Click(object sender, EventArgs e)
         {
             Save_m(A, ref ourHistory);
+            message_history.Text = ourHistory.Print(kol_sms);
+        }
+
+        private void safe_B_Click(object sender, EventArgs e)
+        {
+            Save_m(B, ref ourHistory);
+            message_history.Text = ourHistory.Print(kol_sms);
+        }
+
+        private void safe_C_Click(object sender, EventArgs e)
+        {
+            Save_m(C, ref ourHistory);
+            message_history.Text = ourHistory.Print(kol_sms);
         }
     }
 }

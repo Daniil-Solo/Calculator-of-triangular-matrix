@@ -428,6 +428,7 @@
             this.safe_B.TabIndex = 4;
             this.safe_B.Text = "Сохранить";
             this.safe_B.UseVisualStyleBackColor = true;
+            this.safe_B.Click += new System.EventHandler(this.safe_B_Click);
             // 
             // GridView_B
             // 
@@ -510,6 +511,7 @@
             this.safe_C.TabIndex = 4;
             this.safe_C.Text = "Сохранить";
             this.safe_C.UseVisualStyleBackColor = true;
+            this.safe_C.Click += new System.EventHandler(this.safe_C_Click);
             // 
             // GridView_C
             // 

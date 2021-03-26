@@ -40,7 +40,7 @@ namespace Calculator_of_triangular_matrix
     // Методы
 
         // Создание матрицы частично реализовано в коде формы начального окна
-        public void OpenFromFileToDataTransfer(string filename, History_message ourHistory)
+        public void OpenFromFileToDataTransfer(string filename, ref History_message ourHistory)
         {
             StreamReader f = null;
             try
@@ -49,7 +49,7 @@ namespace Calculator_of_triangular_matrix
             }
             catch
             {
-                ourHistory.Add("Ошибка при открытии файла " + filename);
+                ourHistory = ourHistory.Add("Ошибка при открытии файла " + filename);
                 return;
             }
             int N;
@@ -61,21 +61,21 @@ namespace Calculator_of_triangular_matrix
             success = Int32.TryParse(f.ReadLine(), out N);
             if (!success)
             {
-                ourHistory.Add("Неверный формат размерности");
+                ourHistory = ourHistory.Add("Неверный формат размерности");
                 return;
             }
             DataTransfer.data[0] = N;
             success = Double.TryParse(f.ReadLine(), out V);
             if (!success)
             {
-                ourHistory.Add("Неверный формат значения V");
+                ourHistory = ourHistory.Add("Неверный формат значения V");
                 return;
             }
             DataTransfer.data[1] = V;
             success = Category.TryParse(f.ReadLine(), out Type);
             if (!success || Type == Category.none)
             {
-                ourHistory.Add("Неверный формат типа");
+                ourHistory = ourHistory.Add("Неверный формат типа");
                 return;
             }
             DataTransfer.data[2] = Type;
@@ -94,7 +94,7 @@ namespace Calculator_of_triangular_matrix
                                 success = Double.TryParse(splittedStroka[j], out V);
                                 if (!success)
                                 {
-                                    ourHistory.Add("Неверный формат значимого элемента");
+                                    ourHistory = ourHistory.Add("Неверный формат значимого элемента");
                                     return;
                                 }
                                 PackedForm[k] = V;
@@ -107,7 +107,7 @@ namespace Calculator_of_triangular_matrix
                                 success = Double.TryParse(splittedStroka[j], out V);
                                 if (!success)
                                 {
-                                    ourHistory.Add("Неверный формат значимого элемента");
+                                    ourHistory = ourHistory.Add("Неверный формат значимого элемента");
                                     return;
                                 }
                                 PackedForm[k] = V;
@@ -120,7 +120,7 @@ namespace Calculator_of_triangular_matrix
                                 success = Double.TryParse(splittedStroka[j], out V);
                                 if (!success)
                                 {
-                                    ourHistory.Add("Неверный формат значимого элемента");
+                                    ourHistory = ourHistory.Add("Неверный формат значимого элемента");
                                     return;
                                 }
                                 PackedForm[k] = V;
@@ -133,7 +133,7 @@ namespace Calculator_of_triangular_matrix
                                 success = Double.TryParse(splittedStroka[j], out V);
                                 if (!success)
                                 {
-                                    ourHistory.Add("Неверный формат значимого элемента");
+                                    ourHistory = ourHistory.Add("Неверный формат значимого элемента");
                                     return;
                                 }
                                 PackedForm[k] = V;
@@ -147,18 +147,18 @@ namespace Calculator_of_triangular_matrix
             }
             catch
             {
-                ourHistory.Add("Недостаточно строк в матрице");
+                ourHistory = ourHistory.Add("Недостаточно строк в матрице");
                 return;
             }
             DataTransfer.data[3] = PackedForm;
             f.Close();
-            ourHistory.Add("Матрица сохранена по адресу " + filename);
+            ourHistory = ourHistory.Add("Матрица сохранена по адресу " + filename);
         }
 
         // Сохранение матрицы частично реализовано в коде формы начального окна
         public void Save(string filename, ref History_message ourHistory)
         {
-            ourHistory.Add("Сохранение матрицы " + name);
+            ourHistory = ourHistory.Add("Сохранение матрицы " + name);
             StreamWriter f = null;
             try
             {
@@ -166,7 +166,7 @@ namespace Calculator_of_triangular_matrix
             }
             catch
             {
-                ourHistory.Add("Ошибка при сохранении");
+                ourHistory = ourHistory.Add("Ошибка при сохранении");
                 return;
             }
 
@@ -179,7 +179,7 @@ namespace Calculator_of_triangular_matrix
              */
 
             f.Close();
-            ourHistory.Add("Матрица сохранена по адресу " + filename);
+            ourHistory = ourHistory.Add("Матрица сохранена по адресу " + filename);
         }
            
     }
