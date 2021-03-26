@@ -19,14 +19,14 @@ namespace Calculator_of_triangular_matrix
         bot_left,
         bot_right
     }
-    public partial class Form1 : Form
+    public partial class Main_menu : Form
     {
         History_message ourHistory = new History_message("Программа готова к работе");
         Matrix A = new Matrix('A', 0, 0, Category.none, null);
         Matrix B = new Matrix('B', 0, 0, Category.none, null);
         Matrix C = new Matrix('C', 0, 0, Category.none, null);
         
-        public Form1()
+        public Main_menu()
         {
             InitializeComponent();
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
@@ -37,6 +37,7 @@ namespace Calculator_of_triangular_matrix
         {
             TopMost = !TopMost;
         }
+
 
         // Создание матрицы
         // Принимает на вход способ создания, историю сообщения и имя матрицы
