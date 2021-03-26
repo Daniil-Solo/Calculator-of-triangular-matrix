@@ -103,13 +103,18 @@ namespace Calculator_of_triangular_matrix
         // На вход принимает матрицу и историю сообщений
         // На выходе ничего не возвращает
         // Пример вызова: Save_m(A, ourHistory)
-        private void Save_m(Matrix M, History_message ourHistory)
+        private void Save_m(Matrix M, ref History_message ourHistory)
         {
             // Если отменено сохранение, то выходит из функции
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;
             string filename = saveFileDialog1.FileName;
-            M.Save(filename, ourHistory);
+            M.Save(filename, ref ourHistory);
+        }
+
+        private void safe_A_Click(object sender, EventArgs e)
+        {
+            Save_m(A, ref ourHistory);
         }
     }
 }
