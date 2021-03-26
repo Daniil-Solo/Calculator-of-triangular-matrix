@@ -18,10 +18,10 @@ namespace Calculator_of_triangular_matrix
         bot_left,
         bot_right
     }
-    public partial class Form1 : Form
+    public partial class Main_menu : Form
     {
         
-        public Form1()
+        public Main_menu()
         {
             InitializeComponent();
             Matrix A = new Matrix(0, 0, Category.none, null);
@@ -30,12 +30,27 @@ namespace Calculator_of_triangular_matrix
             History_message ourHistory = new History_message("Программа готова к работе");
             ourHistory = ourHistory.Add("Матрица успешно загружена");
             ourHistory = ourHistory.Add("Произошла ошибка при загрузке");
-            textBox1.Text = ourHistory.Print(3);
+            message_history.Text = ourHistory.Print(3);
         }
 
         private void закрепитьПоверхДургихОконToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TopMost = !TopMost;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

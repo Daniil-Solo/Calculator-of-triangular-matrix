@@ -16,7 +16,7 @@ namespace Calculator_of_triangular_matrix
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Main_menu());
         }
     }
     public static class DataTransfer

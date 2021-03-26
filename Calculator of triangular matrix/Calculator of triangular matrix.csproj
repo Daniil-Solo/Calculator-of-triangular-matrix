@@ -53,12 +53,48 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="History_message.cs" />
+    <Compile Include="Input.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Input.Designer.cs">
+      <DependentUpon>Input.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Input_hand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Input_hand.Designer.cs">
+      <DependentUpon>Input_hand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Input_rand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Input_rand.Designer.cs">
+      <DependentUpon>Input_rand.cs</DependentUpon>
+    </Compile>
     <Compile Include="Matrix.cs" />
     <Compile Include="Operations.cs" />
+    <Compile Include="Output.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Output.Designer.cs">
+      <DependentUpon>Output.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Input.resx">
+      <DependentUpon>Input.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Input_hand.resx">
+      <DependentUpon>Input_hand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Input_rand.resx">
+      <DependentUpon>Input_rand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Output.resx">
+      <DependentUpon>Output.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
