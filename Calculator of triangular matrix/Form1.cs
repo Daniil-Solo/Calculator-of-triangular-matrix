@@ -39,6 +39,10 @@ namespace Calculator_of_triangular_matrix
             TopMost = !TopMost;
         }
 
+        private void ShowMatrix(Matrix M)
+        {
+
+        }
 
         // Создание матрицы
         // Принимает на вход способ создания, историю сообщения и имя матрицы
