@@ -36,7 +36,7 @@
             this.AminB = new System.Windows.Forms.Button();
             this.A_on_C = new System.Windows.Forms.Button();
             this.obrB = new System.Windows.Forms.Button();
-            this.AsubB = new System.Windows.Forms.Button();
+            this.AmultB = new System.Windows.Forms.Button();
             this.B_on_C = new System.Windows.Forms.Button();
             this.operations = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -63,14 +63,14 @@
             this.label_history = new System.Windows.Forms.Label();
             this.message_history = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.очисткаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.закрепитьПоверхДургихОконToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.очиститьИсториюСообщенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.очиститьВсеМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.началоРаботыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.обАвтореToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сервис = new System.Windows.Forms.ToolStripMenuItem();
+            this.закрепитьПоверхДургихОкон = new System.Windows.Forms.ToolStripMenuItem();
+            this.очиститьИсториюСообщений = new System.Windows.Forms.ToolStripMenuItem();
+            this.очиститьВсеМатрицы = new System.Windows.Forms.ToolStripMenuItem();
+            this.помощь = new System.Windows.Forms.ToolStripMenuItem();
+            this.началоРаботы = new System.Windows.Forms.ToolStripMenuItem();
+            this.справка = new System.Windows.Forms.ToolStripMenuItem();
+            this.обАвторе = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
@@ -117,7 +117,7 @@
             this.tableLayoutPanel2.Controls.Add(this.AminB, 0, 2);
             this.tableLayoutPanel2.Controls.Add(this.A_on_C, 1, 2);
             this.tableLayoutPanel2.Controls.Add(this.obrB, 2, 2);
-            this.tableLayoutPanel2.Controls.Add(this.AsubB, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.AmultB, 0, 3);
             this.tableLayoutPanel2.Controls.Add(this.B_on_C, 1, 3);
             this.tableLayoutPanel2.Controls.Add(this.operations, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -197,16 +197,16 @@
             this.obrB.Text = "B^(-1)";
             this.obrB.UseVisualStyleBackColor = true;
             // 
-            // AsubB
+            // AmultB
             // 
-            this.AsubB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AsubB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AsubB.Location = new System.Drawing.Point(3, 206);
-            this.AsubB.Name = "AsubB";
-            this.AsubB.Size = new System.Drawing.Size(138, 75);
-            this.AsubB.TabIndex = 6;
-            this.AsubB.Text = "A*B";
-            this.AsubB.UseVisualStyleBackColor = true;
+            this.AmultB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AmultB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AmultB.Location = new System.Drawing.Point(3, 206);
+            this.AmultB.Name = "AmultB";
+            this.AmultB.Size = new System.Drawing.Size(138, 75);
+            this.AmultB.TabIndex = 6;
+            this.AmultB.Text = "A*B";
+            this.AmultB.UseVisualStyleBackColor = true;
             // 
             // B_on_C
             // 
@@ -281,7 +281,6 @@
             this.comboBox_A1.Size = new System.Drawing.Size(210, 24);
             this.comboBox_A1.TabIndex = 1;
             this.comboBox_A1.Text = "Ввод...";
-            this.comboBox_A1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox_A2
             // 
@@ -317,7 +316,6 @@
             this.GridView_A.RowTemplate.Height = 24;
             this.GridView_A.Size = new System.Drawing.Size(426, 328);
             this.GridView_A.TabIndex = 5;
-            this.GridView_A.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // type_n_A
             // 
@@ -488,7 +486,6 @@
             this.safe_C.TabIndex = 4;
             this.safe_C.Text = "Сохранить";
             this.safe_C.UseVisualStyleBackColor = true;
-            this.safe_C.Click += new System.EventHandler(this.button11_Click);
             // 
             // GridView_C
             // 
@@ -562,7 +559,7 @@
             this.очиститьИсториюСообщений,
             this.очиститьВсеМатрицы});
             this.сервис.Name = "сервис";
-            this.сервис.Size = new System.Drawing.Size(73, 24);
+            this.сервис.Size = new System.Drawing.Size(73, 26);
             this.сервис.Text = "Сервис";
             // 
             // закрепитьПоверхДургихОкон
@@ -592,7 +589,7 @@
             this.справка,
             this.обАвторе});
             this.помощь.Name = "помощь";
-            this.помощь.Size = new System.Drawing.Size(83, 24);
+            this.помощь.Size = new System.Drawing.Size(83, 26);
             this.помощь.Text = "Помощь";
             // 
             // началоРаботы
@@ -613,9 +610,11 @@
             this.обАвторе.Size = new System.Drawing.Size(224, 26);
             this.обАвторе.Text = "Об авторе";
             // 
+            // openFileDialog1
+            // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // Form1
+            // Main_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -656,7 +655,7 @@
         private System.Windows.Forms.Button AminB;
         private System.Windows.Forms.Button A_on_C;
         private System.Windows.Forms.Button obrB;
-        private System.Windows.Forms.Button AsubB;
+        private System.Windows.Forms.Button AmultB;
         private System.Windows.Forms.Button B_on_C;
         private System.Windows.Forms.Label operations;
         private System.Windows.Forms.MenuStrip menuStrip1;

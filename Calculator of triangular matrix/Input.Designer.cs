@@ -30,15 +30,15 @@ namespace Calculator_of_triangular_matrix
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox_type = new System.Windows.Forms.ComboBox();
             this.button_make = new System.Windows.Forms.Button();
+            this.comboBox_type = new System.Windows.Forms.ComboBox();
             this.label_V = new System.Windows.Forms.Label();
             this.label_n = new System.Windows.Forms.Label();
             this.textBox_V = new System.Windows.Forms.TextBox();
             this.textBox_n = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.помощьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.справкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.типМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.размерностьМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.значениеVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,34 +71,15 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.Size = new System.Drawing.Size(341, 212);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // menuStrip1
+            // button_make
             // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.помощьToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(341, 30);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // помощьToolStripMenuItem
-            // 
-            this.помощьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.справкаToolStripMenuItem,
-            this.типМатрицыToolStripMenuItem,
-            this.размерностьМатрицыToolStripMenuItem,
-            this.значениеVToolStripMenuItem});
-            this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
-            this.помощьToolStripMenuItem.Text = "Помощь";
-            this.помощьToolStripMenuItem.Click += new System.EventHandler(this.помощьToolStripMenuItem_Click);
-            // 
-            // справкаToolStripMenuItem
-            // 
-            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
-            this.справкаToolStripMenuItem.Text = "Справка";
+            this.button_make.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_make.Location = new System.Drawing.Point(105, 163);
+            this.button_make.Name = "button_make";
+            this.button_make.Size = new System.Drawing.Size(131, 40);
+            this.button_make.TabIndex = 3;
+            this.button_make.Text = "Создать";
+            this.button_make.UseVisualStyleBackColor = true;
             // 
             // comboBox_type
             // 
@@ -115,16 +96,6 @@ namespace Calculator_of_triangular_matrix
             this.comboBox_type.TabIndex = 0;
             this.comboBox_type.Text = "Тип матрицы...";
             this.comboBox_type.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
-            // button_make
-            // 
-            this.button_make.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button_make.Location = new System.Drawing.Point(105, 163);
-            this.button_make.Name = "button_make";
-            this.button_make.Size = new System.Drawing.Size(131, 40);
-            this.button_make.TabIndex = 3;
-            this.button_make.Text = "Создать";
-            this.button_make.UseVisualStyleBackColor = true;
             // 
             // label_V
             // 
@@ -161,6 +132,35 @@ namespace Calculator_of_triangular_matrix
             this.textBox_n.Name = "textBox_n";
             this.textBox_n.Size = new System.Drawing.Size(335, 22);
             this.textBox_n.TabIndex = 7;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.помощьToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(341, 30);
+            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // помощьToolStripMenuItem
+            // 
+            this.помощьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.справкаToolStripMenuItem,
+            this.типМатрицыToolStripMenuItem,
+            this.размерностьМатрицыToolStripMenuItem,
+            this.значениеVToolStripMenuItem});
+            this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
+            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
+            this.помощьToolStripMenuItem.Text = "Помощь";
+            this.помощьToolStripMenuItem.Click += new System.EventHandler(this.помощьToolStripMenuItem_Click);
+            // 
+            // справкаToolStripMenuItem
+            // 
+            this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // типМатрицыToolStripMenuItem
             // 
