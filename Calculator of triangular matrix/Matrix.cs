@@ -156,7 +156,7 @@ namespace Calculator_of_triangular_matrix
         }
 
         // Сохранение матрицы частично реализовано в коде формы начального окна
-        public void Save(string filename, History_message ourHistory)
+        public void Save(string filename, ref History_message ourHistory)
         {
             ourHistory.Add("Сохранение матрицы " + name);
             StreamWriter f = null;
