@@ -53,7 +53,7 @@ namespace Calculator_of_triangular_matrix
             }
         }
 
-
+/*
         public static Matrix Subtraction(Matrix A, Matrix B)
         {
 
@@ -94,5 +94,6 @@ namespace Calculator_of_triangular_matrix
         public static Matrix Replace_B_C(Matrix A, Matrix B)
         {
         }
+    */
     }
 }

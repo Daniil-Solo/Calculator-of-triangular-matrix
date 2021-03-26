@@ -56,7 +56,7 @@ namespace Calculator_of_triangular_matrix
 
             DataTransfer.data[0] = n;
             DataTransfer.data[1] = V;
-            DataTransfer.data[2] = type;
+            //DataTransfer.data[2] = type;
 
             // Открытие формы Input_hand
         }
