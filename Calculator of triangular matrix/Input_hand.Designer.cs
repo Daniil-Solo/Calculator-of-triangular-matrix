@@ -55,7 +55,7 @@ namespace Calculator_of_triangular_matrix
             this.помощьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -98,7 +98,7 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.Controls.Add(this.textBox_input, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.64706F));
@@ -114,7 +114,7 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 420);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 422);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dataGridView
@@ -126,13 +126,13 @@ namespace Calculator_of_triangular_matrix
             this.dataGridView.RowHeadersWidth = 51;
             this.tableLayoutPanel1.SetRowSpan(this.dataGridView, 8);
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(522, 414);
+            this.dataGridView.Size = new System.Drawing.Size(522, 416);
             this.dataGridView.TabIndex = 0;
             // 
             // button_add
             // 
             this.button_add.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_add.Location = new System.Drawing.Point(91, 62);
+            this.button_add.Location = new System.Drawing.Point(91, 64);
             this.button_add.Name = "button_add";
             this.button_add.Size = new System.Drawing.Size(91, 38);
             this.button_add.TabIndex = 1;
@@ -142,7 +142,7 @@ namespace Calculator_of_triangular_matrix
             // button_up
             // 
             this.button_up.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_up.Location = new System.Drawing.Point(91, 152);
+            this.button_up.Location = new System.Drawing.Point(91, 154);
             this.button_up.Name = "button_up";
             this.button_up.Size = new System.Drawing.Size(91, 27);
             this.button_up.TabIndex = 2;
@@ -152,7 +152,7 @@ namespace Calculator_of_triangular_matrix
             // button_right
             // 
             this.button_right.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_right.Location = new System.Drawing.Point(188, 185);
+            this.button_right.Location = new System.Drawing.Point(188, 187);
             this.button_right.Name = "button_right";
             this.button_right.Size = new System.Drawing.Size(81, 30);
             this.button_right.TabIndex = 3;
@@ -162,7 +162,7 @@ namespace Calculator_of_triangular_matrix
             // button_left
             // 
             this.button_left.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_left.Location = new System.Drawing.Point(3, 185);
+            this.button_left.Location = new System.Drawing.Point(3, 187);
             this.button_left.Name = "button_left";
             this.button_left.Size = new System.Drawing.Size(82, 30);
             this.button_left.TabIndex = 4;
@@ -172,7 +172,7 @@ namespace Calculator_of_triangular_matrix
             // button_down
             // 
             this.button_down.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_down.Location = new System.Drawing.Point(91, 221);
+            this.button_down.Location = new System.Drawing.Point(91, 223);
             this.button_down.Name = "button_down";
             this.button_down.Size = new System.Drawing.Size(91, 30);
             this.button_down.TabIndex = 5;
@@ -182,7 +182,7 @@ namespace Calculator_of_triangular_matrix
             // button_ready
             // 
             this.button_ready.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button_ready.Location = new System.Drawing.Point(91, 323);
+            this.button_ready.Location = new System.Drawing.Point(91, 325);
             this.button_ready.Name = "button_ready";
             this.button_ready.Size = new System.Drawing.Size(91, 43);
             this.button_ready.TabIndex = 6;
@@ -193,7 +193,7 @@ namespace Calculator_of_triangular_matrix
             // 
             this.textBox_input.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.SetColumnSpan(this.textBox_input, 2);
-            this.textBox_input.Location = new System.Drawing.Point(91, 18);
+            this.textBox_input.Location = new System.Drawing.Point(91, 19);
             this.textBox_input.Name = "textBox_input";
             this.textBox_input.Size = new System.Drawing.Size(178, 22);
             this.textBox_input.TabIndex = 8;
@@ -203,7 +203,7 @@ namespace Calculator_of_triangular_matrix
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(15, 20);
+            this.label1.Location = new System.Drawing.Point(15, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 18);
             this.label1.TabIndex = 9;
