@@ -53,47 +53,71 @@ namespace Calculator_of_triangular_matrix
             }
         }
 
-/*
-        public static Matrix Subtraction(Matrix A, Matrix B)
+     public static Matrix Subtraction(Matrix A, Matrix B)
         {
 
-            Matrix C = new Matrix
+            if (A.Type == B.Type && A.N == B.N)
             {
-                v = A.v,
-                n = A.n,
-                Type = A.Type
-            };
-            for (int i = 0; i < A.n; i++)
-            {
-                C.Packed_form[i] = A.Packed_form[i] - B.Packed_form[i];
+                history.Add("Выполнение операции A-B");
+                int sizePackedForm = A.N * (A.N + 1) / 2;
+                Matrix Result = new Matrix('C', A.N, A.V-B.V, A.Type, new double[sizePackedForm]);
+
+                for (int i = 0; i < sizePackedForm; i++)
+                {
+                    Result.Packed_form[i] = A.Packed_form[i]-B.Packed_form[i];
+                }
+                history.Add("Операция успешно выполнена");
+                return Result;
             }
-            return C;
+            else
+            {
+                history.Add("Не совпадает типы или размерности матриц");
+                return C;
+            }
         }
 
         public static Matrix Multiply(Matrix A, Matrix B)
         {
-
+            /*Найти умножение матрицы
+            Создать новую матрицу
+            Через 1 функцию переводить i j в k
+            Проверка принадлежносит элемента к значимым
+            Если значимый то обращание к функции и брать из packed_form
+            если нет то из v
+            */
         }
 
         public static Matrix Reverse_A(Matrix A)
         {
+            /*найти определитель матрицы
+            если равен 0, то вывести сообщение 
+            если не равен 0, то считаем обратную матрицу
+            найти алгооритм*/
         }
 
         public static Matrix Reverse_B(Matrix B)
         {
         }
 
-        public static Matrix Replace_A_B(Matrix A, Matrix B)
+        public static void Replace_A_B(ref Matrix A,ref Matrix B)
         {
+            Matrix C = A;
+            A = B;
+            B = C;
         }
 
-        public static Matrix Replace_A_C(Matrix A, Matrix B)
+        public static void Replace_A_C(ref Matrix A, ref Matrix C)
         {
+            Matrix B = A;
+            A = C;
+            C = B;
         }
 
-        public static Matrix Replace_B_C(Matrix A, Matrix B)
+        public static void Replace_B_C(ref Matrix B, ref Matrix C)
         {
+            Matrix A = B;
+            B = C;
+            C = A;
         }
-    */
     }
 }
