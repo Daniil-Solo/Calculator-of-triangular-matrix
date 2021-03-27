@@ -31,11 +31,11 @@ namespace Calculator_of_triangular_matrix
         }
 
 
-        public static Matrix Summ(Matrix A, Matrix B, Matrix C, History_message history)
+        public static Matrix Summ(Matrix A, Matrix B, Matrix C, ref History_message history)
         {
             if (A.Type == B.Type && A.N == B.N)
             {
-                history.Add("Выполнение операции A+B");
+                history = history.Add("Выполнение операции A+B");
                 int sizePackedForm = A.N * (A.N + 1) / 2;
                 Matrix Result = new Matrix('C', A.N, A.V + B.V, A.Type, new double[sizePackedForm]);
             
@@ -43,22 +43,22 @@ namespace Calculator_of_triangular_matrix
                 {
                     Result.Packed_form[i]=A.Packed_form[i]+B.Packed_form[i];
                 }
-                history.Add("Операция успешно выполнена");
+                history = history.Add("Операция успешно выполнена");
                 return Result;
             }
             else
             {
-                history.Add("Не совпадает типы ил размерности матриц");
+                history = history.Add("Не совпадает типы ил размерности матриц");
                 return C;
             }
         }
 
-     public static Matrix Subtraction(Matrix A, Matrix B)
+     public static Matrix Subtraction(Matrix A, Matrix B, Matrix C, ref History_message history)
         {
 
             if (A.Type == B.Type && A.N == B.N)
             {
-                history.Add("Выполнение операции A-B");
+                history = history.Add("Выполнение операции A-B");
                 int sizePackedForm = A.N * (A.N + 1) / 2;
                 Matrix Result = new Matrix('C', A.N, A.V-B.V, A.Type, new double[sizePackedForm]);
 
@@ -66,17 +66,17 @@ namespace Calculator_of_triangular_matrix
                 {
                     Result.Packed_form[i] = A.Packed_form[i]-B.Packed_form[i];
                 }
-                history.Add("Операция успешно выполнена");
+                history = history.Add("Операция успешно выполнена");
                 return Result;
             }
             else
             {
-                history.Add("Не совпадает типы или размерности матриц");
+                history = history.Add("Не совпадает типы или размерности матриц");
                 return C;
             }
         }
 
-        public static Matrix Multiply(Matrix A, Matrix B)
+        public static Matrix Multiply(Matrix A, Matrix B, Matrix C, ref History_message history)
         {
             /*Найти умножение матрицы
             Создать новую матрицу
@@ -87,7 +87,7 @@ namespace Calculator_of_triangular_matrix
             */
         }
 
-        public static Matrix Reverse_A(Matrix A)
+        public static Matrix Reverse_A(Matrix A, Matrix C, ref History_message history)
         {
             /*найти определитель матрицы
             если равен 0, то вывести сообщение 
@@ -95,29 +95,35 @@ namespace Calculator_of_triangular_matrix
             найти алгооритм*/
         }
 
-        public static Matrix Reverse_B(Matrix B)
+        public static Matrix Reverse_B(Matrix B, Matrix C, ref History_message history)
         {
         }
 
-        public static void Replace_A_B(ref Matrix A,ref Matrix B)
+        public static void Replace_A_B(ref Matrix A,ref Matrix B, ref History_message history)
         {
+            history = history.Add("Выполнение операции A<->B");
             Matrix C = A;
             A = B;
             B = C;
+            history = history.Add("Операция успешно выполнена");
         }
 
-        public static void Replace_A_C(ref Matrix A, ref Matrix C)
+        public static void Replace_A_C(ref Matrix A, ref Matrix C, ref History_message history)
         {
+            history = history.Add("Выполнение операции A<->C");
             Matrix B = A;
             A = C;
             C = B;
+            history = history.Add("Операция успешно выполнена");
         }
 
-        public static void Replace_B_C(ref Matrix B, ref Matrix C)
+        public static void Replace_B_C(ref Matrix B, ref Matrix C, ref History_message history)
         {
+            history = history.Add("Выполнение операции B<->C");
             Matrix A = B;
             B = C;
             C = A;
+            history = history.Add("Операция успешно выполнена");
         }
     }
 }
