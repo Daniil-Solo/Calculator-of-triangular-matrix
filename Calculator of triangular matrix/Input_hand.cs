@@ -16,5 +16,13 @@ namespace Calculator_of_triangular_matrix
         {
             InitializeComponent();
         }
+
+        private void button_ready_Click(object sender, EventArgs e)
+        {
+            int n = (int)DataTransfer.data[0];
+            int size_packedform = n * (n + 1) / 2;
+            DataTransfer.data[3] = new double[size_packedform];
+            this.Dispose();
+        }
     }
 }

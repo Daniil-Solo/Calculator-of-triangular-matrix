@@ -14,22 +14,22 @@ namespace Calculator_of_triangular_matrix
             int k=0;
             switch (type)
             {
-                case Category.top_right:// правый верхний
-                    k = n * i - i * (i - 1) / 2 + j;
-                    break;
-                case Category.top_left://левый верхний
+                case Category.bot_left:// правый верхний
                     k = n * i - i * (i + 1) / 2 + j;
                     break;
-                case Category.bot_left://левый нижний
-                    k = i * (i + 3) / 2 + j - n + 1;
+                case Category.bot_right://левый верхний---------
+                    k = i * (i + 3) / 2 + j - (n - 1);
                     break;
-                case Category.bot_right://правый нижний
+                case Category.top_right://левый нижний
                     k = i * (i + 1) / 2 + j;
+                    break;
+                case Category.top_left://правый нижний----------
+                    k = n * i - i * (i - 1) / 2 + j;
                     break;
             }
             return k;
         }
-
+        /*
 
         public static Matrix Summ(Matrix A, Matrix B, Matrix C, ref History_message history)
         {
@@ -84,15 +84,15 @@ namespace Calculator_of_triangular_matrix
             Проверка принадлежносит элемента к значимым
             Если значимый то обращание к функции и брать из packed_form
             если нет то из v
-            */
+            
         }
 
         public static Matrix Reverse_A(Matrix A, Matrix C, ref History_message history)
         {
-            /*найти определитель матрицы
+            найти определитель матрицы
             если равен 0, то вывести сообщение 
             если не равен 0, то считаем обратную матрицу
-            найти алгооритм*/
+            найти алгооритм
         }
 
         public static Matrix Reverse_B(Matrix B, Matrix C, ref History_message history)
@@ -125,5 +125,7 @@ namespace Calculator_of_triangular_matrix
             C = A;
             history = history.Add("Операция успешно выполнена");
         }
+        */
     }
+
 }

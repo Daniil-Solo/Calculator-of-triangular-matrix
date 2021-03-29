@@ -36,12 +36,12 @@ namespace Calculator_of_triangular_matrix
             this.типМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.размерностьМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox_n = new System.Windows.Forms.TextBox();
-            this.button_ready = new System.Windows.Forms.Button();
             this.comboBox_type = new System.Windows.Forms.ComboBox();
             this.label_n = new System.Windows.Forms.Label();
+            this.textBox_n = new System.Windows.Forms.TextBox();
             this.label_V = new System.Windows.Forms.Label();
             this.textBox_V = new System.Windows.Forms.TextBox();
+            this.button_ready = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +53,7 @@ namespace Calculator_of_triangular_matrix
             this.помощьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(338, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(338, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -106,7 +106,7 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.Controls.Add(this.textBox_V, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.button_ready, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.18367F));
@@ -115,26 +115,8 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(338, 187);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(338, 185);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // textBox_n
-            // 
-            this.tableLayoutPanel1.SetColumnSpan(this.textBox_n, 3);
-            this.textBox_n.Location = new System.Drawing.Point(3, 52);
-            this.textBox_n.Name = "textBox_n";
-            this.textBox_n.Size = new System.Drawing.Size(332, 22);
-            this.textBox_n.TabIndex = 0;
-            // 
-            // button_ready
-            // 
-            this.button_ready.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_ready.Location = new System.Drawing.Point(3, 135);
-            this.button_ready.Name = "button_ready";
-            this.button_ready.Size = new System.Drawing.Size(332, 49);
-            this.button_ready.TabIndex = 1;
-            this.button_ready.Text = "Готово";
-            this.button_ready.UseVisualStyleBackColor = true;
             // 
             // comboBox_type
             // 
@@ -155,18 +137,26 @@ namespace Calculator_of_triangular_matrix
             // 
             this.label_n.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label_n.AutoSize = true;
-            this.label_n.Location = new System.Drawing.Point(3, 30);
+            this.label_n.Location = new System.Drawing.Point(3, 29);
             this.label_n.Name = "label_n";
             this.label_n.Size = new System.Drawing.Size(94, 17);
             this.label_n.TabIndex = 3;
             this.label_n.Text = "Размерность";
             this.label_n.Click += new System.EventHandler(this.label_n_Click);
             // 
+            // textBox_n
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.textBox_n, 3);
+            this.textBox_n.Location = new System.Drawing.Point(3, 50);
+            this.textBox_n.Name = "textBox_n";
+            this.textBox_n.Size = new System.Drawing.Size(332, 22);
+            this.textBox_n.TabIndex = 0;
+            // 
             // label_V
             // 
             this.label_V.AutoSize = true;
             this.label_V.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_V.Location = new System.Drawing.Point(3, 88);
+            this.label_V.Location = new System.Drawing.Point(3, 86);
             this.label_V.Name = "label_V";
             this.label_V.Size = new System.Drawing.Size(332, 15);
             this.label_V.TabIndex = 4;
@@ -175,10 +165,21 @@ namespace Calculator_of_triangular_matrix
             // textBox_V
             // 
             this.textBox_V.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_V.Location = new System.Drawing.Point(3, 106);
+            this.textBox_V.Location = new System.Drawing.Point(3, 104);
             this.textBox_V.Name = "textBox_V";
             this.textBox_V.Size = new System.Drawing.Size(332, 22);
             this.textBox_V.TabIndex = 5;
+            // 
+            // button_ready
+            // 
+            this.button_ready.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_ready.Location = new System.Drawing.Point(3, 133);
+            this.button_ready.Name = "button_ready";
+            this.button_ready.Size = new System.Drawing.Size(332, 49);
+            this.button_ready.TabIndex = 1;
+            this.button_ready.Text = "Готово";
+            this.button_ready.UseVisualStyleBackColor = true;
+            this.button_ready.Click += new System.EventHandler(this.button_ready_Click);
             // 
             // Input_rand
             // 

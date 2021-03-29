@@ -21,7 +21,7 @@ namespace Calculator_of_triangular_matrix
     }
     public static class DataTransfer
     {
-        public static object[] data;
+        public static object[] data = new object[4];
         
         public static void dataNull()
         {

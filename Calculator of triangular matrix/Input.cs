@@ -37,28 +37,57 @@ namespace Calculator_of_triangular_matrix
             bool success;
 
             // проверка на условие принадлежности категории
+            switch (comboBox_type.SelectedIndex)
+            {
+                case 0:
+                    success = true;
+                    type = Category.bot_right;
+                    break;
+                case 1:
+                    success = true;
+                    type = Category.top_right;
+                    break;
 
+                case 2:
+                    success = true;
+                    type = Category.bot_left;
+                    break;
 
+                case 3:
+                    success = true;
+                    type = Category.top_left;
+                    break;
+                default:
+                    success = false;
+                    type = Category.none;
+                    break;
+            }
+            if (!success)
+            {
+                // место для вызова окошка с ошибкой 
+                return;
+            }
             success = Int32.TryParse(textBox_n.Text, out n);
             if(!success)
             {
-                // окошко с ошибкой 
+                // место для вызова окошка с ошибкой 
                 textBox_n.Text = "";
                 return;
             }
             success = Double.TryParse(textBox_V.Text, out V);
             if(!success)
             {
-                // окно с ошибкой
+                // место для вызова окошка с ошибкой 
                 textBox_V.Text = "";
                 return;
             }
 
             DataTransfer.data[0] = n;
             DataTransfer.data[1] = V;
-            //DataTransfer.data[2] = type;
+            DataTransfer.data[2] = type;
 
             // Открытие формы Input_hand
+            this.Dispose();
         }
     }
 }
