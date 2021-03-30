@@ -63,6 +63,7 @@ namespace Calculator_of_triangular_matrix
             this.label_matrix.TabIndex = 0;
             this.label_matrix.Text = "Матрица А";
             this.label_matrix.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label_matrix.Click += new System.EventHandler(this.label_matrix_Click);
             // 
             // dataGridView1
             // 
@@ -82,6 +83,7 @@ namespace Calculator_of_triangular_matrix
             this.ClientSize = new System.Drawing.Size(629, 456);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Output";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Печать значений";
             this.Load += new System.EventHandler(this.Output_Load);
             this.tableLayoutPanel1.ResumeLayout(false);

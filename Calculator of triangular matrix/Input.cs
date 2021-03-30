@@ -64,20 +64,20 @@ namespace Calculator_of_triangular_matrix
             }
             if (!success)
             {
-                // место для вызова окошка с ошибкой 
+                MessageBox.Show("Ошибка!\nНе выбран тип матрицы!");
                 return;
             }
             success = Int32.TryParse(textBox_n.Text, out n);
             if(!success)
             {
-                // место для вызова окошка с ошибкой 
+                MessageBox.Show("Ошибка!\nНе верно введена размерность!");
                 textBox_n.Text = "";
                 return;
             }
             success = Double.TryParse(textBox_V.Text, out V);
             if(!success)
             {
-                // место для вызова окошка с ошибкой 
+                MessageBox.Show("Ошибка!\nНе верно введено значение V!");
                 textBox_V.Text = "";
                 return;
             }
@@ -88,6 +88,15 @@ namespace Calculator_of_triangular_matrix
 
             // Открытие формы Input_hand
             this.Dispose();
+        }
+        public void textBox_n_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox_V_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
