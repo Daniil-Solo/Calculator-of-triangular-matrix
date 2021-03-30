@@ -68,10 +68,14 @@ namespace Calculator_of_triangular_matrix
         public History_message Clear_history()
         {
             History_message p = this;
-            /*
-             удалить все элементы кроме последнего, который
-                содержит текст "Программа готова к работе"
-            */
+            History_message q;
+
+            while (p.msg_next != null) /* удалить все элементы кроме последнего, который содержит текст "Программа готова к работе" */
+            {
+                q = p;
+                p = p.msg_next;
+                q = null;
+            }
             return p;
         }
     }

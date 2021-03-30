@@ -67,38 +67,42 @@ namespace Calculator_of_triangular_matrix
                 for (int i = 0; i < n; i ++)
                 {
                     object[] row = new object[m];
-                    if (A.Type == Category.bot_left) 
-                    {
-                        for (int j = 0; j < i && j < m; j++)
-                            row[j] = A.V;
-
-                        for (int j = i; j < A.N && j < m; j++)
-                            row[j] = A.Packed_form[Operations.Ind(i, j, A.Type, A.N)];
-                    }
-                    else if(A.Type == Category.top_right) 
-                    {
-                        for (int j = 0; j < i + 1 && j < m; j++)
-                            row[j] = A.Packed_form[Operations.Ind(i, j, A.Type, A.N)];
-
-                        for (int j = i + 1; j < A.N && j < m; j++)
-                            row[j] = A.V;
-                    }
-                    else if (A.Type == Category.bot_right)
-                    {
-                        for (int j = 0; j < A.N - i && j < m; j++)
-                            row[j] = A.Packed_form[Operations.Ind(i, j, A.Type, A.N)];
-
-                        for (int j = A.N - i; j < A.N && j < m; j++)
-                            row[j] = A.V;
-                    }
-                    else if (A.Type == Category.top_left)
-                    {
-                        for (int j = 0; j < A.N - i - 1 && j < m; j++)
-                            row[j] = A.V;
-
-                        for (int j = A.N - i - 1; j < A.N && j < m; j++)
-                            row[j] = A.Packed_form[Operations.Ind(i, j, A.Type, A.N)];
-                    }
+                    for (int j = 0; j < m; j++)
+                        row[j] = Operations.getElement(i, j, A);
+                    GridView_A.Rows.Add(row);// добавление строк
+                }
+            }
+        }
+        private void ShowMatrixB()
+        {
+            int width = this.Size.Width;
+            int height = this.Size.Height;
+            int n = 3;
+            int m = 3;
+            if (A.N != 0)
+            {
+                // очистка
+                this.GridView_A.Rows.Clear();  // удаление всех строк
+                int count = this.GridView_A.Columns.Count;
+                for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+                {
+                    this.GridView_A.Columns.RemoveAt(0);
+                }
+                // создание новой
+                DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
+                for (int i = 0; i < m; i++)
+                {
+                    column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
+                    column[i].HeaderText = i.ToString();
+                    column[i].Name = i.ToString();
+                }
+                // задание новой
+                this.GridView_A.Columns.AddRange(column); // добавление столбцов
+                for (int i = 0; i < n; i++)
+                {
+                    object[] row = new object[m];
+                    for (int j = 0; j < m; j++)
+                        row[j] = Operations.getElement(i, j, A);
                     GridView_A.Rows.Add(row);// добавление строк
                 }
             }
@@ -226,7 +230,6 @@ namespace Calculator_of_triangular_matrix
 
         private void AplusB_Click(object sender, EventArgs e)
         {
-            
            message_history.Text = ourHistory.Print(10);
         }
 

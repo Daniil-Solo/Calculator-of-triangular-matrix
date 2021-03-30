@@ -169,6 +169,81 @@ namespace Calculator_of_triangular_matrix
                 ourHistory = ourHistory.Add("Ошибка при сохранении");
                 return;
             }
+            f.WriteLine(Convert.ToString(n));
+            f.WriteLine(Convert.ToString(v));
+            f.WriteLine(type);
+
+            int a=0;
+
+            if(type==Category.bot_left)
+            for (int i=0; i<n ; i++)
+            {
+                    for (int j = 0; j < n; j++)
+                    {
+                        if(j>=i)
+                        {
+                            f.Write(Convert.ToString(Packed_form[a]));
+                            a++;
+                        }
+                       else
+                            f.Write(Convert.ToString(v));
+                        f.Write(Convert.ToString(" "));
+                    }
+                    f.WriteLine();
+            }
+
+
+            if (type == Category.top_left)
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (j >= n-i-1)
+                        {
+                            f.Write(Convert.ToString(Packed_form[a]));
+                            a++;
+                        }
+                        else
+                            f.Write(Convert.ToString(v));
+                        f.Write(Convert.ToString(" "));
+                    }
+                    f.WriteLine();
+                }
+                
+
+            if (type == Category.bot_right)
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (j < n-i)
+                        {
+                            f.Write(Convert.ToString(Packed_form[a]));
+                            a++;
+                        }
+                        else
+                            f.Write(Convert.ToString(v));
+                        f.Write(Convert.ToString(" "));
+                    }
+                    f.WriteLine();
+                }
+
+            if (type == Category.top_right)
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (j <= i)
+                        {
+                            f.Write(Convert.ToString(Packed_form[a]));
+                            a++;
+                        }
+                        else
+                            f.Write(Convert.ToString(v));
+                        f.Write(Convert.ToString(" "));
+                    }
+                    f.WriteLine();
+                }
 
             /*
              Добавить строки в файл с помощью f.WriteLine("Строка");

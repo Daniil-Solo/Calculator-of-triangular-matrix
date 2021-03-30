@@ -96,10 +96,15 @@ namespace Calculator_of_triangular_matrix
         private double[] rand_array(int size)
         {
             double[] packed_form = new double[size];
+            Random rnd = new Random(); //Создание объекта для генерации чисел
+            double x;
 
-            for (int i = 0; i < size; i++)
-                packed_form[i] = 2*i;
-            // Заполнение массива случайными значениями
+            for (int i = 0; i < size; i++) // Заполнение массива случайными значениями
+            {
+                packed_form[i] = (double) rnd.Next()/1000d;
+                if( rnd.Next(1,4) == 1 )
+                    packed_form[i] = -packed_form[i];
+            }
 
             return packed_form;
         }
