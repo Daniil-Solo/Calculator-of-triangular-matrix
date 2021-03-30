@@ -240,5 +240,10 @@ namespace Calculator_of_triangular_matrix
             message_history.Text += C.Name.ToString() + ": размерность = " + C.N.ToString() + " тип = " + C.Type.ToString() + " значение V = " + C.V.ToString() + "\r\n";
 
         }
+
+        private void type_n_A_Click(object sender, EventArgs e)
+        {
+
+        }
     }   
 }
