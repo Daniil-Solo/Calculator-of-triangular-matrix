@@ -103,7 +103,7 @@ namespace Calculator_of_triangular_matrix
                 }
             }
         }
-        
+
 
         // Создание матрицы
         // Принимает на вход способ создания, историю сообщения и имя матрицы
@@ -119,6 +119,8 @@ namespace Calculator_of_triangular_matrix
                     ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: считывание с клавиатуры");
                     Input_keyb f2 = new Input_keyb();
                     f2.ShowDialog();
+                    //изменяем лейбл под матрицей А(размерность не выводит)
+                    type_n_A.Text = "Тип: " + f2.comboBox_type.SelectedItem + "\nРазмерность: " + f2.textBox_n.Text; 
                     Input_hand f3 = new Input_hand();
                     f3.ShowDialog();
 
@@ -240,8 +242,17 @@ namespace Calculator_of_triangular_matrix
             message_history.Text += C.Name.ToString() + ": размерность = " + C.N.ToString() + " тип = " + C.Type.ToString() + " значение V = " + C.V.ToString() + "\r\n";
 
         }
+        public void type_n_A_Click(object sender, EventArgs e)
+        {
 
-        private void type_n_A_Click(object sender, EventArgs e)
+        }
+
+        private void type_n_B_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void type_n_C_Click(object sender, EventArgs e)
         {
 
         }

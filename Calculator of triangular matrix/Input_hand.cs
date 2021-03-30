@@ -24,5 +24,16 @@ namespace Calculator_of_triangular_matrix
             DataTransfer.data[3] = new double[size_packedform];
             this.Dispose();
         }
+
+        private void textBox_input_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_add_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Ошибка!\nНе верное значение!");
+            //MessageBox.Show("Ошибка!\nВ этом месте уже стоит фиктивный элемент!");
+        }
     }
 }

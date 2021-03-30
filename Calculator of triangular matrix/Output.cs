@@ -21,5 +21,10 @@ namespace Calculator_of_triangular_matrix
         {
 
         }
+
+        private void label_matrix_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
