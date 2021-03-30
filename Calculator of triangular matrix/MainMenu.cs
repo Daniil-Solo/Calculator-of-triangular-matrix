@@ -100,6 +100,7 @@ namespace Calculator_of_triangular_matrix
                             row[j] = A.Packed_form[Operations.Ind(i, j, A.Type, A.N)];
                     }
                     GridView_A.Rows.Add(row);// добавление строк
+                
                 }
             }
         }
@@ -224,7 +225,6 @@ namespace Calculator_of_triangular_matrix
 
         private void AplusB_Click(object sender, EventArgs e)
         {
-            
            message_history.Text = ourHistory.Print(10);
         }
 
