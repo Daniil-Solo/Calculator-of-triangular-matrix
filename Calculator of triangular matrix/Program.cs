@@ -28,10 +28,10 @@ namespace Calculator_of_triangular_matrix
             for (int i = 0; i < 4; i++)
                 data[i] = null;
         }
-        public static bool isFull()
+        public static bool isFull(int k)
         {
             bool result = true;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < k; i++)
                 result &= (data[i] != null);
             return result;
         }

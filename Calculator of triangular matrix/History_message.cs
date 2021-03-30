@@ -31,7 +31,7 @@ namespace Calculator_of_triangular_matrix
             this.msg_next = null;
         }
 
-        // Методы
+     // Методы
 
         // *******Добавление нового сообщения в начало стека******* 
         // Принимает на вход текст нового сообщения
@@ -70,7 +70,7 @@ namespace Calculator_of_triangular_matrix
             History_message p = this;
             History_message q;
 
-            while (p.msg_next != null) /* удалить все элементы кроме последнего, который содержит текст "Программа готова к работе" */
+            while (p.msg_next != null) 
             {
                 q = p;
                 p = p.msg_next;

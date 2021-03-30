@@ -24,7 +24,7 @@ namespace Calculator_of_triangular_matrix
 
         private void label_n_Click(object sender, EventArgs e)
         {
-
+            comboBox_type.SelectedIndex = -1;
         }
 
         private void button_ready_Click(object sender, EventArgs e)
@@ -35,37 +35,15 @@ namespace Calculator_of_triangular_matrix
             double[] packed_form;
             bool success;
 
-            // проверка на условие принадлежности категории
-            switch (comboBox_type.SelectedIndex)
-            {
-                case 0:
-                    success = true;
-                    type = Category.bot_right;
-                    break;
-                case 1:
-                    success = true;
-                    type = Category.top_right;
-                    break;
-
-                case 2:
-                    success = true;
-                    type = Category.bot_left;
-                    break;
-
-                case 3:
-                    success = true;
-                    type = Category.top_left;
-                    break;
-                default:
-                    success = false;
-                    type = Category.none;
-                    break;
-            }
+            // проверяем категорию
+            type = TransformCategory(comboBox_type.SelectedIndex);
+            success = type != Category.none;
             if (!success)
             {
                 MessageBox.Show("Ошибка!\nНе выбран тип матрицы!");
                 return;
             }
+            // проверяем введенную размерность
             success = Int32.TryParse(textBox_n.Text, out n);
             if (!success)
             {
@@ -97,19 +75,47 @@ namespace Calculator_of_triangular_matrix
         {
             double[] packed_form = new double[size];
             Random rnd = new Random(); //Создание объекта для генерации чисел
-            double x;
 
             for (int i = 0; i < size; i++) // Заполнение массива случайными значениями
             {
                 packed_form[i] = (double) rnd.Next()/1000d;
-                if( rnd.Next(1,4) == 1 )
+                if( rnd.Next(1,3) == 1 )
                     packed_form[i] = -packed_form[i];
             }
 
             return packed_form;
         }
 
+        private Category TransformCategory(int index)
+        {
+            if (index == 0)
+            {
+                return Category.bot_right;
+            }
+            else if (index == 1)
+            {
+                return Category.top_right;
+            }
+            else if (index == 2)
+            {
+                return Category.bot_left;
+            }
+            else if (index == 3)
+            {
+                return Category.top_left;
+            }
+            else
+            {
+                return Category.none;
+            }
+        }
+
         private void comboBox_type_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -25,11 +25,11 @@ namespace Calculator_of_triangular_matrix
             }
             else if (M.Type == Category.bot_right)
             {
-                return i * (i + 3) / 2 + j - (M.N - 1);
+                return M.N * i - i * (i - 1) / 2 + j;
             }
             else if (M.Type == Category.top_left)
             {
-                return M.N * i - i * (i - 1) / 2 + j;
+                return (i + 1) * i / 2 + j - (M.N - i - 1);
             }
             else
             {
@@ -100,7 +100,7 @@ namespace Calculator_of_triangular_matrix
             {
                 if (j < M.N - i)
                 {
-                    int k = i * (i + 3) / 2 + j - (M.N - 1); // выведенная формула
+                    int k = M.N * i - i * (i - 1) / 2 + j;// выведенная формула
                     return M.Packed_form[k];
                 }
                 else
@@ -116,7 +116,7 @@ namespace Calculator_of_triangular_matrix
                 }
                 else
                 {
-                    int k = M.N * i - i * (i - 1) / 2 + j; // выведенная формула
+                    int k = (i + 1) * i / 2 + j - (M.N - i - 1); // выведенная формула
                     return M.Packed_form[k];
                 }
             }
@@ -150,7 +150,7 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                history = history.Add("Не совпадает типы ил размерности матриц");
+                history = history.Add("Не совпадает типы или размерности матриц");
                 return C;
             }
         }
@@ -270,19 +270,6 @@ namespace Calculator_of_triangular_matrix
 
                 
         }
-        /*
-        public static Matrix Reverse_A(Matrix A, Matrix C, ref History_message history)
-        {
-            найти определитель матрицы
-            если равен 0, то вывести сообщение 
-            если не равен 0, то считаем обратную матрицу
-            найти алгооритм
-        }
-
-        public static Matrix Reverse_B(Matrix B, Matrix C, ref History_message history)
-        {
-        }
-        */
 
 //-------------- Функция перестановки матриц --------------
 // Предупреждение: История сообщений и матрицы передаются по ссылке, так как они изменяются
@@ -293,10 +280,22 @@ namespace Calculator_of_triangular_matrix
         {
             history = history.Add("Выполнение операции " + A.Name + "<->" + B.Name);
             Matrix C = A;
-            A = B;
-            B = C;
+            A = new Matrix(A.Name, B.N, B.V, B.Type, B.Packed_form);
+            B = new Matrix(B.Name, C.N, C.V, C.Type, C.Packed_form);
             history = history.Add("Операция успешно выполнена");
+        } 
+        
+        
+        /*
+        Реализовать
+        public static Matrix Reverse_A(Matrix A, Matrix C, ref History_message history)
+        {
+            найти определитель матрицы
+            если равен 0, то вывести сообщение 
+            если не равен 0, то считаем обратную матрицу
+            найти алгооритм
         }
+        */
     }
 
 }

@@ -26,7 +26,7 @@ namespace Calculator_of_triangular_matrix
 
         private void Input_Load(object sender, EventArgs e)
         {
-
+            comboBox_type.SelectedIndex = -1;
         }
 
         private void button_make_Click(object sender, EventArgs e)
@@ -36,37 +36,15 @@ namespace Calculator_of_triangular_matrix
             Category type;
             bool success;
 
-            // проверка на условие принадлежности категории
-            switch (comboBox_type.SelectedIndex)
-            {
-                case 0:
-                    success = true;
-                    type = Category.bot_right;
-                    break;
-                case 1:
-                    success = true;
-                    type = Category.top_right;
-                    break;
-
-                case 2:
-                    success = true;
-                    type = Category.bot_left;
-                    break;
-
-                case 3:
-                    success = true;
-                    type = Category.top_left;
-                    break;
-                default:
-                    success = false;
-                    type = Category.none;
-                    break;
-            }
+            // проверяем категорию
+            type = TransformCategory(comboBox_type.SelectedIndex);
+            success = type != Category.none;
             if (!success)
             {
                 MessageBox.Show("Ошибка!\nНе выбран тип матрицы!");
                 return;
             }
+            // проверяем введенную размерность
             success = Int32.TryParse(textBox_n.Text, out n);
             if(!success)
             {
@@ -74,6 +52,7 @@ namespace Calculator_of_triangular_matrix
                 textBox_n.Text = "";
                 return;
             }
+            // проверяем введенное значение V
             success = Double.TryParse(textBox_V.Text, out V);
             if(!success)
             {
@@ -81,22 +60,37 @@ namespace Calculator_of_triangular_matrix
                 textBox_V.Text = "";
                 return;
             }
-
+            
+            // Отправляем данные
             DataTransfer.data[0] = n;
             DataTransfer.data[1] = V;
             DataTransfer.data[2] = type;
-
-            // Открытие формы Input_hand
+            
+            // уничтожаем текущую форму
             this.Dispose();
         }
-        public void textBox_n_TextChanged(object sender, EventArgs e)
+        private Category TransformCategory(int index)
         {
-
-        }
-
-        private void textBox_V_TextChanged(object sender, EventArgs e)
-        {
-
+            if (index == 0)
+            {
+                return Category.bot_right;
+            }
+            else if (index == 1)
+            {
+                return Category.top_right;
+            }
+            else if (index == 2)
+            {
+                return Category.bot_left;
+            }
+            else if (index == 3)
+            {
+                return Category.top_left;
+            }
+            else
+            {
+                return Category.none;
+            }
         }
     }
 }

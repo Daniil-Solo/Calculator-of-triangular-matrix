@@ -65,18 +65,18 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 57.62712F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42.37288F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(341, 214);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // button_make
             // 
-            this.button_make.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button_make.Location = new System.Drawing.Point(105, 165);
+            this.button_make.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_make.Location = new System.Drawing.Point(3, 150);
             this.button_make.Name = "button_make";
-            this.button_make.Size = new System.Drawing.Size(131, 40);
+            this.button_make.Size = new System.Drawing.Size(335, 61);
             this.button_make.TabIndex = 3;
             this.button_make.Text = "Создать";
             this.button_make.UseVisualStyleBackColor = true;
@@ -103,7 +103,7 @@ namespace Calculator_of_triangular_matrix
             this.label_V.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label_V.Location = new System.Drawing.Point(3, 92);
             this.label_V.Name = "label_V";
-            this.label_V.Size = new System.Drawing.Size(335, 24);
+            this.label_V.Size = new System.Drawing.Size(335, 28);
             this.label_V.TabIndex = 4;
             this.label_V.Text = "Значение V";
             // 
@@ -120,11 +120,10 @@ namespace Calculator_of_triangular_matrix
             // textBox_V
             // 
             this.textBox_V.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_V.Location = new System.Drawing.Point(3, 119);
+            this.textBox_V.Location = new System.Drawing.Point(3, 123);
             this.textBox_V.Name = "textBox_V";
             this.textBox_V.Size = new System.Drawing.Size(335, 22);
             this.textBox_V.TabIndex = 6;
-            this.textBox_V.TextChanged += new System.EventHandler(this.textBox_V_TextChanged);
             // 
             // textBox_n
             // 
@@ -133,7 +132,6 @@ namespace Calculator_of_triangular_matrix
             this.textBox_n.Name = "textBox_n";
             this.textBox_n.Size = new System.Drawing.Size(335, 22);
             this.textBox_n.TabIndex = 7;
-            this.textBox_n.TextChanged += new System.EventHandler(this.textBox_n_TextChanged);
             // 
             // menuStrip1
             // 

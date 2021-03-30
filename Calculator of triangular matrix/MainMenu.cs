@@ -21,11 +21,11 @@ namespace Calculator_of_triangular_matrix
     }
     public partial class Main_menu : Form
     {
+// ---------------Объявление главных структур-------------
         History_message ourHistory = new History_message("Программа готова к работе");
         Matrix A = new Matrix('A', 0, 0, Category.none, null);
         Matrix B = new Matrix('B', 0, 0, Category.none, null);
         Matrix C = new Matrix('C', 0, 0, Category.none, null);
-        int kol_sms = 10;// количество выводимых сообщений
 
         public Main_menu()
         {
@@ -34,180 +34,77 @@ namespace Calculator_of_triangular_matrix
             saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
         }
 
+//----------------------Сервис---------------------------------
         private void закрепитьПоверхДургихОконToolStripMenuItem_Click(object sender, EventArgs e)
         {
             TopMost = !TopMost;
         }
-
-        private void ShowMatrixA()
+        private void очиститьИсториюСообщений_Click(object sender, EventArgs e)
         {
-            int width = this.Size.Width;
-            int height = this.Size.Height;
-            int n = 3;
-            int m = 3;
-            if (A.N != 0)
-            {
-                // очистка
-                this.GridView_A.Rows.Clear();  // удаление всех строк
-                int count = this.GridView_A.Columns.Count;
-                for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
-                {
-                    this.GridView_A.Columns.RemoveAt(0);
-                }
-                // создание новой
-                DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
-                for (int i = 0; i < m; i++)
-                {
-                    column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
-                    column[i].HeaderText = i.ToString();
-                    column[i].Name = i.ToString();
-                }
-                // задание новой
-                this.GridView_A.Columns.AddRange(column); // добавление столбцов
-                for (int i = 0; i < n; i ++)
-                {
-                    object[] row = new object[m];
-                    for (int j = 0; j < m; j++)
-                        row[j] = Operations.getElement(i, j, A);
-                    GridView_A.Rows.Add(row);// добавление строк
-                }
-            }
+            ourHistory = ourHistory.Clear_history();
+            UpdateInfo();
         }
-        private void ShowMatrixB()
+        private void очиститьВсеМатрицы_Click(object sender, EventArgs e)
         {
-            int width = this.Size.Width;
-            int height = this.Size.Height;
-            int n = 3;
-            int m = 3;
-            if (A.N != 0)
+            A = new Matrix('A', 0, 0, Category.none, null);
+            B = new Matrix('B', 0, 0, Category.none, null);
+            C = new Matrix('C', 0, 0, Category.none, null);
+
+            this.GridView_A.Rows.Clear();  // удаление всех строк
+            int count = this.GridView_A.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
             {
-                // очистка
-                this.GridView_A.Rows.Clear();  // удаление всех строк
-                int count = this.GridView_A.Columns.Count;
-                for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
-                {
-                    this.GridView_A.Columns.RemoveAt(0);
-                }
-                // создание новой
-                DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
-                for (int i = 0; i < m; i++)
-                {
-                    column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
-                    column[i].HeaderText = i.ToString();
-                    column[i].Name = i.ToString();
-                }
-                // задание новой
-                this.GridView_A.Columns.AddRange(column); // добавление столбцов
-                for (int i = 0; i < n; i++)
-                {
-                    object[] row = new object[m];
-                    for (int j = 0; j < m; j++)
-                        row[j] = Operations.getElement(i, j, A);
-                    GridView_A.Rows.Add(row);// добавление строк
-                }
+                this.GridView_A.Columns.RemoveAt(0);
             }
+            this.GridView_B.Rows.Clear();  // удаление всех строк
+            count = this.GridView_B.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+            {
+                this.GridView_B.Columns.RemoveAt(0);
+            }
+            this.GridView_C.Rows.Clear();  // удаление всех строк
+            count = this.GridView_C.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+            {
+                this.GridView_C.Columns.RemoveAt(0);
+            }
+            ourHistory = ourHistory.Add("Все матрицы были очищены!");
+            UpdateInfo();
         }
 
-
-        // Создание матрицы
-        // Принимает на вход способ создания, историю сообщения и имя матрицы
-        // Возвращает ссылку на новую матрицу
-        // Пример вызова: Matrix A = Form1.New_m(i, Our_history, A.Name);
-        private Matrix New_m(int sp, Matrix M)
-        {
-            DataTransfer.dataNull();
-            switch (sp)
-            {
-                case 0: // c клавиатуры
-
-                    ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: считывание с клавиатуры");
-                    Input_keyb f2 = new Input_keyb();
-                    f2.ShowDialog();
-                    //изменяем лейбл под матрицей А(размерность не выводит)
-                    type_n_A.Text = "Тип: " + f2.comboBox_type.SelectedItem + "\nРазмерность: " + f2.textBox_n.Text; 
-                    Input_hand f3 = new Input_hand();
-                    f3.ShowDialog();
-
-                    break;
-                case 1: // из текстового файла
-
-                    if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-                        return M;
-                    ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: считывание из текстового файла");
-                    string filename = openFileDialog1.FileName;
-                    M.OpenFromFileToDataTransfer(filename, ref ourHistory);
-                    break;
-                case 2: // случайным образом
-
-                    ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: случайное задание");
-                    Input_rand f4 = new Input_rand();
-                    f4.ShowDialog();
-
-                    break;
-                default:
-                    // pass
-                    return M;
-            }
-            if (DataTransfer.isFull())
-            {
-                ourHistory = ourHistory.Add("Матрица успешно создана");
-                int n = (int)DataTransfer.data[0];
-                double v = (double)DataTransfer.data[1];
-                Category type = (Category)DataTransfer.data[2];
-                double[] packed_form = (double[])DataTransfer.data[3];
-                Matrix tempMatrix = new Matrix(M.Name, n, v, type, packed_form);
-                DataTransfer.dataNull();
-                return tempMatrix;
-            }
-            else
-            {
-                ourHistory = ourHistory.Add("Матрица не создана");
-                DataTransfer.dataNull();
-                return new Matrix(M.Name, 0, 0, Category.none, null);
-            }
-        }
-
-        // Сохранение матрицы в файл
-        // На вход принимает матрицу и историю сообщений
-        // На выходе ничего не возвращает
-        // Пример вызова: Save_m(A, ourHistory)
-        private void Save_m(Matrix M, ref History_message ourHistory)
-        {
-            // Если отменено сохранение, то выходит из функции
-            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
-            string filename = saveFileDialog1.FileName;
-            M.Save(filename, ref ourHistory);
-        }
-
+// -------------------Кнопки сохранения матриц--------------------
         private void safe_A_Click(object sender, EventArgs e)
         {
             Save_m(A, ref ourHistory);
-            message_history.Text = ourHistory.Print(kol_sms);
+            UpdateInfo();
         }
 
         private void safe_B_Click(object sender, EventArgs e)
         {
             Save_m(B, ref ourHistory);
-            message_history.Text = ourHistory.Print(kol_sms);
+            UpdateInfo();
         }
 
         private void safe_C_Click(object sender, EventArgs e)
         {
             Save_m(C, ref ourHistory);
-            message_history.Text = ourHistory.Print(kol_sms);
+            UpdateInfo();
         }
 
+// ----------------Комбобоксы выбора способа задания матриц---------------------
         private void comboBox_A1_SelectedIndexChanged(object sender, EventArgs e)
         {
             A = New_m(comboBox_A1.SelectedIndex, A);
+            UpdateInfo();
         }
 
         private void comboBox_B1_SelectedIndexChanged(object sender, EventArgs e)
         {
             B = New_m(comboBox_B1.SelectedIndex, B);
+            UpdateInfo();
         }
 
+// ----------------Комбобоксы выбора способа печати матрицы-----------------------
         private void comboBox_A2_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Вызов метода для отображения 
@@ -224,40 +121,261 @@ namespace Calculator_of_triangular_matrix
 
         private void comboBox_C2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Вызов метода для отображения
             Output f5 = new Output();
             f5.Show();
         }
 
+// -------------Кнопки операций----------------------
         private void AplusB_Click(object sender, EventArgs e)
         {
-           message_history.Text = ourHistory.Print(10);
+            C = Operations.Summ(A, B, C, ref ourHistory);
+            UpdateInfo();
         }
-
+        private void AminB_Click(object sender, EventArgs e)
+        {
+            C = Operations.Subtraction(A, B, C, ref ourHistory);
+            UpdateInfo();
+        }
         private void A_on_B_Click(object sender, EventArgs e)
         {
-            ShowMatrixA();
+            Operations.Replace_A_B(ref A, ref B, ref ourHistory);
+            UpdateInfo();
         }
-
+        private void A_on_C_Click(object sender, EventArgs e)
+        {
+            Operations.Replace_A_B(ref A, ref C, ref ourHistory);
+            UpdateInfo();
+        }
+        private void B_on_C_Click(object sender, EventArgs e)
+        {
+            Operations.Replace_A_B(ref B, ref C, ref ourHistory);
+            UpdateInfo();
+        }
+        private void AmultB_Click(object sender, EventArgs e)
+        {
+            Operations.Multiply(A, B, C, ref ourHistory);
+            UpdateInfo();
+        }
         private void obrA_Click(object sender, EventArgs e)
         {
-            message_history.Text = A.Name.ToString() + ": размерность = " + A.N.ToString() + " тип = " + A.Type.ToString() + " значение V = " + A.V.ToString() + "\r\n";
-            message_history.Text += B.Name.ToString() + ": размерность = " + B.N.ToString() + " тип = " + B.Type.ToString() + " значение V = " + B.V.ToString() + "\r\n";
-            message_history.Text += C.Name.ToString() + ": размерность = " + C.N.ToString() + " тип = " + C.Type.ToString() + " значение V = " + C.V.ToString() + "\r\n";
-
-        }
-        public void type_n_A_Click(object sender, EventArgs e)
-        {
-
+            
         }
 
-        private void type_n_B_Click(object sender, EventArgs e)
+// ------------------ Служебные функции----------------
+        private void UpdateInfo()
         {
+            ShowMatrixA();
+            ShowMatrixB();
+            ShowMatrixC();
+            labelMatrixShow();
+            message_history.Text = ourHistory.Print(10);
+        }
+
+        private void labelMatrixShow()
+        {
+            if (A.N != 0)
+            {
+                type_n_A.Text = "Тип: " + A.Type.ToString() + "\n\rРазмерность: " + A.N.ToString();
+            }
+            else
+            {
+                type_n_A.Text = "Тип: нет \n\r Размерность: нет";
+            }
+            if (B.N != 0)
+            {
+                type_n_B.Text = "Тип: " + B.Type.ToString() + "\n\rРазмерность: " + B.N.ToString();
+            }
+            else
+            {
+                type_n_B.Text = "Тип: нет \n\r Размерность: нет";
+            }
+            if (C.N != 0)
+            {
+                type_n_C.Text = "Тип: " + C.Type.ToString() + "\n\rРазмерность: " + C.N.ToString();
+            }
+            else
+            {
+                type_n_C.Text = "Тип: нет \n\r Размерность: нет";
+            }
 
         }
 
-        private void type_n_C_Click(object sender, EventArgs e)
+        // Создание матрицы
+        // Принимает на вход способ создания, историю сообщения и имя матрицы
+        // Возвращает ссылку на новую матрицу
+        // Пример вызова: Matrix A = Form1.New_m(i, Our_history, A.Name);
+        private Matrix New_m(int sp, Matrix M)
         {
+            DataTransfer.dataNull();
+            if (sp == 0)// c клавиатуры
+            {
+                ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: считывание с клавиатуры");
+                Input_keyb f2 = new Input_keyb();
+                f2.ShowDialog();
+                if (DataTransfer.isFull(3))
+                {
+                    Input_hand f3 = new Input_hand();
+                    f3.ShowDialog();
+                }
+            }
+            else if (sp == 1)// из текстового файла
+            {
+                if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                    return M;
+                ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: считывание из текстового файла");
+                string filename = openFileDialog1.FileName;
+                M.OpenFromFileToDataTransfer(filename, ref ourHistory);
+            }
+            else if (sp == 2)// случайным образом
+            {
+                ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: случайное задание");
+                Input_rand f4 = new Input_rand();
+                f4.ShowDialog();
+            }
+            else
+            {
+                return M;
+            }
+                    
+            if (DataTransfer.isFull(4) )
+            {
+                ourHistory = ourHistory.Add("Матрица успешно создана");
+                int n = (int)DataTransfer.data[0];
+                double v = (double)DataTransfer.data[1];
+                Category type = (Category)DataTransfer.data[2];
+                double[] packed_form = (double[])DataTransfer.data[3];
+                Matrix tempMatrix = new Matrix(M.Name, n, v, type, packed_form);
+                DataTransfer.dataNull();
+                return tempMatrix;
+            }
+            else
+            {
+                ourHistory = ourHistory.Add("Матрица не создана");
+                DataTransfer.dataNull();
+                return M;
+            }
+        }
+        
+        // Сохранение матрицы в файл
+        // На вход принимает матрицу и историю сообщений
+        // На выходе ничего не возвращает
+        // Пример вызова: Save_m(A, ourHistory)
+        private void Save_m(Matrix M, ref History_message ourHistory)
+        {
+            // Если отменено сохранение, то выходит из функции
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            string filename = saveFileDialog1.FileName;
+            M.Save(filename, ref ourHistory);
+        }
 
+        // Отображение матрицы А
+        private void ShowMatrixA()
+        {
+            int width = this.Size.Width;
+            int height = this.Size.Height;
+            int n = 8;
+            int m = 3;
+            if (A.N != 0)
+            {
+                // очистка
+                this.GridView_A.Rows.Clear();  // удаление всех строк
+                int count = this.GridView_A.Columns.Count;
+                for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+                {
+                    this.GridView_A.Columns.RemoveAt(0);
+                }
+                // создание новой
+                DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
+                for (int i = 0; i < m; i++)
+                {
+                    column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
+                    column[i].HeaderText = i.ToString();
+                    column[i].Name = i.ToString();
+                }
+                // задание новой
+                this.GridView_A.Columns.AddRange(column); // добавление столбцов
+                for (int i = 0; i < n && i < A.N; i ++)
+                {
+                    object[] row = new object[m];
+                    for (int j = 0; j < m; j++)
+                        row[j] = Operations.getElement(i, j, A);
+                    GridView_A.Rows.Add(row);// добавление строк
+                }
+            }
+        }
+
+        // Отображение матрицы В
+        private void ShowMatrixB()
+        {
+            int width = this.Size.Width;
+            int height = this.Size.Height;
+            int n = 8;
+            int m = 3;
+            if (B.N != 0)
+            {
+                // очистка
+                this.GridView_B.Rows.Clear();  // удаление всех строк
+                int count = this.GridView_B.Columns.Count;
+                for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+                {
+                    this.GridView_B.Columns.RemoveAt(0);
+                }
+                // создание новой
+                DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
+                for (int i = 0; i < m; i++)
+                {
+                    column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
+                    column[i].HeaderText = i.ToString();
+                    column[i].Name = i.ToString();
+                }
+                // задание новой
+                this.GridView_B.Columns.AddRange(column); // добавление столбцов
+                for (int i = 0; i < n && i < B.N; i++)
+                {
+                    object[] row = new object[m];
+                    for (int j = 0; j < m; j++)
+                        row[j] = Operations.getElement(i, j, B);
+                    GridView_B.Rows.Add(row);// добавление строк
+                }
+            }
+        }
+
+        // Отображение матрицы С
+        private void ShowMatrixC()
+        {
+            int width = this.Size.Width;
+            int height = this.Size.Height;
+            int n = 8;
+            int m = 3;
+            if (C.N != 0)
+            {
+                // очистка
+                this.GridView_C.Rows.Clear();  // удаление всех строк
+                int count = this.GridView_C.Columns.Count;
+                for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+                {
+                    this.GridView_C.Columns.RemoveAt(0);
+                }
+                // создание новой
+                DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
+                for (int i = 0; i < m; i++)
+                {
+                    column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
+                    column[i].HeaderText = i.ToString();
+                    column[i].Name = i.ToString();
+                }
+                // задание новой
+                this.GridView_C.Columns.AddRange(column); // добавление столбцов
+                for (int i = 0; i < n && i < C.N; i++)
+                {
+                    object[] row = new object[m];
+                    for (int j = 0; j < m; j++)
+                        row[j] = Operations.getElement(i, j, C);
+                    GridView_C.Rows.Add(row);// добавление строк
+                }
+            }
         }
     }   
 }

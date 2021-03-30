@@ -39,7 +39,7 @@ namespace Calculator_of_triangular_matrix
 
     // Методы
 
-        // Создание матрицы частично реализовано в коде формы начального окна
+        // Создание матрицы с помощью файла
         public void OpenFromFileToDataTransfer(string filename, ref History_message ourHistory)
         {
             StreamReader f = null;
@@ -81,68 +81,21 @@ namespace Calculator_of_triangular_matrix
             DataTransfer.data[2] = Type;
             PackedForm = new double[N * (N + 1) / 2];
             int k = 0;
-            try
+            Matrix Temp = new Matrix('_', N, V, Type, null);
+            try 
             {
                 for (int i = 0; i < N; i++)
                 {
                     string[] splittedStroka = f.ReadLine().Split(' ');
-                    switch (Type)
+                    for (int j = 0; j < N; j++)
                     {
-                        case Category.top_right:
-                            for (int j = i; j < N; j++)
-                            {
-                                success = Double.TryParse(splittedStroka[j], out V);
-                                if (!success)
-                                {
-                                    ourHistory = ourHistory.Add("Неверный формат значимого элемента");
-                                    return;
-                                }
-                                PackedForm[k] = V;
-                                k++;
-                            }
-                            break;
-                        case Category.bot_left:
-                            for (int j = 0; j < i+1; j++)
-                            {
-                                success = Double.TryParse(splittedStroka[j], out V);
-                                if (!success)
-                                {
-                                    ourHistory = ourHistory.Add("Неверный формат значимого элемента");
-                                    return;
-                                }
-                                PackedForm[k] = V;
-                                k++;
-                            }
-                            break;
-                        case Category.top_left:
-                            for (int j = 0; j < N - i; j++)
-                            {
-                                success = Double.TryParse(splittedStroka[j], out V);
-                                if (!success)
-                                {
-                                    ourHistory = ourHistory.Add("Неверный формат значимого элемента");
-                                    return;
-                                }
-                                PackedForm[k] = V;
-                                k++;
-                            }
-                            break;
-                        case Category.bot_right:
-                            for (int j = N - i - 1; j < N; j++)
-                            {
-                                success = Double.TryParse(splittedStroka[j], out V);
-                                if (!success)
-                                {
-                                    ourHistory = ourHistory.Add("Неверный формат значимого элемента");
-                                    return;
-                                }
-                                PackedForm[k] = V;
-                                k++;
-                            }
-                            break;
-                    }
-                   
-                    
+                        if(!Operations.isV(i, j, Temp))
+                        {
+                            V = Double.Parse(splittedStroka[j]);
+                            PackedForm[k] = V;
+                            k++;
+                        }
+                    } 
                 }
             }
             catch
