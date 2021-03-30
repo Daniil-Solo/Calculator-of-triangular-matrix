@@ -325,13 +325,15 @@
             // 
             // type_n_A
             // 
+            this.type_n_A.AutoEllipsis = true;
             this.type_n_A.AutoSize = true;
             this.type_n_A.Dock = System.Windows.Forms.DockStyle.Fill;
             this.type_n_A.Location = new System.Drawing.Point(3, 392);
             this.type_n_A.Name = "type_n_A";
             this.type_n_A.Size = new System.Drawing.Size(210, 38);
             this.type_n_A.TabIndex = 3;
-            this.type_n_A.Text = "Тип: нет\r\nРазмерность: нет";
+            this.type_n_A.Text = "Тип: нет\r\nРазмерность: нет\r\n\r\n\r\n";
+            this.type_n_A.Click += new System.EventHandler(this.type_n_A_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -406,6 +408,7 @@
             this.type_n_B.Size = new System.Drawing.Size(216, 38);
             this.type_n_B.TabIndex = 3;
             this.type_n_B.Text = "Тип: нет\r\nРазмерность: нет\r\n";
+            this.type_n_B.Click += new System.EventHandler(this.type_n_B_Click);
             // 
             // safe_B
             // 
@@ -486,6 +489,7 @@
             this.type_n_C.Size = new System.Drawing.Size(214, 37);
             this.type_n_C.TabIndex = 3;
             this.type_n_C.Text = "Тип: нет\r\nРазмерность: нет\r\n";
+            this.type_n_C.Click += new System.EventHandler(this.type_n_C_Click);
             // 
             // safe_C
             // 
@@ -634,6 +638,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main_menu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Калькулятор треугольных матриц";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -680,18 +685,15 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label matrixA;
         private System.Windows.Forms.ComboBox comboBox_A1;
-        private System.Windows.Forms.Label type_n_A;
         private System.Windows.Forms.DataGridView GridView_A;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label matrixB;
         private System.Windows.Forms.ComboBox comboBox_B2;
-        private System.Windows.Forms.Label type_n_B;
         private System.Windows.Forms.Button safe_B;
         private System.Windows.Forms.DataGridView GridView_B;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label matrixC;
         private System.Windows.Forms.ComboBox comboBox_C2;
-        private System.Windows.Forms.Label type_n_C;
         private System.Windows.Forms.Button safe_C;
         private System.Windows.Forms.DataGridView GridView_C;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
@@ -703,6 +705,9 @@
         private System.Windows.Forms.Button safe_A;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.Label type_n_A;
+        public System.Windows.Forms.Label type_n_B;
+        public System.Windows.Forms.Label type_n_C;
     }
 }
 
