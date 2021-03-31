@@ -50,24 +50,28 @@ namespace Calculator_of_triangular_matrix
             B = new Matrix('B', 0, 0, Category.none, null);
             C = new Matrix('C', 0, 0, Category.none, null);
 
+            // А
             this.GridView_A.Rows.Clear();  // удаление всех строк
             int count = this.GridView_A.Columns.Count;
             for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
             {
                 this.GridView_A.Columns.RemoveAt(0);
             }
+            // В
             this.GridView_B.Rows.Clear();  // удаление всех строк
             count = this.GridView_B.Columns.Count;
             for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
             {
                 this.GridView_B.Columns.RemoveAt(0);
             }
+            // С
             this.GridView_C.Rows.Clear();  // удаление всех строк
             count = this.GridView_C.Columns.Count;
             for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
             {
                 this.GridView_C.Columns.RemoveAt(0);
             }
+
             ourHistory = ourHistory.Add("Все матрицы были очищены!");
             UpdateInfo();
         }
@@ -137,6 +141,11 @@ namespace Calculator_of_triangular_matrix
             C = Operations.Subtraction(A, B, C, ref ourHistory);
             UpdateInfo();
         }
+        private void AmultB_Click(object sender, EventArgs e)
+        {
+            C = Operations.Multiply(A, B, C, ref ourHistory);
+            UpdateInfo();
+        }
         private void A_on_B_Click(object sender, EventArgs e)
         {
             Operations.Replace_A_B(ref A, ref B, ref ourHistory);
@@ -150,11 +159,6 @@ namespace Calculator_of_triangular_matrix
         private void B_on_C_Click(object sender, EventArgs e)
         {
             Operations.Replace_A_B(ref B, ref C, ref ourHistory);
-            UpdateInfo();
-        }
-        private void AmultB_Click(object sender, EventArgs e)
-        {
-            Operations.Multiply(A, B, C, ref ourHistory);
             UpdateInfo();
         }
         private void obrA_Click(object sender, EventArgs e)
@@ -221,6 +225,7 @@ namespace Calculator_of_triangular_matrix
             }
             else if (sp == 1)// из текстового файла
             {
+                openFileDialog1.FileName = "";
                 if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
                     return M;
                 ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: считывание из текстового файла");
@@ -263,6 +268,7 @@ namespace Calculator_of_triangular_matrix
         // Пример вызова: Save_m(A, ourHistory)
         private void Save_m(Matrix M, ref History_message ourHistory)
         {
+            saveFileDialog1.FileName = "";
             // Если отменено сохранение, то выходит из функции
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
                 return;

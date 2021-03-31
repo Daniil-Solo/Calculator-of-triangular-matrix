@@ -192,9 +192,9 @@ namespace Calculator_of_triangular_matrix
 
          public static Matrix Multiply(Matrix A, Matrix B, Matrix C, ref History_message history)
          {
-            if ((A.Type == B.Type) && (A.N == B.N) && (B.V == 0) && (A.V==0))
+            history = history.Add("Выполнение операции A*B");
+            if ((A.Type == B.Type) && (A.N == B.N) && (B.V == 0) && (A.V == 0))
 	        {
-                history = history.Add("Выполнение операции A*B");
                 int sizePackedForm = A.N * (A.N + 1) / 2;
                 Matrix Result = new Matrix('C', A.N, A.V, A.Type, new double[sizePackedForm]);
                 for (int i = 0; i < Result.N; i++)
@@ -226,7 +226,7 @@ namespace Calculator_of_triangular_matrix
                 history = history.Add("Не совпадают типы или размерности матриц или значения V не равны 0");
                 return C;
             }
-        }
+         }
 
 //-------------- Функция нахождения определителя матрицы --------------
 // Предупреждение: История сообщений передается по ссылке, так как она изменяется
