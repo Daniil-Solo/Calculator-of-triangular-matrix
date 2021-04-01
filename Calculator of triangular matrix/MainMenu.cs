@@ -480,5 +480,19 @@ namespace Calculator_of_triangular_matrix
             { success = true; }
             return success;
         }
+        private int[] ElementsCheck(int x, int y, int n)//Количество строк и столбцов котрое можно вывести
+        {
+           int[] size = new int[1];
+           x = x / 3 - 76;
+           y = y / 2 - 29;
+           size[0] = y / 29;
+           size[1] = x / 142;
+           if (size[0] < n || size[1] <n)
+           {
+             size[0] = n;
+             size[1] = n;
+           }
+          return size;
+       }
     }   
 }
