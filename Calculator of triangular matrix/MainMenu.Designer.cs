@@ -66,13 +66,17 @@
             this.сервис = new System.Windows.Forms.ToolStripMenuItem();
             this.закрепитьПоверхДургихОкон = new System.Windows.Forms.ToolStripMenuItem();
             this.очиститьИсториюСообщений = new System.Windows.Forms.ToolStripMenuItem();
-            this.очиститьВсеМатрицы = new System.Windows.Forms.ToolStripMenuItem();
+            this.очистить = new System.Windows.Forms.ToolStripMenuItem();
             this.помощь = new System.Windows.Forms.ToolStripMenuItem();
             this.началоРаботы = new System.Windows.Forms.ToolStripMenuItem();
             this.справка = new System.Windows.Forms.ToolStripMenuItem();
             this.обАвторе = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.очиститьМатрицуАToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.очиститьМатрицуВToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.очиститьМатрицуСToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.очиститьВсеМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -201,6 +205,7 @@
             this.obrB.TabIndex = 5;
             this.obrB.Text = "B^(-1)";
             this.obrB.UseVisualStyleBackColor = true;
+            this.obrB.Click += new System.EventHandler(this.obrB_Click);
             // 
             // AmultB
             // 
@@ -573,7 +578,7 @@
             this.сервис.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.закрепитьПоверхДургихОкон,
             this.очиститьИсториюСообщений,
-            this.очиститьВсеМатрицы});
+            this.очистить});
             this.сервис.Name = "сервис";
             this.сервис.Size = new System.Drawing.Size(73, 24);
             this.сервис.Text = "Сервис";
@@ -593,12 +598,17 @@
             this.очиститьИсториюСообщений.Text = "Очистить историю сообщений";
             this.очиститьИсториюСообщений.Click += new System.EventHandler(this.очиститьИсториюСообщений_Click);
             // 
-            // очиститьВсеМатрицы
+            // очистить
             // 
-            this.очиститьВсеМатрицы.Name = "очиститьВсеМатрицы";
-            this.очиститьВсеМатрицы.Size = new System.Drawing.Size(306, 26);
-            this.очиститьВсеМатрицы.Text = "Очистить все матрицы";
-            this.очиститьВсеМатрицы.Click += new System.EventHandler(this.очиститьВсеМатрицы_Click);
+            this.очистить.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.очиститьМатрицуАToolStripMenuItem,
+            this.очиститьМатрицуВToolStripMenuItem,
+            this.очиститьМатрицуСToolStripMenuItem,
+            this.очиститьВсеМатрицыToolStripMenuItem});
+            this.очистить.Name = "очистить";
+            this.очистить.Size = new System.Drawing.Size(306, 26);
+            this.очистить.Text = "Очистить...";
+            this.очистить.Click += new System.EventHandler(this.очиститьВсеМатрицы_Click);
             // 
             // помощь
             // 
@@ -631,6 +641,34 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // очиститьМатрицуАToolStripMenuItem
+            // 
+            this.очиститьМатрицуАToolStripMenuItem.Name = "очиститьМатрицуАToolStripMenuItem";
+            this.очиститьМатрицуАToolStripMenuItem.Size = new System.Drawing.Size(250, 26);
+            this.очиститьМатрицуАToolStripMenuItem.Text = "Очистить матрицу А";
+            this.очиститьМатрицуАToolStripMenuItem.Click += new System.EventHandler(this.очиститьМатрицуАToolStripMenuItem_Click);
+            // 
+            // очиститьМатрицуВToolStripMenuItem
+            // 
+            this.очиститьМатрицуВToolStripMenuItem.Name = "очиститьМатрицуВToolStripMenuItem";
+            this.очиститьМатрицуВToolStripMenuItem.Size = new System.Drawing.Size(250, 26);
+            this.очиститьМатрицуВToolStripMenuItem.Text = "Очистить матрицу В";
+            this.очиститьМатрицуВToolStripMenuItem.Click += new System.EventHandler(this.очиститьМатрицуВToolStripMenuItem_Click);
+            // 
+            // очиститьМатрицуСToolStripMenuItem
+            // 
+            this.очиститьМатрицуСToolStripMenuItem.Name = "очиститьМатрицуСToolStripMenuItem";
+            this.очиститьМатрицуСToolStripMenuItem.Size = new System.Drawing.Size(250, 26);
+            this.очиститьМатрицуСToolStripMenuItem.Text = "Очистить матрицу С";
+            this.очиститьМатрицуСToolStripMenuItem.Click += new System.EventHandler(this.очиститьМатрицуСToolStripMenuItem_Click);
+            // 
+            // очиститьВсеМатрицыToolStripMenuItem
+            // 
+            this.очиститьВсеМатрицыToolStripMenuItem.Name = "очиститьВсеМатрицыToolStripMenuItem";
+            this.очиститьВсеМатрицыToolStripMenuItem.Size = new System.Drawing.Size(250, 26);
+            this.очиститьВсеМатрицыToolStripMenuItem.Text = "Очистить все матрицы";
+            this.очиститьВсеМатрицыToolStripMenuItem.Click += new System.EventHandler(this.очиститьВсеМатрицыToolStripMenuItem_Click);
             // 
             // Main_menu
             // 
@@ -680,7 +718,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem сервис;
         private System.Windows.Forms.ToolStripMenuItem очиститьИсториюСообщений;
-        private System.Windows.Forms.ToolStripMenuItem очиститьВсеМатрицы;
+        private System.Windows.Forms.ToolStripMenuItem очистить;
         private System.Windows.Forms.ToolStripMenuItem помощь;
         private System.Windows.Forms.ToolStripMenuItem началоРаботы;
         private System.Windows.Forms.ToolStripMenuItem справка;
@@ -711,6 +749,10 @@
         public System.Windows.Forms.Label type_n_A;
         public System.Windows.Forms.Label type_n_B;
         public System.Windows.Forms.Label type_n_C;
+        private System.Windows.Forms.ToolStripMenuItem очиститьМатрицуАToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem очиститьМатрицуВToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem очиститьМатрицуСToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem очиститьВсеМатрицыToolStripMenuItem;
     }
 }
 
