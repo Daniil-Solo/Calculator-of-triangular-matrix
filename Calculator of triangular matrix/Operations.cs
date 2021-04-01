@@ -283,7 +283,7 @@ namespace Calculator_of_triangular_matrix
             A = new Matrix(A.Name, B.N, B.V, B.Type, B.Packed_form);
             B = new Matrix(B.Name, C.N, C.V, C.Type, C.Packed_form);
             history = history.Add("Операция успешно выполнена");
-        } 
+        }
         
         
         /*

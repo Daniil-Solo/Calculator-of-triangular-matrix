@@ -355,16 +355,17 @@ namespace Calculator_of_triangular_matrix
             int width = this.Size.Width;
             int height = this.Size.Height;
             int n = 8;
-            int m = 3;
-            if (A.N != 0)
+            int m = 3;   
+            // очистка
+            this.GridView_A.Rows.Clear();  // удаление всех строк
+            int count = this.GridView_A.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
             {
-                // очистка
-                this.GridView_A.Rows.Clear();  // удаление всех строк
-                int count = this.GridView_A.Columns.Count;
-                for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
-                {
-                    this.GridView_A.Columns.RemoveAt(0);
-                }
+                this.GridView_A.Columns.RemoveAt(0);
+            }
+            if (A.Type != Category.none)
+            {
+            
                 // создание новой
                 DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
                 for (int i = 0; i < m; i++)
@@ -392,15 +393,15 @@ namespace Calculator_of_triangular_matrix
             int height = this.Size.Height;
             int n = 8;
             int m = 3;
-            if (B.N != 0)
+            // очистка
+            this.GridView_B.Rows.Clear();  // удаление всех строк
+            int count = this.GridView_B.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
             {
-                // очистка
-                this.GridView_B.Rows.Clear();  // удаление всех строк
-                int count = this.GridView_B.Columns.Count;
-                for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
-                {
-                    this.GridView_B.Columns.RemoveAt(0);
-                }
+                this.GridView_B.Columns.RemoveAt(0);
+            }
+            if (B.Type != Category.none)
+            {
                 // создание новой
                 DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
                 for (int i = 0; i < m; i++)
@@ -428,15 +429,16 @@ namespace Calculator_of_triangular_matrix
             int height = this.Size.Height;
             int n = 8;
             int m = 3;
-            if (C.N != 0)
+            // очистка
+            this.GridView_C.Rows.Clear();  // удаление всех строк
+            int count = this.GridView_C.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
             {
-                // очистка
-                this.GridView_C.Rows.Clear();  // удаление всех строк
-                int count = this.GridView_C.Columns.Count;
-                for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
-                {
-                    this.GridView_C.Columns.RemoveAt(0);
-                }
+                this.GridView_C.Columns.RemoveAt(0);
+            }
+            if (C.Type != Category.none)
+            {
+                
                 // создание новой
                 DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
                 for (int i = 0; i < m; i++)

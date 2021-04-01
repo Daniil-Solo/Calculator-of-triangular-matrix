@@ -92,15 +92,5 @@ namespace Calculator_of_triangular_matrix
                 return Category.none;
             }
         }
-
-        private void label_V_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox_type_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
