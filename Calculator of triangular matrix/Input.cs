@@ -92,5 +92,35 @@ namespace Calculator_of_triangular_matrix
                 return Category.none;
             }
         }
+        private void comboBox_type_KeyDown(object sender, KeyEventArgs e, int index)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                textBox_n.Focus();
+            }
+            if(e.KeyCode == Keys.Down && index<3)
+            {
+                index++;
+            }
+            if(e.KeyCode==Keys.Up && index>0)
+            {
+                index--;
+            }
+        }
+
+        private void textBox_n_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                textBox_V.Focus();
+            }
+        }
+        private void textBox_V_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_make_Click(sender, e);
+            }
+        }
     }
 }
