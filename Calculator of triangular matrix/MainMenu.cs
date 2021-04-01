@@ -44,6 +44,10 @@ namespace Calculator_of_triangular_matrix
             ourHistory = ourHistory.Clear_history();
             UpdateInfo();
         }
+        private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateInfo();
+        }
         private void очиститьВсеМатрицы_Click(object sender, EventArgs e)
         {
             
@@ -352,10 +356,9 @@ namespace Calculator_of_triangular_matrix
         // Отображение матрицы А
         private void ShowMatrixA()
         {
-            int width = this.Size.Width;
-            int height = this.Size.Height;
-            int n = 8;
-            int m = 3;   
+            int[] size = ElementsCheck(Size.Width, Size.Height, A.N);
+            int n = size[0];
+            int m = size[1];
             // очистка
             this.GridView_A.Rows.Clear();  // удаление всех строк
             int count = this.GridView_A.Columns.Count;
@@ -363,7 +366,7 @@ namespace Calculator_of_triangular_matrix
             {
                 this.GridView_A.Columns.RemoveAt(0);
             }
-            if (A.Type != Category.none)
+            if (A.Type != Category.none && n*m > 0)
             {
             
                 // создание новой
@@ -389,10 +392,9 @@ namespace Calculator_of_triangular_matrix
         // Отображение матрицы В
         private void ShowMatrixB()
         {
-            int width = this.Size.Width;
-            int height = this.Size.Height;
-            int n = 8;
-            int m = 3;
+            int[] size = ElementsCheck(Size.Width, Size.Height, B.N);
+            int n = size[0];
+            int m = size[1];
             // очистка
             this.GridView_B.Rows.Clear();  // удаление всех строк
             int count = this.GridView_B.Columns.Count;
@@ -400,7 +402,7 @@ namespace Calculator_of_triangular_matrix
             {
                 this.GridView_B.Columns.RemoveAt(0);
             }
-            if (B.Type != Category.none)
+            if (B.Type != Category.none && n * m > 0)
             {
                 // создание новой
                 DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
@@ -425,10 +427,9 @@ namespace Calculator_of_triangular_matrix
         // Отображение матрицы С
         private void ShowMatrixC()
         {
-            int width = this.Size.Width;
-            int height = this.Size.Height;
-            int n = 8;
-            int m = 3;
+            int[] size = ElementsCheck(Size.Width, Size.Height, C.N);
+            int n = size[0];
+            int m = size[1];
             // очистка
             this.GridView_C.Rows.Clear();  // удаление всех строк
             int count = this.GridView_C.Columns.Count;
@@ -436,7 +437,7 @@ namespace Calculator_of_triangular_matrix
             {
                 this.GridView_C.Columns.RemoveAt(0);
             }
-            if (C.Type != Category.none)
+            if (C.Type != Category.none && n * m > 0)
             {
                 
                 // создание новой
@@ -480,19 +481,23 @@ namespace Calculator_of_triangular_matrix
             { success = true; }
             return success;
         }
-        private int[] ElementsCheck(int x, int y, int n)//Количество строк и столбцов котрое можно вывести
+        private int[] ElementsCheck(int W, int H, int n)//Количество строк и столбцов котрое можно вывести
         {
-           int[] size = new int[1];
-           x = x / 3 - 76;
-           y = y / 2 - 29;
-           size[0] = y / 29;
-           size[1] = x / 142;
-           if (size[0] < n || size[1] <n)
-           {
-             size[0] = n;
-             size[1] = n;
-           }
-          return size;
-       }
-    }   
+            int[] size = new int[2];
+            size[0] = H / 65;
+            size[1] = W / 300;
+            if (size[0] > n)
+                size[0] = n;
+            if (size[1] > n)
+                size[1] = n;
+            return size;
+        }
+
+        private void Main_menu_Resize(object sender, EventArgs e)
+        {
+            ShowMatrixA();
+            ShowMatrixB();
+            ShowMatrixC();
+        }
+    }
 }

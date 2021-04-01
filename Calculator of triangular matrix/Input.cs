@@ -26,7 +26,7 @@ namespace Calculator_of_triangular_matrix
 
         private void Input_Load(object sender, EventArgs e)
         {
-            comboBox_type.SelectedIndex = -1;
+            ActiveControl = comboBox_type;
         }
 
         private void button_make_Click(object sender, EventArgs e)
@@ -42,6 +42,7 @@ namespace Calculator_of_triangular_matrix
             if (!success)
             {
                 MessageBox.Show("Ошибка!\nНе выбран тип матрицы!");
+                comboBox_type.Focus();
                 return;
             }
             // проверяем введенную размерность
@@ -50,6 +51,7 @@ namespace Calculator_of_triangular_matrix
             {
                 MessageBox.Show("Ошибка!\nНе верно введена размерность!");
                 textBox_n.Text = "";
+                textBox_n.Focus();
                 return;
             }
             // проверяем введенное значение V
@@ -58,6 +60,7 @@ namespace Calculator_of_triangular_matrix
             {
                 MessageBox.Show("Ошибка!\nНе верно введено значение V!");
                 textBox_V.Text = "";
+                textBox_V.Focus();
                 return;
             }
             
@@ -92,19 +95,14 @@ namespace Calculator_of_triangular_matrix
                 return Category.none;
             }
         }
-        private void comboBox_type_KeyDown(object sender, KeyEventArgs e, int index)
+
+        private void comboBox_type_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
+                textBox_n.SelectionStart = 0;
+                textBox_n.SelectionLength = textBox_n.Text.Length;
                 textBox_n.Focus();
-            }
-            if(e.KeyCode == Keys.Down && index<3)
-            {
-                index++;
-            }
-            if(e.KeyCode==Keys.Up && index>0)
-            {
-                index--;
             }
         }
 
@@ -112,9 +110,12 @@ namespace Calculator_of_triangular_matrix
         {
             if (e.KeyCode == Keys.Enter)
             {
+                textBox_V.SelectionStart = 0;
+                textBox_V.SelectionLength = textBox_V.Text.Length;
                 textBox_V.Focus();
             }
         }
+
         private void textBox_V_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

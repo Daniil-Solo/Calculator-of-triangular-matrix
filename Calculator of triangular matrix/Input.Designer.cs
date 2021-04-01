@@ -96,6 +96,7 @@ namespace Calculator_of_triangular_matrix
             this.comboBox_type.Size = new System.Drawing.Size(335, 24);
             this.comboBox_type.TabIndex = 0;
             this.comboBox_type.Text = "Тип матрицы...";
+            this.comboBox_type.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox_type_KeyDown);
             // 
             // label_V
             // 
@@ -124,6 +125,7 @@ namespace Calculator_of_triangular_matrix
             this.textBox_V.Name = "textBox_V";
             this.textBox_V.Size = new System.Drawing.Size(335, 22);
             this.textBox_V.TabIndex = 6;
+            this.textBox_V.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_V_KeyDown);
             // 
             // textBox_n
             // 
@@ -132,6 +134,7 @@ namespace Calculator_of_triangular_matrix
             this.textBox_n.Name = "textBox_n";
             this.textBox_n.Size = new System.Drawing.Size(335, 22);
             this.textBox_n.TabIndex = 7;
+            this.textBox_n.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_n_KeyDown);
             // 
             // menuStrip1
             // 

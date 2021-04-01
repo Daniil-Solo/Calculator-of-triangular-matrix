@@ -15,16 +15,15 @@ namespace Calculator_of_triangular_matrix
         public Input_rand()
         {
             InitializeComponent();
+            
         }
-
+        private void Input_rand_Load(object sender, EventArgs e)
+        {
+            ActiveControl = comboBox_type;
+        }
         private void помощьToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void label_n_Click(object sender, EventArgs e)
-        {
-            comboBox_type.SelectedIndex = -1;
         }
 
         private void button_ready_Click(object sender, EventArgs e)
@@ -41,6 +40,7 @@ namespace Calculator_of_triangular_matrix
             if (!success)
             {
                 MessageBox.Show("Ошибка!\nНе выбран тип матрицы!");
+                comboBox_type.Focus();
                 return;
             }
             // проверяем введенную размерность
@@ -49,6 +49,7 @@ namespace Calculator_of_triangular_matrix
             {
                 MessageBox.Show("Ошибка!\nНе верно введена размерность!");
                 textBox_n.Text = "";
+                textBox_n.Focus();
                 return;
             }
             success = Double.TryParse(textBox_V.Text, out V);
@@ -56,6 +57,7 @@ namespace Calculator_of_triangular_matrix
             {
                 MessageBox.Show("Ошибка!\nНе верно введено значение V!");
                 textBox_V.Text = "";
+                textBox_V.Focus();
                 return;
             }
 
@@ -85,7 +87,6 @@ namespace Calculator_of_triangular_matrix
 
             return packed_form;
         }
-
         private Category TransformCategory(int index)
         {
             if (index == 0)
@@ -110,34 +111,13 @@ namespace Calculator_of_triangular_matrix
             }
         }
 
-        private void comboBox_type_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void comboBox_type_KeyDown(object sender, KeyEventArgs e, int index)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                textBox_n.Focus();
-            }
-            if (e.KeyCode == Keys.Down && index < 3)
-            {
-                index++;
-            }
-            if (e.KeyCode == Keys.Up && index > 0)
-            {
-                index--;
-            }
-        }
         private void textBox_n_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
+                textBox_V.SelectionStart = 0;
+                textBox_V.SelectionLength = textBox_V.Text.Length;
                 textBox_V.Focus();
             }
         }
@@ -146,6 +126,16 @@ namespace Calculator_of_triangular_matrix
             if (e.KeyCode == Keys.Enter)
             {
                 button_ready_Click(sender, e);
+            }
+        }
+
+        private void comboBox_type_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                textBox_n.SelectionStart = 0;
+                textBox_n.SelectionLength = textBox_n.Text.Length;
+                textBox_n.Focus();
             }
         }
     }
