@@ -46,6 +46,57 @@ namespace Calculator_of_triangular_matrix
         }
         private void очиститьВсеМатрицы_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void очиститьМатрицуАToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            A = new Matrix('A', 0, 0, Category.none, null);
+
+            // А
+            this.GridView_A.Rows.Clear();  // удаление всех строк
+            int count = this.GridView_A.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+            {
+                this.GridView_A.Columns.RemoveAt(0);
+            }
+
+            ourHistory = ourHistory.Add("Матрица А была очищена!");
+            UpdateInfo();
+        }
+        private void очиститьМатрицуВToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            B = new Matrix('B', 0, 0, Category.none, null);
+            
+            // В
+            this.GridView_B.Rows.Clear();  // удаление всех строк
+            int count = this.GridView_B.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+            {
+                this.GridView_B.Columns.RemoveAt(0);
+            }
+
+            ourHistory = ourHistory.Add("Матрица В была очищена!");
+            UpdateInfo();
+        }
+
+        private void очиститьМатрицуСToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            C = new Matrix('C', 0, 0, Category.none, null);
+
+            // С
+            this.GridView_C.Rows.Clear();  // удаление всех строк
+            int count = this.GridView_C.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+            {
+                this.GridView_C.Columns.RemoveAt(0);
+            }
+
+            ourHistory = ourHistory.Add("Матрица С была очищена!");
+            UpdateInfo();
+        }
+
+        private void очиститьВсеМатрицыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             A = new Matrix('A', 0, 0, Category.none, null);
             B = new Matrix('B', 0, 0, Category.none, null);
             C = new Matrix('C', 0, 0, Category.none, null);
@@ -76,7 +127,7 @@ namespace Calculator_of_triangular_matrix
             UpdateInfo();
         }
 
-// -------------------Кнопки сохранения матриц--------------------
+        // -------------------Кнопки сохранения матриц--------------------
         private void safe_A_Click(object sender, EventArgs e)
         {
             Save_m(A, ref ourHistory);
@@ -133,40 +184,62 @@ namespace Calculator_of_triangular_matrix
 // -------------Кнопки операций----------------------
         private void AplusB_Click(object sender, EventArgs e)
         {
-            C = Operations.Summ(A, B, C, ref ourHistory);
+            if (Check2Matrix(A, B))
+                C = Operations.Summ(A, B, C, ref ourHistory);
+            else ourHistory = ourHistory.Add("Матрицы не заданы");
             UpdateInfo();
         }
         private void AminB_Click(object sender, EventArgs e)
         {
-            C = Operations.Subtraction(A, B, C, ref ourHistory);
+            if (Check2Matrix(A, B))
+                C = Operations.Subtraction(A, B, C, ref ourHistory);
+            else ourHistory = ourHistory.Add("Матрицы не заданы");
             UpdateInfo();
         }
         private void AmultB_Click(object sender, EventArgs e)
         {
-            C = Operations.Multiply(A, B, C, ref ourHistory);
+            if (Check2Matrix(A, B))
+                C = Operations.Multiply(A, B, C, ref ourHistory);
+            else ourHistory = ourHistory.Add("Матрицы не заданы");
             UpdateInfo();
         }
         private void A_on_B_Click(object sender, EventArgs e)
         {
-            Operations.Replace_A_B(ref A, ref B, ref ourHistory);
+            if (Check1Matrix(A, B))
+                Operations.Replace_A_B(ref A, ref B, ref ourHistory);
+            else ourHistory = ourHistory.Add("Матрицы не заданы");
             UpdateInfo();
         }
         private void A_on_C_Click(object sender, EventArgs e)
         {
-            Operations.Replace_A_B(ref A, ref C, ref ourHistory);
+            if (Check1Matrix(A, C))
+                Operations.Replace_A_B(ref A, ref C, ref ourHistory);
+            else ourHistory = ourHistory.Add("Матрицы не заданы");
             UpdateInfo();
         }
         private void B_on_C_Click(object sender, EventArgs e)
         {
-            Operations.Replace_A_B(ref B, ref C, ref ourHistory);
+            if (Check1Matrix(B, C))
+                Operations.Replace_A_B(ref B, ref C, ref ourHistory);
+            else ourHistory = ourHistory.Add("Матрицы не заданы");
             UpdateInfo();
         }
         private void obrA_Click(object sender, EventArgs e)
         {
-            
+            //if (CheckMatrix(A))
+                
+            //else ourHistory = ourHistory.Add("Матрица А не задана");
+            //UpdateInfo();
+        }
+        private void obrB_Click(object sender, EventArgs e)
+        {
+            //if (CheckMatrix(B))
+
+            //else ourHistory = ourHistory.Add("Матрица В не задана");
+            //UpdateInfo();
         }
 
-// ------------------ Служебные функции----------------
+        // ------------------ Служебные функции----------------
         private void UpdateInfo()
         {
             ShowMatrixA();
@@ -382,6 +455,28 @@ namespace Calculator_of_triangular_matrix
                     GridView_C.Rows.Add(row);// добавление строк
                 }
             }
+        }
+
+        private bool Check2Matrix(Matrix M,Matrix K) //проверка: 2 матрицы не пустые
+        {
+            bool success = false;
+            if ((M.Type != Category.none) && (K.Type != Category.none))
+            { success = true; }
+            return success;
+        }
+        private bool Check1Matrix(Matrix M, Matrix K) //проверка: хотя бы 1 матрица не пустая
+        {
+            bool success = false;
+            if ((M.Type != Category.none) || (K.Type != Category.none))
+            { success = true; }
+            return success;
+        }
+        private bool CheckMatrix(Matrix M) //проверка: 1 матрица не пустая
+        {
+            bool success = false;
+            if (M.Type != Category.none)
+            { success = true; }
+            return success;
         }
     }   
 }
