@@ -10,15 +10,15 @@ namespace Calculator_of_triangular_matrix
 {
     class Matrix
     {
-    // Поля
+        // Поля
         private char name;
         private int n;
-        private double v;
+        public double v;
         private Category type;
         private double[] packed_form;
         private DataTable table;
-    
-    // Конструктор    
+
+        // Конструктор    
         public Matrix(char name, int n, double V, Category type, double[] packed_form)
         {
             this.name = name;
@@ -29,15 +29,16 @@ namespace Calculator_of_triangular_matrix
             this.table = null;
         }
 
-    // Аксессоры
+        // Аксессоры
         public char Name { get { return name; } }
         public int N { get { return n; } }
         public double V { get { return v; } }
         public Category Type { get { return type; } }
         public double[] Packed_form { get { return packed_form; } }
         public DataTable Table { get { return table; } set { table = value; } }
-
-    // Методы
+       
+        
+        // Методы
 
         // Создание матрицы с помощью файла
         public void OpenFromFileToDataTransfer(string filename, ref History_message ourHistory)

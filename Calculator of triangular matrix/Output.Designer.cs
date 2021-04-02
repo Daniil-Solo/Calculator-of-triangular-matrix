@@ -86,8 +86,6 @@ namespace Calculator_of_triangular_matrix
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Печать значений";
             this.Load += new System.EventHandler(this.Output_Load);
-            this.ResizeEnd += new System.EventHandler(this.Output_ResizeEnd);
-            this.Resize += new System.EventHandler(this.Output_Resize);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOutput)).EndInit();
