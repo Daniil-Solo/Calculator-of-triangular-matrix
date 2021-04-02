@@ -15,13 +15,13 @@ namespace Calculator_of_triangular_matrix
         public Input_rand()
         {
             InitializeComponent();
-            
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
         private void Input_rand_Load(object sender, EventArgs e)
         {
             ActiveControl = comboBox_type;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
+            
         }
         private void помощьToolStripMenuItem_Click(object sender, EventArgs e)
         {

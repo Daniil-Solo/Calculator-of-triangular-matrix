@@ -15,6 +15,8 @@ namespace Calculator_of_triangular_matrix
         public Input_hand()
         {
             InitializeComponent();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
 
         private void button_ready_Click(object sender, EventArgs e)
@@ -37,8 +39,7 @@ namespace Calculator_of_triangular_matrix
         }
         private void Input_hand_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
+            
         }
     }
 }

@@ -16,6 +16,8 @@ namespace Calculator_of_triangular_matrix
         public Input_keyb()
         {
             InitializeComponent();
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
         }
 
         private void помощьToolStripMenuItem_Click(object sender, EventArgs e)
@@ -27,8 +29,6 @@ namespace Calculator_of_triangular_matrix
         private void Input_Load(object sender, EventArgs e)
         {
             ActiveControl = comboBox_type;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
         }
 
         private void button_make_Click(object sender, EventArgs e)
