@@ -25,13 +25,16 @@ namespace Calculator_of_triangular_matrix
             CurrentMatrix = (Matrix)DataTransfer.data[0];
             mode_show = (int)DataTransfer.data[1];
             DataTransfer.dataNull();
+            label_matrix.Text = "Матрица " + CurrentMatrix.Name;
             if (mode_show == 0)
             {
+                this.Text = "Печать значений";
                 // печать значений
                 ShowMatrix(CurrentMatrix);
             }
             else
             {
+                this.Text = "Печать значений и адресов";
                 // печать адрессов
                 ShowMatrixAdress(CurrentMatrix);
             }
@@ -132,6 +135,9 @@ namespace Calculator_of_triangular_matrix
             }
         }
 
+        private void dataGridViewOutput_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
+        }
     }
 }

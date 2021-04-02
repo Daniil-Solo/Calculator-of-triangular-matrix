@@ -145,6 +145,7 @@ namespace Calculator_of_triangular_matrix
             this.label_V.Size = new System.Drawing.Size(332, 28);
             this.label_V.TabIndex = 4;
             this.label_V.Text = "Значение V";
+            this.label_V.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // textBox_V
             // 
@@ -188,6 +189,7 @@ namespace Calculator_of_triangular_matrix
             this.label_n.Size = new System.Drawing.Size(332, 30);
             this.label_n.TabIndex = 3;
             this.label_n.Text = "Размерность";
+            this.label_n.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Input_rand
             // 
