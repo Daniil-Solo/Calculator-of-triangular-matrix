@@ -168,6 +168,8 @@ namespace Calculator_of_triangular_matrix
         {
             // Вызов метода для отображения 
             Output f5 = new Output();
+            DataTransfer.data[0] = A;
+            DataTransfer.data[1] = comboBox_A2.SelectedIndex;
             f5.Show();
         }
 
@@ -175,6 +177,8 @@ namespace Calculator_of_triangular_matrix
         {
             // Вызов метода для отображения
             Output f5 = new Output();
+            DataTransfer.data[0] = B;
+            DataTransfer.data[1] = comboBox_B2.SelectedIndex;
             f5.Show();
         }
 
@@ -182,6 +186,8 @@ namespace Calculator_of_triangular_matrix
         {
             // Вызов метода для отображения
             Output f5 = new Output();
+            DataTransfer.data[0] = C;
+            DataTransfer.data[1] = comboBox_C2.SelectedIndex;
             f5.Show();
         }
 
@@ -498,6 +504,12 @@ namespace Calculator_of_triangular_matrix
             ShowMatrixA();
             ShowMatrixB();
             ShowMatrixC();
+        }
+
+        private void Main_menu_Resize_1(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Maximized)
+                Main_menu_Resize(sender, e);
         }
     }
 }
