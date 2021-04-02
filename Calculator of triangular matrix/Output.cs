@@ -65,6 +65,55 @@ namespace Calculator_of_triangular_matrix
                 }
             }
         }
+         private void ShowMatrixAdress(Matrix A)
+        {
+            int[] size = ElementsCheck(Size.Width, Size.Height, A.N);
+            int n = size[0];
+            int m = size[1];
+            // очистка
+            this.dataGridViewOutput.Rows.Clear();  // удаление всех строк
+            int count = this.dataGridViewOutput.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+            {
+                this.dataGridViewOutput.Columns.RemoveAt(0);
+            }
+            if (A.Type != Category.none && n * m > 0)
+            {
+
+                // создание новой
+                DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
+                for (int i = 0; i < m; i++)
+                {
+                    column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
+                    column[i].HeaderText = i.ToString();
+                    column[i].Name = i.ToString();
+                }
+                // задание новой
+                this.dataGridViewOutput.Columns.AddRange(column); // добавление столбцов
+                unsafe {
+                    int Numb;
+                    double c;
+                    string Adress;
+                    for (int i = 0; i < n && i < A.N; i++)
+                    {
+
+                        object[] row = new object[m];
+                        for (int j = 0; j < m; j++)
+                        {
+                            Numb= Operations.getElementNumber(i, j, A);
+                            fixed (double* p = &A.Packed_form[Numb])
+                            {
+                                c = *p;
+                                Adress = c.ToString();
+                                row[j] = Operations.getElement(i, j, A) + " | " + Adress;
+                            }
+                        }
+                        dataGridViewOutput.Rows.Add(row);// добавление строк
+
+                    }
+                }
+            }
+        }
         private int[] ElementsCheck(int W, int H, int n)//Количество строк и столбцов котрое можно вывести
         {
             int[] size = new int[2];
