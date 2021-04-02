@@ -35,5 +35,10 @@ namespace Calculator_of_triangular_matrix
             //MessageBox.Show("Ошибка!\nНе верное значение!");
             //MessageBox.Show("Ошибка!\nВ этом месте уже стоит фиктивный элемент!");
         }
+        private void Input_hand_Load(object sender, EventArgs e)
+        {
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+        }
     }
 }
