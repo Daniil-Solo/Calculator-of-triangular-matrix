@@ -392,6 +392,10 @@ namespace Calculator_of_triangular_matrix
                         row[j] = Operations.getElement(i, j, A);
                     GridView_A.Rows.Add(row);// добавление строк
                 }
+                foreach (DataGridViewColumn col in GridView_A.Columns)
+                {
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
             }
         }
 
@@ -426,6 +430,10 @@ namespace Calculator_of_triangular_matrix
                     for (int j = 0; j < m; j++)
                         row[j] = Operations.getElement(i, j, B);
                     GridView_B.Rows.Add(row);// добавление строк
+                }
+                foreach (DataGridViewColumn col in GridView_B.Columns)
+                {
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
             }
         }
@@ -462,6 +470,10 @@ namespace Calculator_of_triangular_matrix
                     for (int j = 0; j < m; j++)
                         row[j] = Operations.getElement(i, j, C);
                     GridView_C.Rows.Add(row);// добавление строк
+                }
+                foreach (DataGridViewColumn col in GridView_C.Columns)
+                {
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
                 }
             }
         }
@@ -510,6 +522,30 @@ namespace Calculator_of_triangular_matrix
         {
             if (this.WindowState == FormWindowState.Maximized)
                 Main_menu_Resize(sender, e);
+        }
+
+        private void GridView_A_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            object head = this.GridView_A.Rows[e.RowIndex].HeaderCell.Value;
+            if (head == null)
+                this.GridView_A.Rows[e.RowIndex].HeaderCell.Value =
+                    (e.RowIndex).ToString();
+        }
+
+        private void GridView_B_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            object head = this.GridView_B.Rows[e.RowIndex].HeaderCell.Value;
+            if (head == null)
+                this.GridView_B.Rows[e.RowIndex].HeaderCell.Value =
+                    (e.RowIndex).ToString();
+        }
+
+        private void GridView_C_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            object head = this.GridView_C.Rows[e.RowIndex].HeaderCell.Value;
+            if (head == null)
+                this.GridView_C.Rows[e.RowIndex].HeaderCell.Value =
+                    (e.RowIndex).ToString();
         }
     }
 }

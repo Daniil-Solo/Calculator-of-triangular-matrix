@@ -72,9 +72,7 @@ namespace Calculator_of_triangular_matrix
 
             while (p.msg_next != null) 
             {
-                q = p;
                 p = p.msg_next;
-                q = null;
             }
             return p;
         }

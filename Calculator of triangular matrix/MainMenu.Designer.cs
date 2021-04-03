@@ -42,7 +42,6 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.matrixA = new System.Windows.Forms.Label();
             this.comboBox_A1 = new System.Windows.Forms.ComboBox();
-            this.comboBox_A2 = new System.Windows.Forms.ComboBox();
             this.safe_A = new System.Windows.Forms.Button();
             this.GridView_A = new System.Windows.Forms.DataGridView();
             this.type_n_A = new System.Windows.Forms.Label();
@@ -78,6 +77,7 @@
             this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.comboBox_A2 = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -280,10 +280,11 @@
             this.matrixA.Size = new System.Drawing.Size(426, 25);
             this.matrixA.TabIndex = 0;
             this.matrixA.Text = "Матрица А";
+            this.matrixA.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // comboBox_A1
             // 
-            this.comboBox_A1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_A1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_A1.FormattingEnabled = true;
             this.comboBox_A1.Items.AddRange(new object[] {
             "С клавиатуры",
@@ -293,22 +294,7 @@
             this.comboBox_A1.Name = "comboBox_A1";
             this.comboBox_A1.Size = new System.Drawing.Size(210, 24);
             this.comboBox_A1.TabIndex = 1;
-            this.comboBox_A1.Text = "Ввод...";
             this.comboBox_A1.SelectedIndexChanged += new System.EventHandler(this.comboBox_A1_SelectedIndexChanged);
-            // 
-            // comboBox_A2
-            // 
-            this.comboBox_A2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBox_A2.FormattingEnabled = true;
-            this.comboBox_A2.Items.AddRange(new object[] {
-            "Значения",
-            "Значения и адреса"});
-            this.comboBox_A2.Location = new System.Drawing.Point(219, 28);
-            this.comboBox_A2.Name = "comboBox_A2";
-            this.comboBox_A2.Size = new System.Drawing.Size(210, 24);
-            this.comboBox_A2.TabIndex = 2;
-            this.comboBox_A2.Text = "Печать...";
-            this.comboBox_A2.SelectedIndexChanged += new System.EventHandler(this.comboBox_A2_SelectedIndexChanged);
             // 
             // safe_A
             // 
@@ -324,14 +310,11 @@
             // GridView_A
             // 
             this.GridView_A.AllowUserToAddRows = false;
-            this.GridView_A.AllowUserToDeleteRows = false;
-            this.GridView_A.AllowUserToResizeColumns = false;
-            this.GridView_A.AllowUserToResizeRows = false;
             this.GridView_A.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel3.SetColumnSpan(this.GridView_A, 2);
             this.GridView_A.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridView_A.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.GridView_A.Location = new System.Drawing.Point(3, 61);
+            this.GridView_A.MultiSelect = false;
             this.GridView_A.Name = "GridView_A";
             this.GridView_A.ReadOnly = true;
             this.GridView_A.RowHeadersWidth = 51;
@@ -339,6 +322,7 @@
             this.GridView_A.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.GridView_A.Size = new System.Drawing.Size(426, 329);
             this.GridView_A.TabIndex = 5;
+            this.GridView_A.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.GridView_A_RowPrePaint);
             // 
             // type_n_A
             // 
@@ -385,10 +369,12 @@
             this.matrixB.Size = new System.Drawing.Size(438, 24);
             this.matrixB.TabIndex = 0;
             this.matrixB.Text = "Матрица В";
+            this.matrixB.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // comboBox_B1
             // 
             this.comboBox_B1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_B1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_B1.FormattingEnabled = true;
             this.comboBox_B1.Items.AddRange(new object[] {
             "С клавиатуры",
@@ -398,12 +384,12 @@
             this.comboBox_B1.Name = "comboBox_B1";
             this.comboBox_B1.Size = new System.Drawing.Size(216, 24);
             this.comboBox_B1.TabIndex = 1;
-            this.comboBox_B1.Text = "Ввод...";
             this.comboBox_B1.SelectedIndexChanged += new System.EventHandler(this.comboBox_B1_SelectedIndexChanged);
             // 
             // comboBox_B2
             // 
             this.comboBox_B2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_B2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_B2.FormattingEnabled = true;
             this.comboBox_B2.Items.AddRange(new object[] {
             "Значения",
@@ -412,7 +398,6 @@
             this.comboBox_B2.Name = "comboBox_B2";
             this.comboBox_B2.Size = new System.Drawing.Size(216, 24);
             this.comboBox_B2.TabIndex = 2;
-            this.comboBox_B2.Text = "Печать...";
             this.comboBox_B2.SelectedIndexChanged += new System.EventHandler(this.comboBox_B2_SelectedIndexChanged);
             // 
             // type_n_B
@@ -439,14 +424,11 @@
             // GridView_B
             // 
             this.GridView_B.AllowUserToAddRows = false;
-            this.GridView_B.AllowUserToDeleteRows = false;
-            this.GridView_B.AllowUserToResizeColumns = false;
-            this.GridView_B.AllowUserToResizeRows = false;
             this.GridView_B.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel4.SetColumnSpan(this.GridView_B, 2);
             this.GridView_B.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridView_B.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.GridView_B.Location = new System.Drawing.Point(3, 60);
+            this.GridView_B.MultiSelect = false;
             this.GridView_B.Name = "GridView_B";
             this.GridView_B.ReadOnly = true;
             this.GridView_B.RowHeadersWidth = 51;
@@ -454,6 +436,7 @@
             this.GridView_B.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.GridView_B.Size = new System.Drawing.Size(438, 329);
             this.GridView_B.TabIndex = 5;
+            this.GridView_B.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.GridView_B_RowPrePaint);
             // 
             // tableLayoutPanel5
             // 
@@ -487,10 +470,12 @@
             this.matrixC.Size = new System.Drawing.Size(434, 24);
             this.matrixC.TabIndex = 0;
             this.matrixC.Text = "Матрица С";
+            this.matrixC.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // comboBox_C2
             // 
             this.comboBox_C2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_C2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_C2.FormattingEnabled = true;
             this.comboBox_C2.Items.AddRange(new object[] {
             "Значения",
@@ -499,7 +484,6 @@
             this.comboBox_C2.Name = "comboBox_C2";
             this.comboBox_C2.Size = new System.Drawing.Size(214, 24);
             this.comboBox_C2.TabIndex = 2;
-            this.comboBox_C2.Text = "Печать...";
             this.comboBox_C2.SelectedIndexChanged += new System.EventHandler(this.comboBox_C2_SelectedIndexChanged);
             // 
             // type_n_C
@@ -526,14 +510,11 @@
             // GridView_C
             // 
             this.GridView_C.AllowUserToAddRows = false;
-            this.GridView_C.AllowUserToDeleteRows = false;
-            this.GridView_C.AllowUserToResizeColumns = false;
-            this.GridView_C.AllowUserToResizeRows = false;
             this.GridView_C.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel5.SetColumnSpan(this.GridView_C, 2);
             this.GridView_C.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.GridView_C.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.GridView_C.Location = new System.Drawing.Point(3, 59);
+            this.GridView_C.MultiSelect = false;
             this.GridView_C.Name = "GridView_C";
             this.GridView_C.ReadOnly = true;
             this.GridView_C.RowHeadersWidth = 51;
@@ -541,6 +522,7 @@
             this.GridView_C.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.GridView_C.Size = new System.Drawing.Size(434, 332);
             this.GridView_C.TabIndex = 5;
+            this.GridView_C.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.GridView_C_RowPrePaint);
             // 
             // tableLayoutPanel6
             // 
@@ -700,6 +682,20 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // comboBox_A2
+            // 
+            this.comboBox_A2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_A2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_A2.FormattingEnabled = true;
+            this.comboBox_A2.Items.AddRange(new object[] {
+            "Значения",
+            "Значения и адреса"});
+            this.comboBox_A2.Location = new System.Drawing.Point(219, 28);
+            this.comboBox_A2.Name = "comboBox_A2";
+            this.comboBox_A2.Size = new System.Drawing.Size(210, 24);
+            this.comboBox_A2.TabIndex = 2;
+            this.comboBox_A2.SelectedIndexChanged += new System.EventHandler(this.comboBox_A2_SelectedIndexChanged);
+            // 
             // Main_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -774,7 +770,6 @@
         private System.Windows.Forms.TextBox message_history;
         private System.Windows.Forms.ToolStripMenuItem закрепитьПоверхДургихОкон;
         private System.Windows.Forms.ComboBox comboBox_B1;
-        private System.Windows.Forms.ComboBox comboBox_A2;
         private System.Windows.Forms.Button safe_A;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
@@ -786,6 +781,7 @@
         private System.Windows.Forms.ToolStripMenuItem очиститьМатрицуСToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem очиститьВсеМатрицыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem обновитьToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBox_A2;
     }
 }
 

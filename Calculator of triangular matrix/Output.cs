@@ -76,6 +76,10 @@ namespace Calculator_of_triangular_matrix
                         row[j] = Operations.getElement(i, j, A);
                     dataGridViewOutput.Rows.Add(row);// добавление строк
                 }
+                foreach (DataGridViewColumn col in dataGridViewOutput.Columns)
+                {
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
             }
         }
          private void ShowMatrixAdress(Matrix A)
@@ -132,12 +136,24 @@ namespace Calculator_of_triangular_matrix
 
                     }
                 }
+                foreach (DataGridViewColumn col in dataGridViewOutput.Columns)
+                {
+                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
+                }
             }
         }
 
         private void dataGridViewOutput_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dataGridViewOutput_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            object head = this.dataGridViewOutput.Rows[e.RowIndex].HeaderCell.Value;
+            if (head == null)
+                this.dataGridViewOutput.Rows[e.RowIndex].HeaderCell.Value =
+                    (e.RowIndex).ToString();
         }
     }
 }
