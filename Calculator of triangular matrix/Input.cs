@@ -56,6 +56,13 @@ namespace Calculator_of_triangular_matrix
                 textBox_n.Focus();
                 return;
             }
+            if (n < 0)
+            {
+                MessageBox.Show("Ошибка!\nРазмерность не может быть отрицательной!");
+                textBox_n.Text = "";
+                textBox_n.Focus();
+                return;
+            }
             // проверяем введенное значение V
             success = Double.TryParse(textBox_V.Text, out V);
             if(!success)
