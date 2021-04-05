@@ -274,8 +274,9 @@ namespace Calculator_of_triangular_matrix
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Input_rand";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ввод случайным образом";
+            this.Text = "Авто-заполнение";
             this.Load += new System.EventHandler(this.Input_rand_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
