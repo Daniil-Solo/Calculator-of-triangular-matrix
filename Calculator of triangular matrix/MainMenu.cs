@@ -258,12 +258,18 @@ namespace Calculator_of_triangular_matrix
             labelMatrixShow();
             message_history.Text = ourHistory.Print(10);
         }
-
+        private string TypeShow(Matrix M)
+        {
+            if (M.Type.ToString() == "top_left") return "Верхний-левый";
+            else if (M.Type.ToString() == "top_right") return "Верхний-правый";
+                else if (M.Type.ToString() == "bot_left") return "Нижний-левый";
+                    else return "Нижний-правый";
+        }
         private void labelMatrixShow()
         {
             if (A.N != 0)
             {
-                type_n_A.Text = "Тип: " + A.Type.ToString() + "\n\rРазмерность: " + A.N.ToString();
+                type_n_A.Text = "Тип: " + TypeShow(A) + "\n\rРазмерность: " + A.N.ToString();
             }
             else
             {
@@ -271,7 +277,7 @@ namespace Calculator_of_triangular_matrix
             }
             if (B.N != 0)
             {
-                type_n_B.Text = "Тип: " + B.Type.ToString() + "\n\rРазмерность: " + B.N.ToString();
+                type_n_B.Text = "Тип: " + TypeShow(B) + "\n\rРазмерность: " + B.N.ToString();
             }
             else
             {
@@ -279,7 +285,7 @@ namespace Calculator_of_triangular_matrix
             }
             if (C.N != 0)
             {
-                type_n_C.Text = "Тип: " + C.Type.ToString() + "\n\rРазмерность: " + C.N.ToString();
+                type_n_C.Text = "Тип: " + TypeShow(C) + "\n\rРазмерность: " + C.N.ToString();
             }
             else
             {
@@ -546,6 +552,11 @@ namespace Calculator_of_triangular_matrix
             if (head == null)
                 this.GridView_C.Rows[e.RowIndex].HeaderCell.Value =
                     (e.RowIndex).ToString();
+        }
+
+        private void type_n_A_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
