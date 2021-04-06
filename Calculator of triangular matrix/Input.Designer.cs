@@ -191,8 +191,9 @@ namespace Calculator_of_triangular_matrix
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "Input_keyb";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ввод матрицы с клавиатуры";
+            this.Text = "Ввод с клавиатуры";
             this.Load += new System.EventHandler(this.Input_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
