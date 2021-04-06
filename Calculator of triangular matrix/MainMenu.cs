@@ -26,12 +26,24 @@ namespace Calculator_of_triangular_matrix
         Matrix A = new Matrix('A', 0, 0, Category.none, null);
         Matrix B = new Matrix('B', 0, 0, Category.none, null);
         Matrix C = new Matrix('C', 0, 0, Category.none, null);
+        bool selectedComboBox = false;
 
         public Main_menu()
         {
             InitializeComponent();
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+
+        }
+        
+        private void Main_menu_Load(object sender, EventArgs e)
+        {
+            comboBox_A1.SelectedIndex = 0;
+            comboBox_A2.SelectedIndex = 0;
+            comboBox_B1.SelectedIndex = 0;
+            comboBox_B2.SelectedIndex = 0;
+            comboBox_C2.SelectedIndex = 0;
+
         }
 
 //----------------------Сервис---------------------------------
@@ -153,42 +165,60 @@ namespace Calculator_of_triangular_matrix
 // ----------------Комбобоксы выбора способа задания матриц---------------------
         private void comboBox_A1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            A = New_m(comboBox_A1.SelectedIndex, A);
-            UpdateInfo();
+            if (selectedComboBox)
+            {
+                A = New_m(comboBox_A1.SelectedIndex, A);
+                UpdateInfo();
+            }
+            
         }
 
         private void comboBox_B1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            B = New_m(comboBox_B1.SelectedIndex, B);
-            UpdateInfo();
+            if (selectedComboBox)
+            {
+                B = New_m(comboBox_B1.SelectedIndex, B);
+                UpdateInfo();
+            }
         }
 
 // ----------------Комбобоксы выбора способа печати матрицы-----------------------
         private void comboBox_A2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Вызов метода для отображения 
-            Output f5 = new Output();
-            DataTransfer.data[0] = A;
-            DataTransfer.data[1] = comboBox_A2.SelectedIndex;
-            f5.Show();
+            if (selectedComboBox)
+            {
+                // Вызов метода для отображения 
+                Output f5 = new Output();
+                DataTransfer.data[0] = A;
+                DataTransfer.data[1] = comboBox_A2.SelectedIndex;
+                f5.Show();
+            }
         }
 
         private void comboBox_B2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Вызов метода для отображения
-            Output f5 = new Output();
-            DataTransfer.data[0] = B;
-            DataTransfer.data[1] = comboBox_B2.SelectedIndex;
-            f5.Show();
+            if (selectedComboBox)
+            {
+                // Вызов метода для отображения
+                Output f5 = new Output();
+                DataTransfer.data[0] = B;
+                DataTransfer.data[1] = comboBox_B2.SelectedIndex;
+                f5.Show();
+            }
         }
 
         private void comboBox_C2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Вызов метода для отображения
-            Output f5 = new Output();
-            DataTransfer.data[0] = C;
-            DataTransfer.data[1] = comboBox_C2.SelectedIndex;
-            f5.Show();
+            if (selectedComboBox)
+            {
+                // Вызов метода для отображения
+                Output f5 = new Output();
+                DataTransfer.data[0] = C;
+                DataTransfer.data[1] = comboBox_C2.SelectedIndex;
+                f5.Show();
+            }
+            else
+                selectedComboBox = true;
         }
 
 // -------------Кнопки операций----------------------
@@ -558,5 +588,7 @@ namespace Calculator_of_triangular_matrix
         {
 
         }
+
+        
     }
 }

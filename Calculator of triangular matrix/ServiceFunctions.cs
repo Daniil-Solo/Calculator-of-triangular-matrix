@@ -8,6 +8,6 @@ namespace Calculator_of_triangular_matrix
 {
     class ServiceFunctions
     {
-
+       
     }
 }

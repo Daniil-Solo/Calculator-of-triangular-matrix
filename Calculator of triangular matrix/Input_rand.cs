@@ -21,7 +21,7 @@ namespace Calculator_of_triangular_matrix
         private void Input_rand_Load(object sender, EventArgs e)
         {
             ActiveControl = comboBox_type;
-            
+            comboBox_type.SelectedIndex = 0;
         }
         private void помощьToolStripMenuItem_Click(object sender, EventArgs e)
         {

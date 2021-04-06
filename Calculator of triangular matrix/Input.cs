@@ -29,6 +29,7 @@ namespace Calculator_of_triangular_matrix
         private void Input_Load(object sender, EventArgs e)
         {
             ActiveControl = comboBox_type;
+            comboBox_type.SelectedIndex = 0;
         }
 
         private void button_make_Click(object sender, EventArgs e)

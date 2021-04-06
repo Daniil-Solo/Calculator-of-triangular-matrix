@@ -139,10 +139,12 @@ namespace Calculator_of_triangular_matrix
             this.button_ready.TabIndex = 6;
             this.button_ready.Text = "Готово";
             this.button_ready.UseVisualStyleBackColor = true;
+            this.button_ready.Click += new System.EventHandler(this.button_ready_Click);
             // 
             // comboBox_type
             // 
             this.comboBox_type.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox_type.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_type.FormattingEnabled = true;
             this.comboBox_type.Items.AddRange(new object[] {
             "Нижний-правый",
@@ -153,7 +155,6 @@ namespace Calculator_of_triangular_matrix
             this.comboBox_type.Name = "comboBox_type";
             this.comboBox_type.Size = new System.Drawing.Size(339, 24);
             this.comboBox_type.TabIndex = 2;
-            this.comboBox_type.Text = "Тип матрицы...";
             this.comboBox_type.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox_type_KeyDown);
             // 
             // label_V

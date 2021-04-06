@@ -87,7 +87,10 @@ namespace Calculator_of_triangular_matrix
             {
                 for (int i = 0; i < N; i++)
                 {
-                    string[] splittedStroka = f.ReadLine().Split(' ');
+                    string line = f.ReadLine();
+                    line = line.Trim();
+                    line = System.Text.RegularExpressions.Regex.Replace(line, @"\s+", " ");
+                    string[] splittedStroka = line.Split(' ');
                     for (int j = 0; j < N; j++)
                     {
                         if(!Operations.isV(i, j, Temp))

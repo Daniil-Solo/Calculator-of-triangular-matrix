@@ -286,16 +286,53 @@ namespace Calculator_of_triangular_matrix
         }
         
         
-        /*
-        Реализовать
+        
         public static Matrix Reverse_A(Matrix A, Matrix C, ref History_message history)
         {
-            найти определитель матрицы
-            если равен 0, то вывести сообщение 
-            если не равен 0, то считаем обратную матрицу
-            найти алгооритм
+            double detA = Determinant(A, ref history);
+            Matrix TempMatrix = new Matrix('C', A.N, A.V, A.Type, null);
+            if (detA == Double.NaN)
+            {
+                return C;
+            }
+            else if (detA == 0)
+            {
+                history = history.Add("Определитель равен 0");
+            }
+            else
+            {
+                // Обратная матрица
+                double[] packedForm = new double[A.N * (A.N + 1) / 2];
+                for (int i = 0; i < A.N; i++)
+                {
+                    for (int j = 0; j < A.N; j++)
+                    {
+                        if(isV(i, j, A))
+                        {
+                            // пропускаем
+                        }
+                        else
+                        {
+                            packedForm[getIndexK(i, j, A)] = getReverseElement(i, j, A, detA);
+                        }
+
+                    }
+                }
+
+                     
+            }
+            return TempMatrix;   
         }
-        */
+        
+        public static double getReverseElement(int i, int j, Matrix A, double Det)
+        {
+            double result = 0;
+
+            result *= Math.Pow(-1.0, i + j + 2);
+            return result;
+        }
+
+
     }
 
 }
