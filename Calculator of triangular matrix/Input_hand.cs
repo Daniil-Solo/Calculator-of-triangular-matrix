@@ -34,7 +34,7 @@ namespace Calculator_of_triangular_matrix
             if (Operations.isV(globalStroka, globalStolbec, TempMatrix))
                 globalStolbec = TempMatrix.N - 1;
             SelectElement(globalStroka, globalStolbec);
-            this.dataGridView.CurrentCell = this.dataGridView[globalStolbec, globalStroka];
+            ActiveControl = textBox_input;
         }
 
         private void button_ready_Click(object sender, EventArgs e)
@@ -264,5 +264,8 @@ namespace Calculator_of_triangular_matrix
                 SelectElement(globalStroka, globalStolbec);
         }
 
+        private void Input_hand_Load(object sender, EventArgs e)
+        {
+        }
     }
 }

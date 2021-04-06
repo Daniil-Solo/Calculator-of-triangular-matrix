@@ -266,17 +266,19 @@ namespace Calculator_of_triangular_matrix
         }
         private void obrA_Click(object sender, EventArgs e)
         {
-            //if (CheckMatrix(A))
-                
-            //else ourHistory = ourHistory.Add("Матрица А не задана");
-            //UpdateInfo();
+            if (CheckMatrix(A))
+                C = Operations.Reverse(A, C, ref ourHistory);
+            else 
+                ourHistory = ourHistory.Add("Матрица А не задана");
+            UpdateInfo();
         }
         private void obrB_Click(object sender, EventArgs e)
         {
-            //if (CheckMatrix(B))
-
-            //else ourHistory = ourHistory.Add("Матрица В не задана");
-            //UpdateInfo();
+            if (CheckMatrix(B))
+                C = Operations.Reverse(B, C, ref ourHistory);
+            else 
+                ourHistory = ourHistory.Add("Матрица В не задана");
+            UpdateInfo();
         }
 
         // ------------------ Служебные функции----------------

@@ -234,7 +234,7 @@ namespace Calculator_of_triangular_matrix
 // Возвращает определитель матрицы, если тип не nonе и V равно 0
 // Возвращает Nan, если не известен тип или V не равно 0        
 
-        public static double Determinant (Matrix A, ref History_message history)
+        public static double DeterminantR (Matrix A, ref History_message history)
         {
             double Det = 1;
             history = history.Add("Выполнение операции |A|");
@@ -284,13 +284,12 @@ namespace Calculator_of_triangular_matrix
             B = new Matrix(B.Name, C.N, C.V, C.Type, C.Packed_form);
             history = history.Add("Операция успешно выполнена");
         }
-        
-        
-        
-        public static Matrix Reverse_A(Matrix A, Matrix C, ref History_message history)
+
+
+        public static Matrix Reverse(Matrix A, Matrix C, ref History_message history)
         {
-            double detA = Determinant(A, ref history);
-            Matrix TempMatrix = new Matrix('C', A.N, A.V, A.Type, null);
+            double detA = DeterminantR(A, ref history);
+            double[, ] TempMatrica;
             if (detA == Double.NaN)
             {
                 return C;
@@ -298,40 +297,123 @@ namespace Calculator_of_triangular_matrix
             else if (detA == 0)
             {
                 history = history.Add("Определитель равен 0");
+                return C;
             }
             else
             {
-                // Обратная матрица
-                double[] packedForm = new double[A.N * (A.N + 1) / 2];
+                history = history.Add("Определитель равен " + detA.ToString());
+                TempMatrica = getMatricaFromMatrix(A);
+                double[,] ResultMatrica = new double[A.N, A.N];
                 for (int i = 0; i < A.N; i++)
                 {
                     for (int j = 0; j < A.N; j++)
                     {
-                        if(isV(i, j, A))
+                          ResultMatrica[i, j] = Math.Pow(-1.0, i + j + 2) * 
+                            Determinant(getMatricaFromMatrica(i, j, TempMatrica, A.N-1), A.N-1) / detA;
+                    }
+                }
+
+                Matrix TempMatrix = new Matrix('C', A.N, A.V, A.Type, null);
+                history = history.Add("Операция успешно выполнена");
+                ResultMatrica = getTMatrica(ResultMatrica, A.N);
+
+                if (A.Type == Category.top_left)
+                    TempMatrix.Type = Category.bot_right;
+                else if (A.Type == Category.bot_right)
+                    TempMatrix.Type = Category.top_left;
+
+                TempMatrix.Packed_form = PackMatrica(TempMatrix, ResultMatrica);
+                return TempMatrix;
+            }
+              
+        }
+        public static double[, ] getTMatrica(double[, ] matrix, int n)
+        {
+            for (int i = 0; i < n; i++)
+                for (int j = i; j < n; j++)
+                {
+                    double temp = matrix[i, j];
+                    matrix[i, j] = matrix[j, i];
+                    matrix[j, i] = temp;
+                }
+            return matrix;
+        }
+        public static double[,] getMatricaFromMatrix(Matrix A)
+        {
+            double[,] matrix = new double[A.N, A.N];
+            for (int tempi = 0; tempi < A.N; tempi++)
+                for (int tempj = 0; tempj < A.N; tempj++)
+                    matrix[tempi, tempj] = getElement(tempi, tempj, A);
+            return matrix;
+        }
+        public static double Determinant(double[,] matrix, int n)
+        {
+            if (n == 1)
+                return matrix[0, 0];
+            else if (n == 2)
+                return matrix[0, 0] * matrix[1, 1] - matrix[0, 1] * matrix[1, 0];
+            else
+            {
+                int pow = 1;
+                double result = 0;
+                for(int i = 0; i < n; i++)
+                {
+                    result += pow * matrix[0, i] * Determinant(getMatricaFromMatrica(0, i, matrix, n-1), n-1);
+                    pow = -pow;
+                }
+                return result;
+            }
+        }
+        public static double[,] getMatricaFromMatrica(int i, int j, double[, ] matrix, int n)
+        { 
+            int reali = 0, realj = 0;
+            double[,] matrixResult = new double[n, n];
+            for(int tempi = 0; tempi < n+1; tempi++)
+            {
+                if(tempi == i)
+                {
+                    // пропускаем
+                }
+                else
+                {
+                    for (int tempj = 0; tempj < n+1; tempj++)
+                    {
+                        if (tempj == j)
                         {
                             // пропускаем
                         }
                         else
                         {
-                            packedForm[getIndexK(i, j, A)] = getReverseElement(i, j, A, detA);
+                            matrixResult[reali, realj] = matrix[tempi, tempj];
+                            realj++;
                         }
+                    }
+                    realj = 0;
+                    reali++;
+                }
+            }
+            return matrixResult;
+        }
 
+        public static double[] PackMatrica(Matrix M, double[,] ResultMatrica)
+        {
+            double[] packedForm = new double[M.N * (M.N + 1) / 2];
+            int k = 0;
+            for (int i = 0; i < M.N; i++)
+                for (int j = 0; j < M.N; j++)
+                {
+                    if (isV(i, j, M))
+                    {
+                        // пропустить
+                    }
+                    else
+                    {
+                        packedForm[k] = ResultMatrica[i, j];
+                        k++;
                     }
                 }
-
-                     
-            }
-            return TempMatrix;   
+            return packedForm;
         }
-        
-        public static double getReverseElement(int i, int j, Matrix A, double Det)
-        {
-            double result = 0;
-
-            result *= Math.Pow(-1.0, i + j + 2);
-            return result;
-        }
-
 
     }
 

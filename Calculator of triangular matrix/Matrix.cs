@@ -33,8 +33,8 @@ namespace Calculator_of_triangular_matrix
         public char Name { get { return name; } }
         public int N { get { return n; } }
         public double V { get { return v; } }
-        public Category Type { get { return type; } }
-        public double[] Packed_form { get { return packed_form; } }
+        public Category Type { get { return type; } set { type = value; } }
+        public double[] Packed_form { get { return packed_form; } set { packed_form = value; } }
         public DataTable Table { get { return table; } set { table = value; } }
        
         
