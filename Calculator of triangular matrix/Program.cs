@@ -36,4 +36,8 @@ namespace Calculator_of_triangular_matrix
             return result;
         }
     }
+    public static class Epsilon
+    {
+        public static int value;
+    }
 }

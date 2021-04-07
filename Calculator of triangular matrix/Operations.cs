@@ -228,49 +228,6 @@ namespace Calculator_of_triangular_matrix
             }
          }
 
-//-------------- Функция нахождения определителя матрицы --------------
-// Предупреждение: История сообщений передается по ссылке, так как она изменяется
-// Принимает на вход матрицы A, историю сообщений
-// Возвращает определитель матрицы, если тип не nonе и V равно 0
-// Возвращает Nan, если не известен тип или V не равно 0        
-
-        public static double DeterminantR (Matrix A, ref History_message history)
-        {
-            double Det = 1;
-            history = history.Add("Выполнение операции |A|");
-            if (A.Type == Category.none)
-            {
-                history = history.Add("Матрица не определена");
-                return Double.NaN;
-            }
-            else
-            {
-                if (A.V != 0)
-                {
-                    history = history.Add("Значение V должно быть равно 0");
-                    return Double.NaN;
-                }
-                else
-                {
-                    if (A.Type == Category.bot_left || A.Type == Category.top_right)
-                    {
-                        for (int i = 0; i < A.N; i++)
-                            Det *= getElement(i, i, A);
-                        return Det;
-                    }
-                    else
-                    {
-                        for (int i = 0; i < A.N; i++)
-                            Det *= getElement(A.N - 1 - i, i, A);
-                        return Det * -1;
-                    }
-                }
-            }
-           
-
-                
-        }
-
 //-------------- Функция перестановки матриц --------------
 // Предупреждение: История сообщений и матрицы передаются по ссылке, так как они изменяются
 // Принимает на вход 2 матрицы, историю сообщений
@@ -286,15 +243,51 @@ namespace Calculator_of_triangular_matrix
         }
 
 
+//-------------- Функция нахождения определителя матрицы --------------
+// Предупреждение: История сообщений передается по ссылке, так как она изменяется
+// Принимает на вход матрицы A, историю сообщений
+// Возвращает определитель матрицы, если тип не nonе и V равно 0
+// Возвращает Nan, если не известен тип или V не равно 0        
+
+        public static double DeterminantReverseMatrix (Matrix A, ref History_message history)
+        {
+            double Det = 1;
+            history = history.Add("Выполнение операции |A|");
+            if (A.V != 0)
+            {
+                history = history.Add("Значение V должно быть равно 0");
+                return Double.NaN;
+            }
+            else
+            {
+                if (A.Type == Category.bot_left || A.Type == Category.top_right)
+                {
+                    for (int i = 0; i < A.N; i++)
+                        Det *= getElement(i, i, A);
+                    return Det;
+                }
+                else
+                {
+                    for (int i = 0; i < A.N; i++)
+                        Det *= getElement(A.N - 1 - i, i, A);
+                    return Det * -1;
+                }
+            }    
+        }
+
+//-------------- Функция нахождения обратной матрицы --------------
+// Предупреждение: История сообщений передается по ссылке, так как она изменяется
+// Принимает на вход 2 матрицы, историю сообщений   
         public static Matrix Reverse(Matrix A, Matrix C, ref History_message history)
         {
-            double detA = DeterminantR(A, ref history);
-            double[, ] TempMatrica;
+            history = history.Add("Выполнение операции (" + A.Name + ")^-1");
+            double detA = DeterminantReverseMatrix(A, ref history);
+            history = history.Add("Определитель равен " + detA.ToString());
             if (detA == Double.NaN)
             {
                 return C;
             }
-            else if (detA == 0)
+            else if (Math.Abs(detA) < 1E-10) 
             {
                 history = history.Add("Определитель равен 0");
                 return C;
@@ -302,42 +295,86 @@ namespace Calculator_of_triangular_matrix
             else
             {
                 history = history.Add("Определитель равен " + detA.ToString());
-                TempMatrica = getMatricaFromMatrix(A);
-                double[,] ResultMatrica = new double[A.N, A.N];
-                for (int i = 0; i < A.N; i++)
-                {
-                    for (int j = 0; j < A.N; j++)
-                    {
-                          ResultMatrica[i, j] = Math.Pow(-1.0, i + j + 2) * 
-                            Determinant(getMatricaFromMatrica(i, j, TempMatrica, A.N-1), A.N-1) / detA;
-                    }
-                }
-
+                double[, ] TempMatrica = getObrMatrica(getMatricaFromMatrix(A), A.N);
                 Matrix TempMatrix = new Matrix('C', A.N, A.V, A.Type, null);
                 history = history.Add("Операция успешно выполнена");
-                ResultMatrica = getTMatrica(ResultMatrica, A.N);
-
                 if (A.Type == Category.top_left)
                     TempMatrix.Type = Category.bot_right;
                 else if (A.Type == Category.bot_right)
                     TempMatrix.Type = Category.top_left;
-
-                TempMatrix.Packed_form = PackMatrica(TempMatrix, ResultMatrica);
+                TempMatrix.Packed_form = PackMatrica(TempMatrix, TempMatrica);
                 return TempMatrix;
             }
               
         }
-        public static double[, ] getTMatrica(double[, ] matrix, int n)
+
+//------------- Подфункция нахождения обратной матрицы --------------
+// Принимает на вход двумерный массив - данная матрица и размерность
+// Возвращает двумерный массив - матрицу, обратную данной
+        public static double[, ] getObrMatrica(double[, ] A, int n)
         {
-            for (int i = 0; i < n; i++)
-                for (int j = i; j < n; j++)
+            double temp;
+            double[,] E = getEMatrix(n);
+
+            for (int k = 0; k < n; k++)
+            {
+                temp = A[k, k];
+
+                for (int j = 0; j < n; j++)
                 {
-                    double temp = matrix[i, j];
-                    matrix[i, j] = matrix[j, i];
-                    matrix[j, i] = temp;
+                    A[k, j] /= temp;
+                    E[k, j] /= temp;
                 }
-            return matrix;
+
+                for (int i = k + 1; i < n; i++)
+                {
+                    temp = A[i, k];
+
+                    for (int j = 0; j < n; j++)
+                    {
+                        A[i, j] -= A[k, j] * temp;
+                        E[i, j] -= E[k, j] * temp;
+                    }
+                }
+            }
+            for (int k = n - 1; k > 0; k--)
+            {
+                for (int i = k - 1; i >= 0; i--)
+                {
+                    temp = A[i, k];
+
+                    for (int j = 0; j < n; j++)
+                    {
+                        A[i, j] -= A[k, j] * temp;
+                        E[i, j] -= E[k, j] * temp;
+                    }
+                }
+            }
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                    A[i, j] = E[i, j];
+            E = null;
+            return A;
         }
+//------------- Подфункция задания единичной матрицы --------------
+// Принимает на вход размерность
+// Возвращает двумерный массив - единичну матрицу
+        public static double[,] getEMatrix(int n)
+        {
+            double[,] E = new double[n, n];
+            for (int i = 0; i < n; i++)
+                for (int j = 0; j < n; j++)
+                {
+                    if (i == j)
+                        E[i, j] = 1.0;
+                    else
+                        E[i, j] = 0.0;
+                }
+            return E;
+        }
+//---------- Подфункция получения думерного массива из объекта класса Matrix --------------
+// Принимает на вход объект класса Matrix
+// Возвращает двумерный массив - полную матрицу данного объекта
         public static double[,] getMatricaFromMatrix(Matrix A)
         {
             double[,] matrix = new double[A.N, A.N];
@@ -346,55 +383,9 @@ namespace Calculator_of_triangular_matrix
                     matrix[tempi, tempj] = getElement(tempi, tempj, A);
             return matrix;
         }
-        public static double Determinant(double[,] matrix, int n)
-        {
-            if (n == 1)
-                return matrix[0, 0];
-            else if (n == 2)
-                return matrix[0, 0] * matrix[1, 1] - matrix[0, 1] * matrix[1, 0];
-            else
-            {
-                int pow = 1;
-                double result = 0;
-                for(int i = 0; i < n; i++)
-                {
-                    result += pow * matrix[0, i] * Determinant(getMatricaFromMatrica(0, i, matrix, n-1), n-1);
-                    pow = -pow;
-                }
-                return result;
-            }
-        }
-        public static double[,] getMatricaFromMatrica(int i, int j, double[, ] matrix, int n)
-        { 
-            int reali = 0, realj = 0;
-            double[,] matrixResult = new double[n, n];
-            for(int tempi = 0; tempi < n+1; tempi++)
-            {
-                if(tempi == i)
-                {
-                    // пропускаем
-                }
-                else
-                {
-                    for (int tempj = 0; tempj < n+1; tempj++)
-                    {
-                        if (tempj == j)
-                        {
-                            // пропускаем
-                        }
-                        else
-                        {
-                            matrixResult[reali, realj] = matrix[tempi, tempj];
-                            realj++;
-                        }
-                    }
-                    realj = 0;
-                    reali++;
-                }
-            }
-            return matrixResult;
-        }
-
+//------------- Подфункция упаковки двумерного массива --------------
+// Принимает на вход объект класса Matrix и двумерный массив - обратная матрица 
+// Возвращает упакованную форму
         public static double[] PackMatrica(Matrix M, double[,] ResultMatrica)
         {
             double[] packedForm = new double[M.N * (M.N + 1) / 2];
@@ -414,7 +405,6 @@ namespace Calculator_of_triangular_matrix
                 }
             return packedForm;
         }
-
     }
 
 }

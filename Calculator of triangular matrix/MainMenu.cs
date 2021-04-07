@@ -26,14 +26,13 @@ namespace Calculator_of_triangular_matrix
         Matrix A = new Matrix('A', 0, 0, Category.none, null);
         Matrix B = new Matrix('B', 0, 0, Category.none, null);
         Matrix C = new Matrix('C', 0, 0, Category.none, null);
-        bool selectedComboBox = false;
+        bool startSelected = false;
 
         public Main_menu()
         {
             InitializeComponent();
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
-
         }
         
         private void Main_menu_Load(object sender, EventArgs e)
@@ -43,7 +42,7 @@ namespace Calculator_of_triangular_matrix
             comboBox_B1.SelectedIndex = 0;
             comboBox_B2.SelectedIndex = 0;
             comboBox_C2.SelectedIndex = 0;
-
+            toolStripComboBoxEpsilon.SelectedIndex = 3;
         }
 
 //----------------------Сервис---------------------------------
@@ -165,7 +164,7 @@ namespace Calculator_of_triangular_matrix
 // ----------------Комбобоксы выбора способа задания матриц---------------------
         private void comboBox_A1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (selectedComboBox)
+            if (startSelected)
             {
                 A = New_m(comboBox_A1.SelectedIndex, A);
                 UpdateInfo();
@@ -175,7 +174,7 @@ namespace Calculator_of_triangular_matrix
 
         private void comboBox_B1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (selectedComboBox)
+            if (startSelected)
             {
                 B = New_m(comboBox_B1.SelectedIndex, B);
                 UpdateInfo();
@@ -185,7 +184,7 @@ namespace Calculator_of_triangular_matrix
 // ----------------Комбобоксы выбора способа печати матрицы-----------------------
         private void comboBox_A2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (selectedComboBox)
+            if (startSelected)
             {
                 // Вызов метода для отображения 
                 Output f5 = new Output();
@@ -197,7 +196,7 @@ namespace Calculator_of_triangular_matrix
 
         private void comboBox_B2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (selectedComboBox)
+            if (startSelected)
             {
                 // Вызов метода для отображения
                 Output f5 = new Output();
@@ -209,7 +208,7 @@ namespace Calculator_of_triangular_matrix
 
         private void comboBox_C2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (selectedComboBox)
+            if (startSelected)
             {
                 // Вызов метода для отображения
                 Output f5 = new Output();
@@ -218,7 +217,7 @@ namespace Calculator_of_triangular_matrix
                 f5.Show();
             }
             else
-                selectedComboBox = true;
+                startSelected = true;
         }
 
 // -------------Кнопки операций----------------------
@@ -288,7 +287,7 @@ namespace Calculator_of_triangular_matrix
             ShowMatrixB();
             ShowMatrixC();
             labelMatrixShow();
-            message_history.Text = ourHistory.Print(10);
+            message_history.Text = ourHistory.Print(20);
         }
         private string TypeShow(Matrix M)
         {
@@ -428,7 +427,7 @@ namespace Calculator_of_triangular_matrix
                 {
                     object[] row = new object[m];
                     for (int j = 0; j < m; j++)
-                        row[j] = Operations.getElement(i, j, A);
+                        row[j] = String.Format("{0:F"+Epsilon.value.ToString()+"}" ,Operations.getElement(i, j, A));
                     GridView_A.Rows.Add(row);// добавление строк
                 }
                 foreach (DataGridViewColumn col in GridView_A.Columns)
@@ -467,7 +466,7 @@ namespace Calculator_of_triangular_matrix
                 {
                     object[] row = new object[m];
                     for (int j = 0; j < m; j++)
-                        row[j] = Operations.getElement(i, j, B);
+                        row[j] = String.Format("{0:F" + Epsilon.value.ToString() + "}", Operations.getElement(i, j, B));
                     GridView_B.Rows.Add(row);// добавление строк
                 }
                 foreach (DataGridViewColumn col in GridView_B.Columns)
@@ -507,7 +506,7 @@ namespace Calculator_of_triangular_matrix
                 {
                     object[] row = new object[m];
                     for (int j = 0; j < m; j++)
-                        row[j] = Operations.getElement(i, j, C);
+                        row[j] = String.Format("{0:F" + Epsilon.value.ToString() + "}", Operations.getElement(i, j, C));
                     GridView_C.Rows.Add(row);// добавление строк
                 }
                 foreach (DataGridViewColumn col in GridView_C.Columns)
@@ -592,6 +591,16 @@ namespace Calculator_of_triangular_matrix
 
         }
 
-        
+        private void message_history_TextChanged(object sender, EventArgs e)
+        {
+            message_history.SelectionStart = message_history.Text.Length;
+            message_history.ScrollToCaret();
+            message_history.Refresh();
+        }
+
+        private void toolStripComboBoxEpsilon_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Epsilon.value = toolStripComboBoxEpsilon.SelectedIndex;
+        }
     }
 }

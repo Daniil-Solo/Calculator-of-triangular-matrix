@@ -73,7 +73,7 @@ namespace Calculator_of_triangular_matrix
                 {
                     object[] row = new object[m];
                     for (int j = 0; j < m; j++)
-                        row[j] = Operations.getElement(i, j, A);
+                        row[j] = String.Format("{0:F" + Epsilon.value.ToString() + "}", Operations.getElement(i, j, A));
                     dataGridViewOutput.Rows.Add(row);// добавление строк
                 }
                 foreach (DataGridViewColumn col in dataGridViewOutput.Columns)
@@ -119,7 +119,8 @@ namespace Calculator_of_triangular_matrix
                                 fixed (double* p = &A.v)
                                 {
                                     Adress = (uint)p;
-                                    row[j] = A.V + " | " + Adress.ToString("X2");
+                                    row[j] = String.Format("{0:F" + Epsilon.value.ToString() + "}", A.V)
+                                        + " | " + Adress.ToString("X2");
                                 }
                             }
                             else
@@ -127,7 +128,8 @@ namespace Calculator_of_triangular_matrix
                                 fixed (double* p = &A.Packed_form[Operations.getIndexK(i, j, A)])
                                 {
                                     Adress = (uint)p;
-                                    row[j] = Operations.getElement(i, j, A) + " | " + Adress.ToString("X2");
+                                    row[j] = String.Format("{0:F" + Epsilon.value.ToString() + "}", 
+                                        Operations.getElement(i, j, A)) + " | " + Adress.ToString("X2");
                                 }
                             }
                             

@@ -78,6 +78,8 @@
             this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.точностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBoxEpsilon = new System.Windows.Forms.ToolStripComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -579,6 +581,7 @@
             this.message_history.Size = new System.Drawing.Size(884, 253);
             this.message_history.TabIndex = 1;
             this.message_history.Text = "1. Программа готова к работе";
+            this.message_history.TextChanged += new System.EventHandler(this.message_history_TextChanged);
             // 
             // menuStrip1
             // 
@@ -598,9 +601,10 @@
             this.сервис.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.закрепитьПоверхДургихОкон,
             this.очиститьИсториюСообщений,
-            this.очистить});
+            this.очистить,
+            this.точностьToolStripMenuItem});
             this.сервис.Name = "сервис";
-            this.сервис.Size = new System.Drawing.Size(73, 24);
+            this.сервис.Size = new System.Drawing.Size(73, 26);
             this.сервис.Text = "Сервис";
             // 
             // закрепитьПоверхДургихОкон
@@ -626,8 +630,8 @@
             this.очиститьМатрицуСToolStripMenuItem,
             this.очиститьВсеМатрицыToolStripMenuItem});
             this.очистить.Name = "очистить";
-            this.очистить.Size = new System.Drawing.Size(306, 26);
-            this.очистить.Text = "Очистить...";
+            this.очистить.Size = new System.Drawing.Size(368, 26);
+            this.очистить.Text = "Очистить матрицу...";
             this.очистить.Click += new System.EventHandler(this.очиститьВсеМатрицы_Click);
             // 
             // очиститьМатрицуАToolStripMenuItem
@@ -665,7 +669,7 @@
             this.справка,
             this.обАвторе});
             this.помощь.Name = "помощь";
-            this.помощь.Size = new System.Drawing.Size(83, 24);
+            this.помощь.Size = new System.Drawing.Size(83, 26);
             this.помощь.Text = "Помощь";
             // 
             // началоРаботы
@@ -689,13 +693,57 @@
             // обновитьToolStripMenuItem
             // 
             this.обновитьToolStripMenuItem.Name = "обновитьToolStripMenuItem";
-            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(92, 24);
+            this.обновитьToolStripMenuItem.Size = new System.Drawing.Size(92, 26);
             this.обновитьToolStripMenuItem.Text = "Обновить";
             this.обновитьToolStripMenuItem.Click += new System.EventHandler(this.обновитьToolStripMenuItem_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // точностьToolStripMenuItem
+            // 
+            this.точностьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripComboBoxEpsilon});
+            this.точностьToolStripMenuItem.Name = "точностьToolStripMenuItem";
+            this.точностьToolStripMenuItem.Size = new System.Drawing.Size(368, 26);
+            this.точностьToolStripMenuItem.Text = "Точность (число знаков после запятой)";
+            // 
+            // toolStripComboBoxEpsilon
+            // 
+            this.toolStripComboBoxEpsilon.AutoCompleteCustomSource.AddRange(new string[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10"});
+            this.toolStripComboBoxEpsilon.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.toolStripComboBoxEpsilon.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15"});
+            this.toolStripComboBoxEpsilon.Name = "toolStripComboBoxEpsilon";
+            this.toolStripComboBoxEpsilon.Size = new System.Drawing.Size(121, 28);
+            this.toolStripComboBoxEpsilon.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxEpsilon_SelectedIndexChanged_1);
             // 
             // Main_menu
             // 
@@ -784,6 +832,8 @@
         private System.Windows.Forms.ToolStripMenuItem очиститьВсеМатрицыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem обновитьToolStripMenuItem;
         private System.Windows.Forms.ComboBox comboBox_A2;
+        private System.Windows.Forms.ToolStripMenuItem точностьToolStripMenuItem;
+        private System.Windows.Forms.ToolStripComboBox toolStripComboBoxEpsilon;
     }
 }
 
