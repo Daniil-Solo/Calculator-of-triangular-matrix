@@ -24,8 +24,6 @@ namespace Calculator_of_triangular_matrix
         public Input_hand()
         {
             InitializeComponent();
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            MaximizeBox = false;
 
             packedForm = new double[TempMatrix.N * (TempMatrix.N + 1) / 2];
             for (int i = 0; i < TempMatrix.N * (TempMatrix.N + 1) / 2; i++)

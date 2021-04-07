@@ -93,6 +93,7 @@ namespace Calculator_of_triangular_matrix
             this.Name = "Output";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Печать значений";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.Output_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
