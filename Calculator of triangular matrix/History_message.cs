@@ -11,6 +11,7 @@ namespace Calculator_of_triangular_matrix
      // Поля
         private String text;
         private History_message msg_next;
+        public static int number = 1;
 
      // Аксессоры
         public String Text 
@@ -23,7 +24,6 @@ namespace Calculator_of_triangular_matrix
             get { return msg_next; }
             set { msg_next = value; }
         }
-
      // Конструктор
         public History_message(String text)
         {
@@ -39,6 +39,7 @@ namespace Calculator_of_triangular_matrix
         // Пример вызова: myHistory = myHistory.Add();
         public History_message Add(String text)
         {
+            number++;
             History_message newMessage = new History_message(text);
             newMessage.msg_next = this;
             return newMessage;
@@ -50,13 +51,15 @@ namespace Calculator_of_triangular_matrix
         // Пример вызова: myHistory.Print(4);
         public String Print(int k)
         {
+            int n = number;
             History_message p = this;
             String result = "";
             while ((p != null) && (k > 0))
             {
-                result = p.text + "\r\n" + result;
+                result = n.ToString() + ". " + p.text + "\r\n" + result;
                 p = p.msg_next;
                 k--;
+                n--;
             }
             return result;
         }
@@ -67,6 +70,7 @@ namespace Calculator_of_triangular_matrix
         // Пример вызова: myHistory = myHistory.Clear_history();
         public History_message Clear_history()
         {
+            History_message.number = 1;
             History_message p = this;
             History_message q;
 

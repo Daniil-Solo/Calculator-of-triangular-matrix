@@ -50,7 +50,7 @@ namespace Calculator_of_triangular_matrix
             }
             catch
             {
-                ourHistory = ourHistory.Add("Ошибка при открытии файла " + filename);
+                ourHistory = ourHistory.Add("При открытии файла произошла ошибка " + filename);
                 return;
             }
             int N;
@@ -59,57 +59,98 @@ namespace Calculator_of_triangular_matrix
             double[] PackedForm;
             bool success;
             
-            success = Int32.TryParse(f.ReadLine(), out N);
+            success = Int32.TryParse(f.ReadLine().Trim(), out N);
             if (!success)
             {
                 ourHistory = ourHistory.Add("Неверный формат размерности");
+                f.Close();
                 return;
             }
             DataTransfer.data[0] = N;
-            success = Double.TryParse(f.ReadLine(), out V);
+            success = Double.TryParse(f.ReadLine().Trim(), out V);
             if (!success)
             {
                 ourHistory = ourHistory.Add("Неверный формат значения V");
+                f.Close();
                 return;
             }
             DataTransfer.data[1] = V;
-            success = Category.TryParse(f.ReadLine(), out Type);
+            success = Category.TryParse(f.ReadLine().Trim(), out Type);
             if (!success || Type == Category.none)
             {
                 ourHistory = ourHistory.Add("Неверный формат типа");
+                f.Close();
                 return;
             }
             DataTransfer.data[2] = Type;
             PackedForm = new double[N * (N + 1) / 2];
             int k = 0;
             Matrix Temp = new Matrix('_', N, V, Type, null);
-            try 
+            
+            for (int i = 0; i < N; i++)
             {
-                for (int i = 0; i < N; i++)
+                string line = f.ReadLine();
+                if(line == null)
                 {
-                    string line = f.ReadLine();
-                    line = line.Trim();
-                    line = System.Text.RegularExpressions.Regex.Replace(line, @"\s+", " ");
-                    string[] splittedStroka = line.Split(' ');
-                    for (int j = 0; j < N; j++)
+                    ourHistory = ourHistory.Add("Недостаточно строк в файле");
+                    f.Close();
+                    return;
+                }
+                line = line.Trim();
+                line = System.Text.RegularExpressions.Regex.Replace(line, @"\s+", " ");
+                string[] splittedStroka = line.Split(' ');
+                for (int j = 0; j < N; j++)
+                {
+                    String strElement;
+                    try
                     {
-                        if(!Operations.isV(i, j, Temp))
+                        strElement = splittedStroka[j];
+                    }
+                    catch
+                    {
+                        ourHistory = ourHistory.Add("Недостаточно значений в строке номер: " + (4+i).ToString());
+                        f.Close();
+                        return;
+                    }
+                    success = Double.TryParse(strElement, out V);
+                    if (!success)
+                    {
+                        ourHistory = ourHistory.Add("Обнаружено значение, не являющееся числом: " + strElement + " в строке: " + (4 + i).ToString());
+                        f.Close();
+                        return;
+                    }
+                    else
+                    {
+                        if (Operations.isV(i, j, Temp))
                         {
-                            V = Double.Parse(splittedStroka[j]);
+                            if((double)DataTransfer.data[1] == V)
+                            {
+                                // пропустить
+                            }
+                            else
+                            {
+                                ourHistory = ourHistory.Add("Ожидалось значение V, равное " +
+                                    ((double)DataTransfer.data[1]).ToString() + ", а получено значение V, равное " +
+                                    V.ToString() + " в строке: " + (4 + i).ToString());
+                                f.Close();
+                                return;
+                            }
+                        }
+                        else
+                        {
                             PackedForm[k] = V;
                             k++;
                         }
-                    } 
-                }
+                    }
+                } 
             }
-            catch
+            if(f.ReadLine() != null)
             {
-                ourHistory = ourHistory.Add("Недостаточно строк в матрице");
-                return;
+                ourHistory = ourHistory.Add("Предупреждение: имеются лишние строки в конце файла, которые не были считаны");
             }
+            
             DataTransfer.data[3] = PackedForm;
             f.Close();
-            ourHistory = ourHistory.Add("Матрица сохранена по адресу " + filename);
         }
 
         // Сохранение матрицы частично реализовано в коде формы начального окна

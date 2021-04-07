@@ -578,7 +578,7 @@
             this.message_history.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.message_history.Size = new System.Drawing.Size(884, 253);
             this.message_history.TabIndex = 1;
-            this.message_history.Text = "Программа готова к работе";
+            this.message_history.Text = "1. Программа готова к работе";
             // 
             // menuStrip1
             // 

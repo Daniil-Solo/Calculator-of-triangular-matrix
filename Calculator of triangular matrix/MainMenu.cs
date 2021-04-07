@@ -351,6 +351,7 @@ namespace Calculator_of_triangular_matrix
                     return M;
                 ourHistory = ourHistory.Add("Матрица " + M.Name + " создается способом: считывание из текстового файла");
                 string filename = openFileDialog1.FileName;
+                ourHistory = ourHistory.Add("Адрес: " + filename);
                 M.OpenFromFileToDataTransfer(filename, ref ourHistory);
             }
             else if (sp == 2)// случайным образом
