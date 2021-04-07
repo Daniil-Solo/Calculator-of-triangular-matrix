@@ -43,6 +43,7 @@ namespace Calculator_of_triangular_matrix
         // Создание матрицы с помощью файла
         public void OpenFromFileToDataTransfer(string filename, ref History_message ourHistory)
         {
+            int moreElementsStr = 0;
             StreamReader f = null;
             try
             {
@@ -142,9 +143,24 @@ namespace Calculator_of_triangular_matrix
                             k++;
                         }
                     }
-                } 
+                }
+                success = false;
+                try
+                {
+                    String _ = splittedStroka[N];
+                }
+                catch
+                {
+                    success = true;
+                }
+                if (!success)
+                    moreElementsStr++;
             }
-            if(f.ReadLine() != null)
+            if (moreElementsStr != 0)
+            {
+                ourHistory = ourHistory.Add("Предупреждение: имеются лишние значения в конце строк, которые не были считаны. Количество таких строк: " + moreElementsStr.ToString());
+            }
+            if (f.ReadLine() != null)
             {
                 ourHistory = ourHistory.Add("Предупреждение: имеются лишние строки в конце файла, которые не были считаны");
             }
