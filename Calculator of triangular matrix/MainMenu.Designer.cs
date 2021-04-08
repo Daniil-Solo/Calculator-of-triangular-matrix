@@ -326,14 +326,17 @@
             // GridView_A
             // 
             this.GridView_A.AllowUserToAddRows = false;
+            this.GridView_A.AllowUserToDeleteRows = false;
+            this.GridView_A.AllowUserToResizeColumns = false;
+            this.GridView_A.AllowUserToResizeRows = false;
             this.GridView_A.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel3.SetColumnSpan(this.GridView_A, 2);
             this.GridView_A.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridView_A.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.GridView_A.Location = new System.Drawing.Point(3, 61);
-            this.GridView_A.MultiSelect = false;
             this.GridView_A.Name = "GridView_A";
             this.GridView_A.ReadOnly = true;
-            this.GridView_A.RowHeadersWidth = 51;
+            this.GridView_A.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.GridView_A.RowTemplate.Height = 24;
             this.GridView_A.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.GridView_A.Size = new System.Drawing.Size(426, 329);
@@ -441,14 +444,17 @@
             // GridView_B
             // 
             this.GridView_B.AllowUserToAddRows = false;
+            this.GridView_B.AllowUserToDeleteRows = false;
+            this.GridView_B.AllowUserToResizeColumns = false;
+            this.GridView_B.AllowUserToResizeRows = false;
             this.GridView_B.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel4.SetColumnSpan(this.GridView_B, 2);
             this.GridView_B.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridView_B.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.GridView_B.Location = new System.Drawing.Point(3, 60);
-            this.GridView_B.MultiSelect = false;
             this.GridView_B.Name = "GridView_B";
             this.GridView_B.ReadOnly = true;
-            this.GridView_B.RowHeadersWidth = 51;
+            this.GridView_B.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.GridView_B.RowTemplate.Height = 24;
             this.GridView_B.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.GridView_B.Size = new System.Drawing.Size(438, 329);
@@ -527,14 +533,17 @@
             // GridView_C
             // 
             this.GridView_C.AllowUserToAddRows = false;
+            this.GridView_C.AllowUserToDeleteRows = false;
+            this.GridView_C.AllowUserToResizeColumns = false;
+            this.GridView_C.AllowUserToResizeRows = false;
             this.GridView_C.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel5.SetColumnSpan(this.GridView_C, 2);
             this.GridView_C.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GridView_C.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.GridView_C.Location = new System.Drawing.Point(3, 59);
-            this.GridView_C.MultiSelect = false;
             this.GridView_C.Name = "GridView_C";
             this.GridView_C.ReadOnly = true;
-            this.GridView_C.RowHeadersWidth = 51;
+            this.GridView_C.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.GridView_C.RowTemplate.Height = 24;
             this.GridView_C.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.GridView_C.Size = new System.Drawing.Size(434, 332);

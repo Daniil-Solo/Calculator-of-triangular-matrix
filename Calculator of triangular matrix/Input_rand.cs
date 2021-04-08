@@ -55,9 +55,9 @@ namespace Calculator_of_triangular_matrix
                 textBox_n.Focus();
                 return;
             }
-            if (n < 0)
+            if (n <= 0)
             {
-                MessageBox.Show("Ошибка!\nРазмерность не может быть отрицательной!");
+                MessageBox.Show("Ошибка!\nРазмерность не может быть неположительной!");
                 textBox_n.Text = "";
                 textBox_n.Focus();
                 return;

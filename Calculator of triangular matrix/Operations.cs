@@ -150,7 +150,7 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                history = history.Add("Не совпадает типы или размерности матриц");
+                history = history.Add("Не совпадают типы или размерности матриц");
                 return C;
             }
         }
@@ -179,7 +179,7 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                history = history.Add("Не совпадает типы или размерности матриц");
+                history = history.Add("Не совпадают типы или размерности матриц");
                 return C;
             }
         }
