@@ -67,6 +67,12 @@ namespace Calculator_of_triangular_matrix
                 f.Close();
                 return;
             }
+            if (N <= 0) 
+            {
+                ourHistory = ourHistory.Add("Размерность должна быть положительной");
+                f.Close();
+                return;
+            }
             DataTransfer.data[0] = N;
             success = Double.TryParse(f.ReadLine().Trim(), out V);
             if (!success)
