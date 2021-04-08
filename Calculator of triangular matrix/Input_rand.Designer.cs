@@ -61,7 +61,7 @@ namespace Calculator_of_triangular_matrix
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(345, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(345, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -114,7 +114,7 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
@@ -126,7 +126,7 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.617647F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.08759F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.62774F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(345, 286);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(345, 288);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // button_ready
@@ -135,7 +135,7 @@ namespace Calculator_of_triangular_matrix
             this.button_ready.Location = new System.Drawing.Point(3, 223);
             this.button_ready.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_ready.Name = "button_ready";
-            this.button_ready.Size = new System.Drawing.Size(339, 61);
+            this.button_ready.Size = new System.Drawing.Size(339, 63);
             this.button_ready.TabIndex = 6;
             this.button_ready.Text = "Готово";
             this.button_ready.UseVisualStyleBackColor = true;

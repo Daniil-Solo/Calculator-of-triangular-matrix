@@ -145,19 +145,25 @@ namespace Calculator_of_triangular_matrix
         // -------------------Кнопки сохранения матриц--------------------
         private void safe_A_Click(object sender, EventArgs e)
         {
-            Save_m(A, ref ourHistory);
+            if (CheckMatrix(A))
+                Save_m(A, ref ourHistory);
+            else ourHistory = ourHistory.Add("Для сохранения матрица должна быть задана");
             UpdateInfo();
         }
 
         private void safe_B_Click(object sender, EventArgs e)
         {
-            Save_m(B, ref ourHistory);
+            if (CheckMatrix(B))
+                Save_m(B, ref ourHistory);
+            else ourHistory = ourHistory.Add("Для сохранения матрица должна быть задана");
             UpdateInfo();
         }
 
         private void safe_C_Click(object sender, EventArgs e)
         {
-            Save_m(C, ref ourHistory);
+            if (CheckMatrix(C))
+                Save_m(C, ref ourHistory);
+            else ourHistory = ourHistory.Add("Для сохранения матрица должна быть задана");
             UpdateInfo();
         }
 
