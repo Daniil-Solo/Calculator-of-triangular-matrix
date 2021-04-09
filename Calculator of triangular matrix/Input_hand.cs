@@ -35,6 +35,7 @@ namespace Calculator_of_triangular_matrix
             ActiveControl = textBox_input;
         }
 
+// ---------------Обработка нажатия на Готово----------------
         private void button_ready_Click(object sender, EventArgs e)
         {
             bool success = true;
@@ -55,7 +56,7 @@ namespace Calculator_of_triangular_matrix
             else
             {
                 MessageBox.Show("Ошибка\nОбнаружена незаполненная ячейка");
-                int[] missIndexes = GetMissIndexes(missIndex, TempMatrix);
+                int[] missIndexes = ServiceFunctions.GetMissIndexes(missIndex, TempMatrix);
                 globalStroka = missIndexes[0];
                 globalStolbec = missIndexes[1];
                 SelectElement(globalStroka, globalStolbec);
@@ -64,6 +65,7 @@ namespace Calculator_of_triangular_matrix
             
         }
 
+//-------- ------Обработка нажатия на Добавить------------
         private void button_add_Click(object sender, EventArgs e)
         {
             double Znachenie;
@@ -107,16 +109,16 @@ namespace Calculator_of_triangular_matrix
             textBox_input.SelectionStart = 0;
             textBox_input.SelectionLength = textBox_input.Text.Length;
         }
-        
-
-        private void dataGridView_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        // Аналогично при нажатии на Энтер
+        private void textBox_input_KeyDown(object sender, KeyEventArgs e)
         {
-            object head = this.dataGridView.Rows[e.RowIndex].HeaderCell.Value;
-            if (head == null)
-                this.dataGridView.Rows[e.RowIndex].HeaderCell.Value =
-                    (e.RowIndex).ToString();
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_add_Click(sender, e);
+            }
         }
 
+// --------Обработка нажатия на кнопки для перемещения по таблице--------
         private void button_up_Click(object sender, EventArgs e)
         {
             if (globalStroka != 0)
@@ -134,7 +136,6 @@ namespace Calculator_of_triangular_matrix
             }
             
         }
-
         private void button_right_Click(object sender, EventArgs e)
         {
             if (globalStolbec != TempMatrix.N-1)
@@ -150,7 +151,6 @@ namespace Calculator_of_triangular_matrix
                 }
             }
         }
-
         private void button_down_Click(object sender, EventArgs e)
         {
             if (globalStroka != TempMatrix.N - 1)
@@ -166,7 +166,6 @@ namespace Calculator_of_triangular_matrix
                 }
             }
         }
-
         private void button_left_Click(object sender, EventArgs e)
         {
             if (globalStolbec != 0)
@@ -183,6 +182,27 @@ namespace Calculator_of_triangular_matrix
             }
         }
 
+
+        // выделение элемента в таблице
+        private void SelectElement(int stroka, int stolbec)
+        {
+            dataGridView.CurrentCell = dataGridView.Rows[stroka].Cells[stolbec];
+            labelElement.Text = "A[" + globalStroka.ToString() + "][" + globalStolbec.ToString() + "]=";
+        }
+
+
+        private void Input_hand_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // очистка
+            this.dataGridView.Rows.Clear();  // удаление всех строк
+            int count = this.dataGridView.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+            {
+                this.dataGridView.Columns.RemoveAt(0);
+            }
+        }
+// ---------------------------DataGridView----------------------------
+        // отображение таблицы
         private void createGridView()
         {
             DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[TempMatrix.N];
@@ -207,79 +227,19 @@ namespace Calculator_of_triangular_matrix
                 col.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
-
-        private void SelectElement(int stroka, int stolbec)
+        // Рисование номеров строк
+        private void dataGridView_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            dataGridView.CurrentCell = dataGridView.Rows[stroka].Cells[stolbec];
-            labelElement.Text = "A[" + globalStroka.ToString() + "][" + globalStolbec.ToString() + "]=";
-        }
-
-        private void Input_hand_KeyDown(object sender, KeyEventArgs e)
-        {
-            if(e.KeyCode == Keys.Right)
-            {
-                button_right_Click(sender, e);
-                SelectElement(10, 10);
-            }
-            else if(e.KeyCode == Keys.Left)
-            {
-                button_left_Click(sender, e);
-            }
-            else if(e.KeyCode == Keys.Down)
-            {
-                button_down_Click(sender, e);
-            }
-            else if(e.KeyCode == Keys.Up)
-            {
-                button_up_Click(sender, e);
-            }
-        }
-
-
-        private int[] GetMissIndexes(int k, Matrix M)
-        {
-            bool notfound = true;
-            int[] result = new int[2];
-            for(int i = 0; i < M.N && notfound; i++)
-                for(int j = 0; j < M.N && notfound; j++)
-                {
-                    if(!Operations.isV(i, j, M) && k == Operations.getIndexK(i, j, M))
-                    {
-                        result[0] = i;
-                        result[1] = j;
-                        notfound = false;
-                    }
-                }
-            return result;
-        }
-
-        private void textBox_input_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                button_add_Click(sender, e);
-            }
-        }
-
+            object head = this.dataGridView.Rows[e.RowIndex].HeaderCell.Value;
+            if (head == null)
+                this.dataGridView.Rows[e.RowIndex].HeaderCell.Value =
+                    (e.RowIndex).ToString();
+        }        
+        // не отображать выделенные мышкой элементы
         private void dataGridView_SelectionChanged(object sender, EventArgs e)
         {
             if (MouseButtons != System.Windows.Forms.MouseButtons.None)
                 SelectElement(globalStroka, globalStolbec);
-        }
-
-        private void Input_hand_Load(object sender, EventArgs e)
-        {
-        }
-
-        private void Input_hand_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            // очистка
-            this.dataGridView.Rows.Clear();  // удаление всех строк
-            int count = this.dataGridView.Columns.Count;
-            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
-            {
-                this.dataGridView.Columns.RemoveAt(0);
-            }
         }
     }
 }

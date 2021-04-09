@@ -20,6 +20,7 @@ namespace Calculator_of_triangular_matrix
             MaximizeBox = false;
         }
 
+// Справка
         private void помощьToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -40,7 +41,7 @@ namespace Calculator_of_triangular_matrix
             bool success;
 
             // проверяем категорию
-            type = TransformCategory(comboBox_type.SelectedIndex);
+            type = ServiceFunctions.TransformCategory(comboBox_type.SelectedIndex);
             success = type != Category.none;
             if (!success)
             {
@@ -86,30 +87,8 @@ namespace Calculator_of_triangular_matrix
             // уничтожаем текущую форму
             this.Dispose();
         }
-        private Category TransformCategory(int index)
-        {
-            if (index == 0)
-            {
-                return Category.bot_right;
-            }
-            else if (index == 1)
-            {
-                return Category.top_right;
-            }
-            else if (index == 2)
-            {
-                return Category.bot_left;
-            }
-            else if (index == 3)
-            {
-                return Category.top_left;
-            }
-            else
-            {
-                return Category.none;
-            }
-        }
 
+        // обработка нажатий на кнопку энтер в элементах
         private void comboBox_type_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -119,7 +98,6 @@ namespace Calculator_of_triangular_matrix
                 textBox_n.Focus();
             }
         }
-
         private void textBox_n_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

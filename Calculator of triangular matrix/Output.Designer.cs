@@ -82,7 +82,6 @@ namespace Calculator_of_triangular_matrix
             this.dataGridViewOutput.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewOutput.Size = new System.Drawing.Size(644, 378);
             this.dataGridViewOutput.TabIndex = 1;
-            this.dataGridViewOutput.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOutput_CellContentClick);
             this.dataGridViewOutput.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridViewOutput_RowPrePaint);
             this.dataGridViewOutput.SelectionChanged += new System.EventHandler(this.dataGridViewOutput_SelectionChanged);
             // 

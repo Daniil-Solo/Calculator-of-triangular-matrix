@@ -356,7 +356,6 @@
             this.type_n_A.Size = new System.Drawing.Size(210, 38);
             this.type_n_A.TabIndex = 3;
             this.type_n_A.Text = "Тип: нет\r\nРазмерность: нет\r\n\r\n\r\n";
-            this.type_n_A.Click += new System.EventHandler(this.type_n_A_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -622,8 +621,8 @@
             this.очистить,
             this.точностьToolStripMenuItem});
             this.сервис.Name = "сервис";
-            this.сервис.Size = new System.Drawing.Size(73, 24);
-            this.сервис.Text = "Сервис";
+            this.сервис.Size = new System.Drawing.Size(98, 24);
+            this.сервис.Text = "Настройки";
             // 
             // закрепитьПоверхДургихОкон
             // 
@@ -775,8 +774,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = " Калькулятор треугольных матриц";
             this.Load += new System.EventHandler(this.Main_menu_Load);
-            this.ResizeEnd += new System.EventHandler(this.Main_menu_Resize);
-            this.Resize += new System.EventHandler(this.Main_menu_Resize_1);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

@@ -23,11 +23,12 @@ namespace Calculator_of_triangular_matrix
             ActiveControl = comboBox_type;
             comboBox_type.SelectedIndex = 0;
         }
+        // Справка
         private void помощьToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-
+        // Обработка нажатия клавиши Готово
         private void button_ready_Click(object sender, EventArgs e)
         {
             int n;
@@ -38,7 +39,7 @@ namespace Calculator_of_triangular_matrix
             bool success;
 
             // проверяем категорию
-            type = TransformCategory(comboBox_type.SelectedIndex);
+            type = ServiceFunctions.TransformCategory(comboBox_type.SelectedIndex);
             success = type != Category.none;
             if (!success)
             {
@@ -110,7 +111,7 @@ namespace Calculator_of_triangular_matrix
             }
 
             // заполнение случайными значениями
-            packed_form = rand_array(n * (n + 1) / 2, Diapazon_ot, Diapazon_do);
+            packed_form = ServiceFunctions.rand_array(n * (n + 1) / 2, Diapazon_ot, Diapazon_do);
 
             // Отправка данных
             DataTransfer.data[0] = n;
@@ -121,42 +122,8 @@ namespace Calculator_of_triangular_matrix
             // Возвращение на старую форму
             this.Dispose();
         }
-        private double[] rand_array(int size, double D1, double D2)
-        {
-            double[] packed_form = new double[size];
-            Random rnd = new Random(); //Создание объекта для генерации чисел
-            for (int i = 0; i < size; i++) // Заполнение массива случайными значениями
-            {
-                packed_form[i] = D1 + rnd.NextDouble()*(D2-D1);
-            }
 
-            return packed_form;
-        }
-        private Category TransformCategory(int index)
-        {
-            if (index == 0)
-            {
-                return Category.bot_right;
-            }
-            else if (index == 1)
-            {
-                return Category.top_right;
-            }
-            else if (index == 2)
-            {
-                return Category.bot_left;
-            }
-            else if (index == 3)
-            {
-                return Category.top_left;
-            }
-            else
-            {
-                return Category.none;
-            }
-        }
-
-
+//-----------------Обработка нажатия на клавишу ентер-----------
         private void textBox_n_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

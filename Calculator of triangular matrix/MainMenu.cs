@@ -54,6 +54,13 @@ namespace Calculator_of_triangular_matrix
         {
             TopMost = !TopMost;
         }
+        private void toolStripComboBoxEpsilon_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+            Epsilon.value = toolStripComboBoxEpsilon.SelectedIndex;
+            ShowMatrixA();
+            ShowMatrixB();
+            ShowMatrixC();
+        }
         private void очиститьИсториюСообщений_Click(object sender, EventArgs e)
         {
             ourHistory = ourHistory.Clear_history();
@@ -142,10 +149,10 @@ namespace Calculator_of_triangular_matrix
             UpdateInfo();
         }
 
-        // -------------------Кнопки сохранения матриц--------------------
+// -------------------Кнопки сохранения матриц--------------------
         private void safe_A_Click(object sender, EventArgs e)
         {
-            if (CheckMatrix(A))
+            if (ServiceFunctions.CheckMatrix(A))
             {
                 MometalShowMessage("Сохранение матрицы A");
                 Save_m(A, ref ourHistory);
@@ -157,7 +164,7 @@ namespace Calculator_of_triangular_matrix
 
         private void safe_B_Click(object sender, EventArgs e)
         {
-            if (CheckMatrix(B))
+            if (ServiceFunctions.CheckMatrix(B))
             {
                 MometalShowMessage("Сохранение матрицы B");
                 Save_m(B, ref ourHistory);
@@ -169,7 +176,7 @@ namespace Calculator_of_triangular_matrix
 
         private void safe_C_Click(object sender, EventArgs e)
         {
-            if (CheckMatrix(C))
+            if (ServiceFunctions.CheckMatrix(C))
             {
                 MometalShowMessage("Сохранение матрицы C");
                 Save_m(C, ref ourHistory);
@@ -246,7 +253,7 @@ namespace Calculator_of_triangular_matrix
 // -------------Кнопки операций----------------------
         private void AplusB_Click(object sender, EventArgs e)
         {
-            if (Check2Matrix(A, B))
+            if (ServiceFunctions.Check2Matrix(A, B))
             {
                 MometalShowMessage("Выполнение операции A+B");
                 C = Operations.Summ(A, B, C, ref ourHistory);
@@ -270,7 +277,7 @@ namespace Calculator_of_triangular_matrix
         }
         private void AminB_Click(object sender, EventArgs e)
         {
-            if (Check2Matrix(A, B))
+            if (ServiceFunctions.Check2Matrix(A, B))
             {
                 MometalShowMessage("Выполнение операции A-B");
                 C = Operations.Subtraction(A, B, C, ref ourHistory);
@@ -294,7 +301,7 @@ namespace Calculator_of_triangular_matrix
         }
         private void AmultB_Click(object sender, EventArgs e)
         {
-            if (Check2Matrix(A, B))
+            if (ServiceFunctions.Check2Matrix(A, B))
             {
                 MometalShowMessage("Выполнение операции A*B. Пожалуйста подождите...");
                 C = Operations.Multiply(A, B, C, ref ourHistory);
@@ -318,7 +325,7 @@ namespace Calculator_of_triangular_matrix
         }
         private void A_on_B_Click(object sender, EventArgs e)
         {
-            if (Check1Matrix(A, B))
+            if (ServiceFunctions.Check1Matrix(A, B))
             {
                 MometalShowMessage("Выполнение операции " + A.Name + " <->" + B.Name);
                 Operations.Replace_A_B(ref A, ref B, ref ourHistory);
@@ -330,7 +337,7 @@ namespace Calculator_of_triangular_matrix
         }
         private void A_on_C_Click(object sender, EventArgs e)
         {
-            if (Check1Matrix(A, C))
+            if (ServiceFunctions.Check1Matrix(A, C))
             {
                 MometalShowMessage("Выполнение операции " + A.Name + " <->" + C.Name);
                 Operations.Replace_A_B(ref A, ref C, ref ourHistory);
@@ -341,7 +348,7 @@ namespace Calculator_of_triangular_matrix
         }
         private void B_on_C_Click(object sender, EventArgs e)
         {
-            if (Check1Matrix(B, C))
+            if (ServiceFunctions.Check1Matrix(B, C))
             {
                 MometalShowMessage("Выполнение операции " + B.Name + " <->" + C.Name);
                 Operations.Replace_A_B(ref B, ref C, ref ourHistory);
@@ -352,7 +359,7 @@ namespace Calculator_of_triangular_matrix
         }
         private void obrA_Click(object sender, EventArgs e)
         {
-            if (CheckMatrix(A))
+            if (ServiceFunctions.CheckMatrix(A))
             {
                 MometalShowMessage("Вычисление определителя матрицы A");
                 double detA = Operations.DeterminantReverseMatrix(A, ref ourHistory);
@@ -370,7 +377,7 @@ namespace Calculator_of_triangular_matrix
         }
         private void obrB_Click(object sender, EventArgs e)
         {
-            if (CheckMatrix(B))
+            if (ServiceFunctions.CheckMatrix(B))
             {
                 MometalShowMessage("Вычисление определителя матрицы B");
                 double detB = Operations.DeterminantReverseMatrix(B, ref ourHistory);
@@ -386,7 +393,9 @@ namespace Calculator_of_triangular_matrix
                 MometalShowMessage("Матрица B не задана");
         }
 
-        // ------------------ Служебные функции----------------
+ // --------------------------- Служебные функции---------------------
+    //-----------Отображение---------------      
+        // обновление всей информации
         private void UpdateInfo()
         {
             ShowMatrixA();
@@ -395,42 +404,28 @@ namespace Calculator_of_triangular_matrix
             labelMatrixShow();
             message_history.Text = ourHistory.Print(n_sms);
         }
-        private string TypeShow(Matrix M)
+        // показать новое сообщение
+        private void MometalShowMessage(String message)
         {
-            if (M.Type.ToString() == "top_left") return "Верхний-левый";
-            else if (M.Type.ToString() == "top_right") return "Верхний-правый";
-                else if (M.Type.ToString() == "bot_left") return "Нижний-левый";
-                    else return "Нижний-правый";
+            ourHistory = ourHistory.Add(message);
+            message_history.Text = ourHistory.Print(n_sms);
         }
+        // обновить только информацию о матрице С
+        private void ShowOnlyChangesInC()
+        {
+            ShowMatrixC();
+            message_history.Text = ourHistory.Print(n_sms);
+            labelMatrixShow();
+        }
+        // показать типы и размерности
         private void labelMatrixShow()
         {
-            if (A.N != 0)
-            {
-                type_n_A.Text = "Тип: " + TypeShow(A) + "\n\rРазмерность: " + A.N.ToString();
-            }
-            else
-            {
-                type_n_A.Text = "Тип: нет \n\rРазмерность: нет";
-            }
-            if (B.N != 0)
-            {
-                type_n_B.Text = "Тип: " + TypeShow(B) + "\n\rРазмерность: " + B.N.ToString();
-            }
-            else
-            {
-                type_n_B.Text = "Тип: нет \n\rРазмерность: нет";
-            }
-            if (C.N != 0)
-            {
-                type_n_C.Text = "Тип: " + TypeShow(C) + "\n\rРазмерность: " + C.N.ToString();
-            }
-            else
-            {
-                type_n_C.Text = "Тип: нет \n\rРазмерность: нет";
-            }
-
+            type_n_A.Text = ServiceFunctions.labelMatrix(A);
+            type_n_B.Text = ServiceFunctions.labelMatrix(B);
+            type_n_C.Text = ServiceFunctions.labelMatrix(C);
         }
 
+//----------------Создание и сохранение матриц------------
         // Создание матрицы
         // Принимает на вход способ создания, историю сообщения и имя матрицы
         // Возвращает ссылку на новую матрицу
@@ -503,6 +498,7 @@ namespace Calculator_of_triangular_matrix
             M.Save(filename, ref ourHistory);
         }
 
+//-----------------------Отображение матриц--------------------------
         // Отображение матрицы А
         private void ShowMatrixA()
         {
@@ -619,41 +615,8 @@ namespace Calculator_of_triangular_matrix
             }
         }
 
-        private bool Check2Matrix(Matrix M,Matrix K) //проверка: 2 матрицы не пустые
-        {
-            bool success = false;
-            if ((M.Type != Category.none) && (K.Type != Category.none))
-            { success = true; }
-            return success;
-        }
-        private bool Check1Matrix(Matrix M, Matrix K) //проверка: хотя бы 1 матрица не пустая
-        {
-            bool success = false;
-            if ((M.Type != Category.none) || (K.Type != Category.none))
-            { success = true; }
-            return success;
-        }
-        private bool CheckMatrix(Matrix M) //проверка: 1 матрица не пустая
-        {
-            bool success = false;
-            if (M.Type != Category.none)
-            { success = true; }
-            return success;
-        }
 
-        private void Main_menu_Resize(object sender, EventArgs e)
-        {
-            ShowMatrixA();
-            ShowMatrixB();
-            ShowMatrixC();
-        }
-
-        private void Main_menu_Resize_1(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Maximized)
-                Main_menu_Resize(sender, e);
-        }
-
+// --------------Рисование номеров строк----------------
         private void GridView_A_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             object head = this.GridView_A.Rows[e.RowIndex].HeaderCell.Value;
@@ -678,11 +641,7 @@ namespace Calculator_of_triangular_matrix
                     (e.RowIndex).ToString();
         }
 
-        private void type_n_A_Click(object sender, EventArgs e)
-        {
-
-        }
-
+//----------------История сообщений скроллинг вниз------------
         private void message_history_TextChanged(object sender, EventArgs e)
         {
             message_history.SelectionStart = message_history.Text.Length;
@@ -690,25 +649,9 @@ namespace Calculator_of_triangular_matrix
             message_history.Refresh();
         }
 
-        private void toolStripComboBoxEpsilon_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-            Epsilon.value = toolStripComboBoxEpsilon.SelectedIndex;
-            ShowMatrixA();
-            ShowMatrixB();
-            ShowMatrixC();
-        }
-        private void MometalShowMessage(String message)
-        {
-            ourHistory = ourHistory.Add(message);
-            message_history.Text = ourHistory.Print(n_sms);
-        }
-        private void ShowOnlyChangesInC()
-        {
-            ShowMatrixC();
-            message_history.Text = ourHistory.Print(n_sms);
-            labelMatrixShow();
-        }
 
+        
+//-----------Запрет выделения мышкой-------------------
         private void GridView_A_SelectionChanged(object sender, EventArgs e)
         {
             try

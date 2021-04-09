@@ -145,10 +145,6 @@ namespace Calculator_of_triangular_matrix
             }
         }
 
-        private void dataGridViewOutput_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         private void dataGridViewOutput_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
