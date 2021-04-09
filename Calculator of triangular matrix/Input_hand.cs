@@ -59,6 +59,7 @@ namespace Calculator_of_triangular_matrix
                 globalStroka = missIndexes[0];
                 globalStolbec = missIndexes[1];
                 SelectElement(globalStroka, globalStolbec);
+                textBox_input.Focus();
             }
             
         }
@@ -70,10 +71,14 @@ namespace Calculator_of_triangular_matrix
             success = Double.TryParse(textBox_input.Text, out Znachenie);
             if(!success)
             {
-                MessageBox.Show("Ошибка!\nНе верное значение!");
-                textBox_input.Text = "";
-                textBox_input.Focus();
-                return;
+                success = Double.TryParse(textBox_input.Text.Replace('.', ','), out Znachenie);
+                if (!success)
+                {
+                    MessageBox.Show("Ошибка!\nНе верное значение!");
+                    textBox_input.Text = "";
+                    textBox_input.Focus();
+                    return;
+                }                   
             }
             dataGridView[globalStolbec, globalStroka].Value = Znachenie;
             packedForm[Operations.getIndexK(globalStroka, globalStolbec, TempMatrix)] = Znachenie;

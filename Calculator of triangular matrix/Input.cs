@@ -68,10 +68,14 @@ namespace Calculator_of_triangular_matrix
             success = Double.TryParse(textBox_V.Text, out V);
             if(!success)
             {
-                MessageBox.Show("Ошибка!\nНе верно введено значение V!");
-                textBox_V.Text = "";
-                textBox_V.Focus();
-                return;
+                success = Double.TryParse(textBox_V.Text.Replace('.', ','), out V);
+                if (!success)
+                {
+                    MessageBox.Show("Ошибка!\nНе верно введено значение V!");
+                    textBox_V.Text = "";
+                    textBox_V.Focus();
+                    return;
+                }
             }
             
             // Отправляем данные

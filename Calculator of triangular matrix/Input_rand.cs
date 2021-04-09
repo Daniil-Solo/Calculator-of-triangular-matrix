@@ -66,27 +66,39 @@ namespace Calculator_of_triangular_matrix
             success = Double.TryParse(textBox_V.Text, out V);
             if (!success)
             {
-                MessageBox.Show("Ошибка!\nНе верно введено значение V!");
-                textBox_V.Text = "";
-                textBox_V.Focus();
-                return;
+                success = Double.TryParse(textBox_V.Text.Replace('.', ','), out V);
+                if (!success)
+                {
+                    MessageBox.Show("Ошибка!\nНе верно введено значение V!");
+                    textBox_V.Text = "";
+                    textBox_V.Focus();
+                    return;
+                }
             }
             // проверяем диапазоны
             success = Double.TryParse(textBox_ot.Text, out Diapazon_ot);
             if (!success)
             {
-                MessageBox.Show("Ошибка!\nНе верно введено значение диапазона!");
-                textBox_ot.Text = "";
-                textBox_ot.Focus();
-                return;
+                success = Double.TryParse(textBox_ot.Text.Replace('.', ','), out Diapazon_ot);
+                if (!success)
+                {
+                    MessageBox.Show("Ошибка!\nНе верно введено значение диапазона!");
+                    textBox_ot.Text = "";
+                    textBox_ot.Focus();
+                    return;
+                }
             }
             success = Double.TryParse(textBox_do.Text, out Diapazon_do);
             if (!success)
             {
-                MessageBox.Show("Ошибка!\nНе верно введено значение диапазона!");
-                textBox_do.Text = "";
-                textBox_do.Focus();
-                return;
+                success = Double.TryParse(textBox_do.Text.Replace('.', ','), out Diapazon_do);
+                if (!success)
+                {
+                    MessageBox.Show("Ошибка!\nНе верно введено значение диапазона!");
+                    textBox_do.Text = "";
+                    textBox_do.Focus();
+                    return;
+                }
             }
             if (Diapazon_ot > Diapazon_do)
             {

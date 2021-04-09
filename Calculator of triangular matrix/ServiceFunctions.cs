@@ -9,7 +9,7 @@ namespace Calculator_of_triangular_matrix
     static class ServiceFunctions
     {
        public static String DeletZerosInEndString(String fullForm)
-        {
+       {
             int n = fullForm.Length;
             String result = "";
             for (int i = fullForm.Length-1; i >= 0; i--)
@@ -23,7 +23,9 @@ namespace Calculator_of_triangular_matrix
             // 4
             for (int i = 0; i < n; i++)
                 result += fullForm[i];
+            if (n == 0)
+                result = "0";
             return result;
-        }
+       }
     }
 }

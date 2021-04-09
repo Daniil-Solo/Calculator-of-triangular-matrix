@@ -250,7 +250,7 @@ namespace Calculator_of_triangular_matrix
             double Det = 1;
             if (A.V != 0)
             {
-                history = history.Add("Значение V должно быть равно 0");
+                history = history.Add("Операция прервана. Значение V должно быть равно 0");
                 return Double.NaN;
             }
             else
@@ -266,8 +266,9 @@ namespace Calculator_of_triangular_matrix
                 {
                     for (int i = 0; i < A.N; i++)
                         Det *= getElement(A.N - 1 - i, i, A);
-                    history = history.Add("Определитель равен " + (-1*Det).ToString());
-                    return Det * -1;
+                    Det = -Det;
+                    history = history.Add("Определитель равен " + Det.ToString());
+                    return Det;
                 }
             }    
         }
@@ -277,18 +278,13 @@ namespace Calculator_of_triangular_matrix
 // Принимает на вход 2 матрицы, историю сообщений   
         public static Matrix Reverse(Matrix A, Matrix C, ref History_message history, double detA)
         {
-            if (detA == Double.NaN)
+            if (detA == 0) 
             {
-                return C;
-            }
-            else if (Math.Abs(detA) < 1E-10) 
-            {
-                history = history.Add("Определитель равен 0");
+                history = history.Add("Операция прервана. Матрица невырожденная!");
                 return C;
             }
             else
             {
-                history = history.Add("Определитель равен " + detA.ToString());
                 double[, ] TempMatrica = getObrMatrica(getMatricaFromMatrix(A), A.N);
                 Matrix TempMatrix = new Matrix('C', A.N, A.V, A.Type, null);
                 history = history.Add("Операция успешно выполнена");
@@ -309,6 +305,12 @@ namespace Calculator_of_triangular_matrix
         {
             double temp;
             double[,] E = getEMatrix(n);
+
+            if(A[0, 0] == 0)
+            {
+                E = SwapRowsInMatrix(E, n);
+                A = SwapRowsInMatrix(A, n);
+            }
 
             for (int k = 0; k < n; k++)
             {
@@ -398,6 +400,21 @@ namespace Calculator_of_triangular_matrix
                     }
                 }
             return packedForm;
+        }
+
+        public static double[,] SwapRowsInMatrix(double[,] A, int n)
+        {
+            double tempelement;
+            for(int i = 0; i < n/2; i++)
+            {
+                for(int j = 0; j < n; j++)
+                {
+                    tempelement = A[i, j];
+                    A[i, j] = A[n - i - 1, j];
+                    A[n - i - 1, j] = tempelement;
+                }
+            }
+            return A;
         }
     }
 

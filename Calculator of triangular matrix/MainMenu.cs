@@ -57,15 +57,11 @@ namespace Calculator_of_triangular_matrix
         private void очиститьИсториюСообщений_Click(object sender, EventArgs e)
         {
             ourHistory = ourHistory.Clear_history();
-            UpdateInfo();
+            message_history.Text = ourHistory.Print(n_sms);
         }
         private void обновитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateInfo();
-        }
-        private void очиститьВсеМатрицы_Click(object sender, EventArgs e)
-        {
-            
         }
         private void очиститьМатрицуАToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -80,7 +76,7 @@ namespace Calculator_of_triangular_matrix
             }
 
             ourHistory = ourHistory.Add("Матрица А была очищена!");
-            UpdateInfo();
+            ShowMatrixA();
         }
         private void очиститьМатрицуВToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -95,7 +91,7 @@ namespace Calculator_of_triangular_matrix
             }
 
             ourHistory = ourHistory.Add("Матрица В была очищена!");
-            UpdateInfo();
+            ShowMatrixB();
         }
 
         private void очиститьМатрицуСToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,7 +107,7 @@ namespace Calculator_of_triangular_matrix
             }
 
             ourHistory = ourHistory.Add("Матрица С была очищена!");
-            UpdateInfo();
+            ShowMatrixC();
         }
 
         private void очиститьВсеМатрицыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -258,7 +254,18 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                MometalShowMessage("Матрицы не заданы");
+                if (A.Type == Category.none && B.Type == Category.none)
+                {
+                    MometalShowMessage("Ни одна матрица не задана");
+                }
+                else if (A.Type == Category.none)
+                {
+                    MometalShowMessage("Матрица А не задана");
+                }
+                else
+                {
+                    MometalShowMessage("Матрица B не задана");
+                }
             }
         }
         private void AminB_Click(object sender, EventArgs e)
@@ -271,7 +278,18 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                MometalShowMessage("Матрицы не заданы");
+                if (A.Type == Category.none && B.Type == Category.none)
+                {
+                    MometalShowMessage("Ни одна матрица не задана");
+                }
+                else if (A.Type == Category.none)
+                {
+                    MometalShowMessage("Матрица А не задана");
+                }
+                else
+                {
+                    MometalShowMessage("Матрица B не задана");
+                }
             }
         }
         private void AmultB_Click(object sender, EventArgs e)
@@ -284,7 +302,18 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                MometalShowMessage("Матрицы не заданы");
+                if (A.Type == Category.none && B.Type == Category.none)
+                {
+                    MometalShowMessage("Ни одна матрица не задана");
+                }
+                else if (A.Type == Category.none)
+                {
+                    MometalShowMessage("Матрица А не задана");
+                }
+                else
+                {
+                    MometalShowMessage("Матрица B не задана");
+                }
             }
         }
         private void A_on_B_Click(object sender, EventArgs e)
@@ -328,7 +357,7 @@ namespace Calculator_of_triangular_matrix
                 MometalShowMessage("Вычисление определителя матрицы A");
                 double detA = Operations.DeterminantReverseMatrix(A, ref ourHistory);
                 message_history.Text = ourHistory.Print(n_sms);
-                if (detA != Double.NaN && !Double.IsInfinity(detA))
+                if (!Double.IsNaN(detA) && !Double.IsInfinity(detA))
                 {
                     MometalShowMessage("Выполнение операции (A)^-1. Пожалуйста подождите...");
                     C = Operations.Reverse(A, C, ref ourHistory, detA);
@@ -346,7 +375,7 @@ namespace Calculator_of_triangular_matrix
                 MometalShowMessage("Вычисление определителя матрицы B");
                 double detB = Operations.DeterminantReverseMatrix(B, ref ourHistory);
                 message_history.Text = ourHistory.Print(n_sms);
-                if (detB != Double.NaN && !Double.IsInfinity(detB))
+                if (!Double.IsNaN(detB) && !Double.IsInfinity(detB))
                 {
                     MometalShowMessage("Выполнение операции (B)^-1. Пожалуйста подождите...");
                     C = Operations.Reverse(B, C, ref ourHistory, detB);
@@ -381,7 +410,7 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                type_n_A.Text = "Тип: нет \n\r Размерность: нет";
+                type_n_A.Text = "Тип: нет \n\rРазмерность: нет";
             }
             if (B.N != 0)
             {
@@ -389,7 +418,7 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                type_n_B.Text = "Тип: нет \n\r Размерность: нет";
+                type_n_B.Text = "Тип: нет \n\rРазмерность: нет";
             }
             if (C.N != 0)
             {
@@ -397,7 +426,7 @@ namespace Calculator_of_triangular_matrix
             }
             else
             {
-                type_n_C.Text = "Тип: нет \n\r Размерность: нет";
+                type_n_C.Text = "Тип: нет \n\rРазмерность: нет";
             }
 
         }
