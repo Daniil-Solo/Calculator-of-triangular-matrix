@@ -157,5 +157,16 @@ namespace Calculator_of_triangular_matrix
                 this.dataGridViewOutput.Rows[e.RowIndex].HeaderCell.Value =
                     (e.RowIndex).ToString();
         }
+
+        private void Output_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // очистка
+            this.dataGridViewOutput.Rows.Clear();  // удаление всех строк
+            int count = this.dataGridViewOutput.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+            {
+                this.dataGridViewOutput.Columns.RemoveAt(0);
+            }
+        }
     }
 }

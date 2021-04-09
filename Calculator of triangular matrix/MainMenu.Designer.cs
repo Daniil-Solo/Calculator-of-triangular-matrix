@@ -289,9 +289,9 @@
             this.comboBox_A1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_A1.FormattingEnabled = true;
             this.comboBox_A1.Items.AddRange(new object[] {
-            "С клавиатуры",
-            "Из текстового файла",
-            "Случайным образом"});
+            "Ввод с клавиатуры",
+            "Ввод из текстового файла",
+            "Ввод случайным образом"});
             this.comboBox_A1.Location = new System.Drawing.Point(3, 28);
             this.comboBox_A1.Name = "comboBox_A1";
             this.comboBox_A1.Size = new System.Drawing.Size(210, 24);
@@ -304,8 +304,8 @@
             this.comboBox_A2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_A2.FormattingEnabled = true;
             this.comboBox_A2.Items.AddRange(new object[] {
-            "Значения",
-            "Значения и адреса"});
+            "Печать значений",
+            "Печать значений и адресов"});
             this.comboBox_A2.Location = new System.Drawing.Point(219, 28);
             this.comboBox_A2.Name = "comboBox_A2";
             this.comboBox_A2.Size = new System.Drawing.Size(210, 24);
@@ -397,9 +397,9 @@
             this.comboBox_B1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_B1.FormattingEnabled = true;
             this.comboBox_B1.Items.AddRange(new object[] {
-            "С клавиатуры",
-            "Из текстового файла",
-            "Случайным образом"});
+            "Ввод с клавиатуры",
+            "Ввод из текстового файла",
+            "Ввод случайным образом"});
             this.comboBox_B1.Location = new System.Drawing.Point(3, 27);
             this.comboBox_B1.Name = "comboBox_B1";
             this.comboBox_B1.Size = new System.Drawing.Size(216, 24);
@@ -412,8 +412,8 @@
             this.comboBox_B2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_B2.FormattingEnabled = true;
             this.comboBox_B2.Items.AddRange(new object[] {
-            "Значения",
-            "Значения и адреса"});
+            "Печать значений",
+            "Печать значений и адресов"});
             this.comboBox_B2.Location = new System.Drawing.Point(225, 27);
             this.comboBox_B2.Name = "comboBox_B2";
             this.comboBox_B2.Size = new System.Drawing.Size(216, 24);
@@ -501,8 +501,8 @@
             this.comboBox_C2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_C2.FormattingEnabled = true;
             this.comboBox_C2.Items.AddRange(new object[] {
-            "Значения",
-            "Значения и адреса"});
+            "Печать значений",
+            "Печать значений и адресов"});
             this.comboBox_C2.Location = new System.Drawing.Point(223, 27);
             this.comboBox_C2.Name = "comboBox_C2";
             this.comboBox_C2.Size = new System.Drawing.Size(214, 24);

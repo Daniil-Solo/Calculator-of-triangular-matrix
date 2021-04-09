@@ -232,6 +232,7 @@ namespace Calculator_of_triangular_matrix
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ручной ввод матрицы";
             this.TopMost = true;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Input_hand_FormClosed);
             this.Load += new System.EventHandler(this.Input_hand_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Input_hand_KeyDown);
             this.menuStrip1.ResumeLayout(false);

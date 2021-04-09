@@ -265,5 +265,16 @@ namespace Calculator_of_triangular_matrix
         private void Input_hand_Load(object sender, EventArgs e)
         {
         }
+
+        private void Input_hand_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // очистка
+            this.dataGridView.Rows.Clear();  // удаление всех строк
+            int count = this.dataGridView.Columns.Count;
+            for (int i = 0; i < count; i++)     // цикл удаления всех столбцов
+            {
+                this.dataGridView.Columns.RemoveAt(0);
+            }
+        }
     }
 }

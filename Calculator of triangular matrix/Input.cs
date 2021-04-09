@@ -57,9 +57,9 @@ namespace Calculator_of_triangular_matrix
                 textBox_n.Focus();
                 return;
             }
-            if (n < 1)
+            if (n <= 1)
             {
-                MessageBox.Show("Ошибка!\nРазмерность должна быть больше 0!");
+                MessageBox.Show("Ошибка!\nРазмерность должна быть больше 1!");
                 textBox_n.Text = "";
                 textBox_n.Focus();
                 return;

@@ -16,7 +16,6 @@ namespace Calculator_of_triangular_matrix
         public double v;
         private Category type;
         private double[] packed_form;
-        private DataTable table;
 
         // Конструктор    
         public Matrix(char name, int n, double V, Category type, double[] packed_form)
@@ -26,7 +25,6 @@ namespace Calculator_of_triangular_matrix
             this.v = V;
             this.type = type;
             this.packed_form = packed_form;
-            this.table = null;
         }
 
         // Аксессоры
@@ -35,8 +33,7 @@ namespace Calculator_of_triangular_matrix
         public double V { get { return v; } }
         public Category Type { get { return type; } set { type = value; } }
         public double[] Packed_form { get { return packed_form; } set { packed_form = value; } }
-        public DataTable Table { get { return table; } set { table = value; } }
-       
+               
         
         // Методы
 
@@ -178,7 +175,6 @@ namespace Calculator_of_triangular_matrix
         // Сохранение матрицы частично реализовано в коде формы начального окна
         public void Save(string filename, ref History_message ourHistory)
         {
-            ourHistory = ourHistory.Add("Сохранение матрицы " + name);
             StreamWriter f = null;
             try
             {
@@ -264,14 +260,6 @@ namespace Calculator_of_triangular_matrix
                     }
                     f.WriteLine();
                 }
-
-            /*
-             Добавить строки в файл с помощью f.WriteLine("Строка");
-                Первая строка: размерность
-                Вторая строка: значение V
-                Третья строка: тип матрицы
-                Следующую строки: строки с элементами через пробел
-             */
 
             f.Close();
             ourHistory = ourHistory.Add("Матрица сохранена по адресу " + filename);
