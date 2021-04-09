@@ -64,7 +64,7 @@ namespace Calculator_of_triangular_matrix
                 f.Close();
                 return;
             }
-            if (N <= 0) 
+            if (N <= 1) 
             {
                 ourHistory = ourHistory.Add("Размерность должна быть положительной");
                 f.Close();
