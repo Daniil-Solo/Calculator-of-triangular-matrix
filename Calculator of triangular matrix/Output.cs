@@ -18,6 +18,7 @@ namespace Calculator_of_triangular_matrix
         public Output()
         {
             InitializeComponent();
+            dataGridViewOutput.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
 
         private void Output_Load(object sender, EventArgs e)
@@ -41,10 +42,7 @@ namespace Calculator_of_triangular_matrix
             
         }
 
-        private void label_matrix_Click(object sender, EventArgs e)
-        {
 
-        }
         private void ShowMatrix(Matrix A)
         {
             int n = A.N;
@@ -73,7 +71,7 @@ namespace Calculator_of_triangular_matrix
                 {
                     object[] row = new object[m];
                     for (int j = 0; j < m; j++)
-                        row[j] = String.Format("{0:F" + Epsilon.value.ToString() + "}", Operations.getElement(i, j, A));
+                        row[j] = ServiceFunctions.DeletZerosInEndString(String.Format("{0:F" + Epsilon.value.ToString() + "}", Operations.getElement(i, j, A)));
                     dataGridViewOutput.Rows.Add(row);// добавление строк
                 }
                 foreach (DataGridViewColumn col in dataGridViewOutput.Columns)
@@ -119,8 +117,9 @@ namespace Calculator_of_triangular_matrix
                                 fixed (double* p = &A.v)
                                 {
                                     Adress = (uint)p;
-                                    row[j] = String.Format("{0:F" + Epsilon.value.ToString() + "}", A.V)
-                                        + " | " + Adress.ToString("X2");
+                                    row[j] = ServiceFunctions.DeletZerosInEndString(
+                                        String.Format("{0:F" + Epsilon.value.ToString() + "}", A.V))
+                                        + " | " + "0x" + Adress.ToString("X2");
                                 }
                             }
                             else
@@ -128,8 +127,9 @@ namespace Calculator_of_triangular_matrix
                                 fixed (double* p = &A.Packed_form[Operations.getIndexK(i, j, A)])
                                 {
                                     Adress = (uint)p;
-                                    row[j] = String.Format("{0:F" + Epsilon.value.ToString() + "}", 
-                                        Operations.getElement(i, j, A)) + " | " + Adress.ToString("X2");
+                                    row[j] = ServiceFunctions.DeletZerosInEndString(
+                                        String.Format("{0:F" + Epsilon.value.ToString() + "}", 
+                                        Operations.getElement(i, j, A))) + " | " + "0x" + Adress.ToString("X2");
                                 }
                             }
                             
@@ -167,6 +167,15 @@ namespace Calculator_of_triangular_matrix
             {
                 this.dataGridViewOutput.Columns.RemoveAt(0);
             }
+        }
+
+        private void dataGridViewOutput_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ((DataGridView)sender).SelectedCells[0].Selected = false;
+            }
+            catch { }
         }
     }
 }

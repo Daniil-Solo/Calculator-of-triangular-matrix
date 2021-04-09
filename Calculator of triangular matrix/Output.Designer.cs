@@ -49,7 +49,7 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.111111F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90.88889F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(629, 456);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(650, 422);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label_matrix
@@ -59,11 +59,10 @@ namespace Calculator_of_triangular_matrix
             this.label_matrix.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_matrix.Location = new System.Drawing.Point(3, 0);
             this.label_matrix.Name = "label_matrix";
-            this.label_matrix.Size = new System.Drawing.Size(623, 41);
+            this.label_matrix.Size = new System.Drawing.Size(644, 38);
             this.label_matrix.TabIndex = 0;
             this.label_matrix.Text = "Матрица А";
             this.label_matrix.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label_matrix.Click += new System.EventHandler(this.label_matrix_Click);
             // 
             // dataGridViewOutput
             // 
@@ -73,23 +72,27 @@ namespace Calculator_of_triangular_matrix
             this.dataGridViewOutput.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOutput.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewOutput.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dataGridViewOutput.Location = new System.Drawing.Point(3, 44);
+            this.dataGridViewOutput.Location = new System.Drawing.Point(3, 41);
+            this.dataGridViewOutput.MultiSelect = false;
             this.dataGridViewOutput.Name = "dataGridViewOutput";
             this.dataGridViewOutput.ReadOnly = true;
             this.dataGridViewOutput.RowHeadersWidth = 51;
             this.dataGridViewOutput.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewOutput.RowTemplate.Height = 24;
-            this.dataGridViewOutput.Size = new System.Drawing.Size(623, 409);
+            this.dataGridViewOutput.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataGridViewOutput.Size = new System.Drawing.Size(644, 378);
             this.dataGridViewOutput.TabIndex = 1;
             this.dataGridViewOutput.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOutput_CellContentClick);
             this.dataGridViewOutput.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridViewOutput_RowPrePaint);
+            this.dataGridViewOutput.SelectionChanged += new System.EventHandler(this.dataGridViewOutput_SelectionChanged);
             // 
             // Output
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 456);
+            this.ClientSize = new System.Drawing.Size(650, 422);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MinimumSize = new System.Drawing.Size(490, 279);
             this.Name = "Output";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Печать значений";

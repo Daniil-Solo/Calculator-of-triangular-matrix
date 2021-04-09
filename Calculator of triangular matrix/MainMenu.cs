@@ -34,6 +34,9 @@ namespace Calculator_of_triangular_matrix
             InitializeComponent();
             openFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
             saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
+            GridView_A.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            GridView_B.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            GridView_C.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
         
         private void Main_menu_Load(object sender, EventArgs e)
@@ -301,7 +304,7 @@ namespace Calculator_of_triangular_matrix
             if (Check1Matrix(A, C))
             {
                 MometalShowMessage("Выполнение операции " + A.Name + " <->" + C.Name);
-                Operations.Replace_A_B(ref A, ref B, ref ourHistory);
+                Operations.Replace_A_B(ref A, ref C, ref ourHistory);
                 UpdateInfo();
             }
             else
@@ -311,8 +314,8 @@ namespace Calculator_of_triangular_matrix
         {
             if (Check1Matrix(B, C))
             {
-                MometalShowMessage("Выполнение операции " + A.Name + " <->" + B.Name);
-                Operations.Replace_A_B(ref A, ref B, ref ourHistory);
+                MometalShowMessage("Выполнение операции " + B.Name + " <->" + C.Name);
+                Operations.Replace_A_B(ref B, ref C, ref ourHistory);
                 UpdateInfo();
             }
             else
@@ -474,9 +477,8 @@ namespace Calculator_of_triangular_matrix
         // Отображение матрицы А
         private void ShowMatrixA()
         {
-            int[] size = ElementsCheck(Size.Width, Size.Height, A.N);
-            int n = size[0];
-            int m = size[1];
+            int n = Math.Min(20, A.N);
+            int m = Math.Min(20, A.N);
             // очистка
             this.GridView_A.Rows.Clear();  // удаление всех строк
             int count = this.GridView_A.Columns.Count;
@@ -501,7 +503,7 @@ namespace Calculator_of_triangular_matrix
                 {
                     object[] row = new object[m];
                     for (int j = 0; j < m; j++)
-                        row[j] = String.Format("{0:F"+Epsilon.value.ToString()+"}" ,Operations.getElement(i, j, A));
+                        row[j] = ServiceFunctions.DeletZerosInEndString(String.Format("{0:F"+Epsilon.value.ToString()+"}" ,Operations.getElement(i, j, A)));
                     GridView_A.Rows.Add(row);// добавление строк
                 }
                 foreach (DataGridViewColumn col in GridView_A.Columns)
@@ -514,9 +516,8 @@ namespace Calculator_of_triangular_matrix
         // Отображение матрицы В
         private void ShowMatrixB()
         {
-            int[] size = ElementsCheck(Size.Width, Size.Height, B.N);
-            int n = size[0];
-            int m = size[1];
+            int n = Math.Min(20, B.N);
+            int m = Math.Min(20, B.N);
             // очистка
             this.GridView_B.Rows.Clear();  // удаление всех строк
             int count = this.GridView_B.Columns.Count;
@@ -540,7 +541,7 @@ namespace Calculator_of_triangular_matrix
                 {
                     object[] row = new object[m];
                     for (int j = 0; j < m; j++)
-                        row[j] = String.Format("{0:F" + Epsilon.value.ToString() + "}", Operations.getElement(i, j, B));
+                        row[j] = ServiceFunctions.DeletZerosInEndString(String.Format("{0:F" + Epsilon.value.ToString() + "}", Operations.getElement(i, j, B)));
                     GridView_B.Rows.Add(row);// добавление строк
                 }
                 foreach (DataGridViewColumn col in GridView_B.Columns)
@@ -553,9 +554,8 @@ namespace Calculator_of_triangular_matrix
         // Отображение матрицы С
         private void ShowMatrixC()
         {
-            int[] size = ElementsCheck(Size.Width, Size.Height, C.N);
-            int n = size[0];
-            int m = size[1];
+            int n = Math.Min(20, C.N);
+            int m = Math.Min(20, C.N);
             // очистка
             this.GridView_C.Rows.Clear();  // удаление всех строк
             int count = this.GridView_C.Columns.Count;
@@ -563,7 +563,7 @@ namespace Calculator_of_triangular_matrix
             {
                 this.GridView_C.Columns.RemoveAt(0);
             }
-            if (C.Type != Category.none && n * m > 0)
+            if (C.Type != Category.none)
             {
                 
                 // создание новой
@@ -580,7 +580,7 @@ namespace Calculator_of_triangular_matrix
                 {
                     object[] row = new object[m];
                     for (int j = 0; j < m; j++)
-                        row[j] = String.Format("{0:F" + Epsilon.value.ToString() + "}", Operations.getElement(i, j, C));
+                        row[j] = ServiceFunctions.DeletZerosInEndString(String.Format("{0:F" + Epsilon.value.ToString() + "}", Operations.getElement(i, j, C)));
                     GridView_C.Rows.Add(row);// добавление строк
                 }
                 foreach (DataGridViewColumn col in GridView_C.Columns)
@@ -610,17 +610,6 @@ namespace Calculator_of_triangular_matrix
             if (M.Type != Category.none)
             { success = true; }
             return success;
-        }
-        private int[] ElementsCheck(int W, int H, int n)//Количество строк и столбцов котрое можно вывести
-        {
-            int[] size = new int[2];
-            size[0] = H / 65;
-            size[1] = W / 300;
-            if (size[0] > n)
-                size[0] = n;
-            if (size[1] > n)
-                size[1] = n;
-            return size;
         }
 
         private void Main_menu_Resize(object sender, EventArgs e)
@@ -675,6 +664,9 @@ namespace Calculator_of_triangular_matrix
         private void toolStripComboBoxEpsilon_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             Epsilon.value = toolStripComboBoxEpsilon.SelectedIndex;
+            ShowMatrixA();
+            ShowMatrixB();
+            ShowMatrixC();
         }
         private void MometalShowMessage(String message)
         {
@@ -686,6 +678,33 @@ namespace Calculator_of_triangular_matrix
             ShowMatrixC();
             message_history.Text = ourHistory.Print(n_sms);
             labelMatrixShow();
+        }
+
+        private void GridView_A_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ((DataGridView)sender).SelectedCells[0].Selected = false;
+            }
+            catch { }
+        }
+
+        private void GridView_B_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ((DataGridView)sender).SelectedCells[0].Selected = false;
+            }
+            catch { }
+        }
+
+        private void GridView_C_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                ((DataGridView)sender).SelectedCells[0].Selected = false;
+            }
+            catch { }
         }
     }
 }
