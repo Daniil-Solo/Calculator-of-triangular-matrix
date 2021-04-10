@@ -66,7 +66,7 @@ namespace Calculator_of_triangular_matrix
             }
             if (N <= 1) 
             {
-                ourHistory = ourHistory.Add("Размерность должна быть положительной");
+                ourHistory = ourHistory.Add("Размерность должна быть больше 1");
                 f.Close();
                 return;
             }
@@ -112,14 +112,14 @@ namespace Calculator_of_triangular_matrix
                     }
                     catch
                     {
-                        ourHistory = ourHistory.Add("Недостаточно значений в строке номер: " + (4+i).ToString());
+                        ourHistory = ourHistory.Add("Недостаточно значений в строке " + (4+i).ToString());
                         f.Close();
                         return;
                     }
                     success = Double.TryParse(strElement, out V);
                     if (!success)
                     {
-                        ourHistory = ourHistory.Add("Обнаружено значение, не являющееся числом: " + strElement + " в строке: " + (4 + i).ToString());
+                        ourHistory = ourHistory.Add("Обнаружено значение, не являющееся числом: " + strElement + " в строке " + (4 + i).ToString());
                         f.Close();
                         return;
                     }
@@ -142,6 +142,10 @@ namespace Calculator_of_triangular_matrix
                         }
                         else
                         {
+                            if (Math.Abs(V) <= 1E-12)
+                            {
+                                V = 0;
+                            }
                             PackedForm[k] = V;
                             k++;
                         }
@@ -157,17 +161,18 @@ namespace Calculator_of_triangular_matrix
                     success = true;
                 }
                 if (!success)
-                    moreElementsStr++;
-            }
-            if (moreElementsStr != 0)
-            {
-                ourHistory = ourHistory.Add("Предупреждение: имеются лишние значения в конце строк, которые не были считаны. Количество таких строк: " + moreElementsStr.ToString());
+                {
+                    ourHistory = ourHistory.Add("Имеются лишние значения в строке " + (4 + i).ToString());
+                    f.Close();
+                    return;
+                }
             }
             if (f.ReadLine() != null)
             {
-                ourHistory = ourHistory.Add("Предупреждение: имеются лишние строки в конце файла, которые не были считаны");
+                ourHistory = ourHistory.Add("Имеются лишние строки в конце файла");
+                f.Close();
+                return;
             }
-            
             DataTransfer.data[3] = PackedForm;
             f.Close();
         }
@@ -191,76 +196,34 @@ namespace Calculator_of_triangular_matrix
 
             int a=0;
 
-            if(type==Category.bot_left)
-            for (int i=0; i<n ; i++)
+            for (int i = 0; i < n; i++)
             {
-                    for (int j = 0; j < n; j++)
+                for (int j = 0; j < n; j++)
+                {
+                    double temp;
+                    if(Operations.isV(i, j, this))
                     {
-                        if(j>=i)
+                        temp = V;
+                        if (Math.Abs(V) <= 1E-12)
                         {
-                            f.Write(Convert.ToString(Packed_form[a]));
-                            a++;
+                            temp = 0;
                         }
-                       else
-                            f.Write(Convert.ToString(v));
-                        f.Write(Convert.ToString(" "));
                     }
-                    f.WriteLine();
+                    else
+                    {
+                        temp = Packed_form[a];
+                        if (Math.Abs(Packed_form[a]) <= 1E-12)
+                        {
+                            temp = 0;
+                        }
+                        a++;
+                    }
+                    f.Write(String.Format("{0:F13}", temp));
+                    f.Write("\t");
+                }
+                f.WriteLine();
             }
-
-
-            if (type == Category.top_left)
-                for (int i = 0; i < n; i++)
-                {
-                    for (int j = 0; j < n; j++)
-                    {
-                        if (j >= n-i-1)
-                        {
-                            f.Write(Convert.ToString(Packed_form[a]));
-                            a++;
-                        }
-                        else
-                            f.Write(Convert.ToString(v));
-                        f.Write(Convert.ToString(" "));
-                    }
-                    f.WriteLine();
-                }
-                
-
-            if (type == Category.bot_right)
-                for (int i = 0; i < n; i++)
-                {
-                    for (int j = 0; j < n; j++)
-                    {
-                        if (j < n-i)
-                        {
-                            f.Write(Convert.ToString(Packed_form[a]));
-                            a++;
-                        }
-                        else
-                            f.Write(Convert.ToString(v));
-                        f.Write(Convert.ToString(" "));
-                    }
-                    f.WriteLine();
-                }
-
-            if (type == Category.top_right)
-                for (int i = 0; i < n; i++)
-                {
-                    for (int j = 0; j < n; j++)
-                    {
-                        if (j <= i)
-                        {
-                            f.Write(Convert.ToString(Packed_form[a]));
-                            a++;
-                        }
-                        else
-                            f.Write(Convert.ToString(v));
-                        f.Write(Convert.ToString(" "));
-                    }
-                    f.WriteLine();
-                }
-
+            
             f.Close();
             ourHistory = ourHistory.Add("Матрица сохранена по адресу " + filename);
         }

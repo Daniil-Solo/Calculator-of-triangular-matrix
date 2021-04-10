@@ -14,19 +14,25 @@ namespace Calculator_of_triangular_matrix
         {
             int n = fullForm.Length;
             String result = "";
-            for (int i = fullForm.Length - 1; i >= 0; i--)
+            int index = fullForm.IndexOf(',');
+            if(index < 0)
+                return fullForm;
+            for (int i = fullForm.Length-1; i >= index; i--)
             {
                 if (fullForm[i] == '0')
                     n--;
                 else
                     break;
             }
+            if (index == n - 1)
+                n--;
             for (int i = 0; i < n; i++)
                 result += fullForm[i];
-            if (n == 0)
-                result = "0";
-            return result;
+            return result;  
         }
+        //1,34000
+        // index = 1
+        // n = 4
 
         // функция для возвращения типа исходя из индекса
         public static Category TransformCategory(int index)

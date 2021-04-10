@@ -327,7 +327,7 @@ namespace Calculator_of_triangular_matrix
         {
             if (ServiceFunctions.Check1Matrix(A, B))
             {
-                MometalShowMessage("Выполнение операции " + A.Name + " <->" + B.Name);
+                MometalShowMessage("Выполнение операции " + A.Name + "<->" + B.Name);
                 Operations.Replace_A_B(ref A, ref B, ref ourHistory);
                 UpdateInfo();
             }
@@ -339,7 +339,7 @@ namespace Calculator_of_triangular_matrix
         {
             if (ServiceFunctions.Check1Matrix(A, C))
             {
-                MometalShowMessage("Выполнение операции " + A.Name + " <->" + C.Name);
+                MometalShowMessage("Выполнение операции " + A.Name + "<->" + C.Name);
                 Operations.Replace_A_B(ref A, ref C, ref ourHistory);
                 UpdateInfo();
             }
@@ -350,7 +350,7 @@ namespace Calculator_of_triangular_matrix
         {
             if (ServiceFunctions.Check1Matrix(B, C))
             {
-                MometalShowMessage("Выполнение операции " + B.Name + " <->" + C.Name);
+                MometalShowMessage("Выполнение операции " + B.Name + "<->" + C.Name);
                 Operations.Replace_A_B(ref B, ref C, ref ourHistory);
                 UpdateInfo();
             }

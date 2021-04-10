@@ -214,6 +214,28 @@ namespace Calculator_of_triangular_matrix
                                 Result.Packed_form[getIndexK(i, j, Result)] += aik * bkj;
                             }
                         }
+                        else
+                        {
+                            double tempElement = A.V;
+                            for (int k = 0; k < Result.N; k++)
+                            {
+                                double aik = 0, bkj = 0;
+                                if (!isV(i, k, A))
+                                {
+                                    aik = getElement(i, k, A);
+                                }
+                                if (!isV(k, j, B))
+                                {
+                                    bkj = getElement(k, j, B);
+                                }
+                                tempElement += aik * bkj;
+                            }
+                            if (Math.Abs(tempElement) >= 1E-15)
+                            {
+                                history = history.Add("Операция прервана. Матрица не будет треугольной формы");
+                                return C;
+                            }
+                        }
                     }
                 history = history.Add("Операция успешно выполнена");
                 return Result;
@@ -259,17 +281,15 @@ namespace Calculator_of_triangular_matrix
                 {
                     for (int i = 0; i < A.N; i++)
                         Det *= getElement(i, i, A);
-                    history = history.Add("Определитель равен " + Det.ToString());
-                    return Det;
                 }
                 else
                 {
                     for (int i = 0; i < A.N; i++)
                         Det *= getElement(A.N - 1 - i, i, A);
                     Det = -Det;
-                    history = history.Add("Определитель равен " + Det.ToString());
-                    return Det;
                 }
+                history = history.Add("Определитель равен " + Det.ToString());
+                return Det;
             }    
         }
 
@@ -278,7 +298,7 @@ namespace Calculator_of_triangular_matrix
 // Принимает на вход 2 матрицы, историю сообщений   
         public static Matrix Reverse(Matrix A, Matrix C, ref History_message history, double detA)
         {
-            if (detA == 0) 
+            if (Math.Abs(detA) == 0) 
             {
                 history = history.Add("Операция прервана. Матрица невырожденная!");
                 return C;

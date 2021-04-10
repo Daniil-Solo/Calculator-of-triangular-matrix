@@ -714,10 +714,7 @@
             "9",
             "10",
             "11",
-            "12",
-            "13",
-            "14",
-            "15"});
+            "12"});
             this.toolStripComboBoxEpsilon.Name = "toolStripComboBoxEpsilon";
             this.toolStripComboBoxEpsilon.Size = new System.Drawing.Size(121, 28);
             this.toolStripComboBoxEpsilon.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxEpsilon_SelectedIndexChanged_1);
