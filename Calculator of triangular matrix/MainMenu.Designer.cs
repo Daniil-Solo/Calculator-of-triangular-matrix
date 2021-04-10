@@ -80,6 +80,7 @@
             this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.сохранитьИсториюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -619,10 +620,11 @@
             this.закрепитьПоверхДургихОкон,
             this.очиститьИсториюСообщений,
             this.очистить,
-            this.точностьToolStripMenuItem});
+            this.точностьToolStripMenuItem,
+            this.сохранитьИсториюToolStripMenuItem});
             this.сервис.Name = "сервис";
-            this.сервис.Size = new System.Drawing.Size(98, 24);
-            this.сервис.Text = "Настройки";
+            this.сервис.Size = new System.Drawing.Size(73, 24);
+            this.сервис.Text = "Проект";
             // 
             // закрепитьПоверхДургихОкон
             // 
@@ -758,6 +760,13 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // сохранитьИсториюToolStripMenuItem
+            // 
+            this.сохранитьИсториюToolStripMenuItem.Name = "сохранитьИсториюToolStripMenuItem";
+            this.сохранитьИсториюToolStripMenuItem.Size = new System.Drawing.Size(368, 26);
+            this.сохранитьИсториюToolStripMenuItem.Text = "Сохранить историю как...";
+            this.сохранитьИсториюToolStripMenuItem.Click += new System.EventHandler(this.сохранитьИсториюToolStripMenuItem_Click);
+            // 
             // Main_menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -846,6 +855,7 @@
         private System.Windows.Forms.ComboBox comboBox_A2;
         private System.Windows.Forms.ToolStripMenuItem точностьToolStripMenuItem;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBoxEpsilon;
+        private System.Windows.Forms.ToolStripMenuItem сохранитьИсториюToolStripMenuItem;
     }
 }
 

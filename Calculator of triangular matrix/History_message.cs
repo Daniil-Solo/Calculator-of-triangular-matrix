@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -72,13 +73,40 @@ namespace Calculator_of_triangular_matrix
         {
             History_message.number = 1;
             History_message p = this;
-            History_message q;
 
             while (p.msg_next != null) 
             {
                 p = p.msg_next;
             }
             return p;
+        }
+        public void Save(String filename)
+        {
+            StreamWriter f = null;
+            try
+            {
+                f = new StreamWriter(filename);
+            }
+            catch
+            {
+                return;
+            }
+            int n = number;
+            String[] stringArr = new string[n];
+            History_message p = this;
+            while (p != null)
+            {
+                stringArr[n-1] = (p.Text);
+                p = p.msg_next;
+                n--;
+            }
+            for(int i = 0; i < number; i++)
+            {
+                f.WriteLine((i+1).ToString() + ". " + stringArr[i]);
+                stringArr[i] = null;
+            }
+            stringArr = null;
+            f.Close();
         }
     }
 }

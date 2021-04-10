@@ -61,6 +61,20 @@ namespace Calculator_of_triangular_matrix
             ShowMatrixB();
             ShowMatrixC();
         }
+        private void сохранитьИсториюToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MometalShowMessage("Сохранение истории");
+            saveFileDialog1.FileName = "";
+            if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+            {
+                MometalShowMessage("Сохранение приостановлено");
+                return;
+            }
+                
+            string filename = saveFileDialog1.FileName;
+            ourHistory.Save(filename);
+            MometalShowMessage("История сохранена по адресу " + filename);
+        }
         private void очиститьИсториюСообщений_Click(object sender, EventArgs e)
         {
             ourHistory = ourHistory.Clear_history();
@@ -493,7 +507,10 @@ namespace Calculator_of_triangular_matrix
             saveFileDialog1.FileName = "";
             // Если отменено сохранение, то выходит из функции
             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
+            {
+                MometalShowMessage("Сохранение приостановлено");
                 return;
+            }
             string filename = saveFileDialog1.FileName;
             M.Save(filename, ref ourHistory);
         }
@@ -678,5 +695,7 @@ namespace Calculator_of_triangular_matrix
             }
             catch { }
         }
+
+       
     }
 }

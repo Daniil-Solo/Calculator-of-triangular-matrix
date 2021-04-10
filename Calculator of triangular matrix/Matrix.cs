@@ -40,7 +40,6 @@ namespace Calculator_of_triangular_matrix
         // Создание матрицы с помощью файла
         public void OpenFromFileToDataTransfer(string filename, ref History_message ourHistory)
         {
-            int moreElementsStr = 0;
             StreamReader f = null;
             try
             {

@@ -42,6 +42,7 @@ namespace Calculator_of_triangular_matrix
             this.типМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.размерностьМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.значениеVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.способыВводаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -151,6 +152,7 @@ namespace Calculator_of_triangular_matrix
             // 
             this.помощьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.справкаToolStripMenuItem,
+            this.способыВводаToolStripMenuItem,
             this.типМатрицыToolStripMenuItem,
             this.размерностьМатрицыToolStripMenuItem,
             this.значениеVToolStripMenuItem});
@@ -182,6 +184,12 @@ namespace Calculator_of_triangular_matrix
             this.значениеVToolStripMenuItem.Name = "значениеVToolStripMenuItem";
             this.значениеVToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
             this.значениеVToolStripMenuItem.Text = "Значение V";
+            // 
+            // способыВводаToolStripMenuItem
+            // 
+            this.способыВводаToolStripMenuItem.Name = "способыВводаToolStripMenuItem";
+            this.способыВводаToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.способыВводаToolStripMenuItem.Text = "Способы ввода";
             // 
             // Input_keyb
             // 
@@ -220,5 +228,6 @@ namespace Calculator_of_triangular_matrix
         public System.Windows.Forms.TextBox textBox_n;
         public System.Windows.Forms.TextBox textBox_V;
         public System.Windows.Forms.ComboBox comboBox_type;
+        private System.Windows.Forms.ToolStripMenuItem способыВводаToolStripMenuItem;
     }
 }
