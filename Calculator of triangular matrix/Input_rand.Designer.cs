@@ -35,6 +35,7 @@ namespace Calculator_of_triangular_matrix
             this.заполнениеСлучайнымиЧисламиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.типМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.размерностьМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.значениеVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button_ready = new System.Windows.Forms.Button();
             this.comboBox_type = new System.Windows.Forms.ComboBox();
@@ -48,7 +49,6 @@ namespace Calculator_of_triangular_matrix
             this.textBox_ot = new System.Windows.Forms.TextBox();
             this.textBox_do = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.значениеVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -102,6 +102,12 @@ namespace Calculator_of_triangular_matrix
             this.размерностьМатрицыToolStripMenuItem.Name = "размерностьМатрицыToolStripMenuItem";
             this.размерностьМатрицыToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
             this.размерностьМатрицыToolStripMenuItem.Text = "Размерность матрицы";
+            // 
+            // значениеVToolStripMenuItem
+            // 
+            this.значениеVToolStripMenuItem.Name = "значениеVToolStripMenuItem";
+            this.значениеVToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.значениеVToolStripMenuItem.Text = "Значение V";
             // 
             // tableLayoutPanel1
             // 
@@ -267,12 +273,6 @@ namespace Calculator_of_triangular_matrix
             this.label3.Size = new System.Drawing.Size(339, 18);
             this.label3.TabIndex = 8;
             this.label3.Text = "Диапазон значений";
-            // 
-            // значениеVToolStripMenuItem
-            // 
-            this.значениеVToolStripMenuItem.Name = "значениеVToolStripMenuItem";
-            this.значениеVToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
-            this.значениеVToolStripMenuItem.Text = "Значение V";
             // 
             // Input_rand
             // 

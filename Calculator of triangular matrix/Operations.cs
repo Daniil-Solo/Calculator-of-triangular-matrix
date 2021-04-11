@@ -252,15 +252,12 @@ namespace Calculator_of_triangular_matrix
                         a1 = 0;
                         for (int k = 0; k < Result.N; k++)
                         {
-                            double aik = 0, bkj = 0;
+                            double aik = A.V, bkj = B.V;
                             if (!isV(i, k, A))
-                            {
                                 aik = getElement(i, k, A);
-                            }
                             if (!isV(k, j, B))
-                            {
                                 bkj = getElement(k, j, B);
-                            }
+
                             if (isfirst)
                                 a0 += aik * bkj;
                             else

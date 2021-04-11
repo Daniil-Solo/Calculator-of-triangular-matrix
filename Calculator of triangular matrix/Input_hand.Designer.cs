@@ -55,7 +55,7 @@ namespace Calculator_of_triangular_matrix
             this.помощьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(818, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(818, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -65,19 +65,19 @@ namespace Calculator_of_triangular_matrix
             this.справкаToolStripMenuItem,
             this.ручнойВводМатрицыToolStripMenuItem});
             this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(83, 24);
+            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(83, 26);
             this.помощьToolStripMenuItem.Text = "Помощь";
             // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.справкаToolStripMenuItem.Text = "Справка";
             // 
             // ручнойВводМатрицыToolStripMenuItem
             // 
             this.ручнойВводМатрицыToolStripMenuItem.Name = "ручнойВводМатрицыToolStripMenuItem";
-            this.ручнойВводМатрицыToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.ручнойВводМатрицыToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
             this.ручнойВводМатрицыToolStripMenuItem.Text = "Способы ввода";
             // 
             // tableLayoutPanel1
@@ -97,7 +97,7 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.Controls.Add(this.textBox_input, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelElement, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
@@ -108,7 +108,7 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 39F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(818, 469);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(818, 467);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // dataGridView
@@ -126,7 +126,7 @@ namespace Calculator_of_triangular_matrix
             this.dataGridView.RowHeadersWidth = 51;
             this.tableLayoutPanel1.SetRowSpan(this.dataGridView, 8);
             this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.Size = new System.Drawing.Size(544, 463);
+            this.dataGridView.Size = new System.Drawing.Size(544, 461);
             this.dataGridView.TabIndex = 0;
             this.dataGridView.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView_RowPrePaint);
             this.dataGridView.SelectionChanged += new System.EventHandler(this.dataGridView_SelectionChanged);
