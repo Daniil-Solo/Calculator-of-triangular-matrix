@@ -73,6 +73,7 @@
             this.очиститьВсеМатрицыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.точностьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBoxEpsilon = new System.Windows.Forms.ToolStripComboBox();
+            this.сохранитьИсториюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.помощь = new System.Windows.Forms.ToolStripMenuItem();
             this.началоРаботы = new System.Windows.Forms.ToolStripMenuItem();
             this.справка = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,7 +81,6 @@
             this.обновитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.сохранитьИсториюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -721,6 +721,13 @@
             this.toolStripComboBoxEpsilon.Size = new System.Drawing.Size(121, 28);
             this.toolStripComboBoxEpsilon.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxEpsilon_SelectedIndexChanged_1);
             // 
+            // сохранитьИсториюToolStripMenuItem
+            // 
+            this.сохранитьИсториюToolStripMenuItem.Name = "сохранитьИсториюToolStripMenuItem";
+            this.сохранитьИсториюToolStripMenuItem.Size = new System.Drawing.Size(368, 26);
+            this.сохранитьИсториюToolStripMenuItem.Text = "Сохранить историю как...";
+            this.сохранитьИсториюToolStripMenuItem.Click += new System.EventHandler(this.сохранитьИсториюToolStripMenuItem_Click);
+            // 
             // помощь
             // 
             this.помощь.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -759,13 +766,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // сохранитьИсториюToolStripMenuItem
-            // 
-            this.сохранитьИсториюToolStripMenuItem.Name = "сохранитьИсториюToolStripMenuItem";
-            this.сохранитьИсториюToolStripMenuItem.Size = new System.Drawing.Size(368, 26);
-            this.сохранитьИсториюToolStripMenuItem.Text = "Сохранить историю как...";
-            this.сохранитьИсториюToolStripMenuItem.Click += new System.EventHandler(this.сохранитьИсториюToolStripMenuItem_Click);
             // 
             // Main_menu
             // 

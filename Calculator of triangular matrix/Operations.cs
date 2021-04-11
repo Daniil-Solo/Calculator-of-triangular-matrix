@@ -190,10 +190,23 @@ namespace Calculator_of_triangular_matrix
 
          public static Matrix Multiply(Matrix A, Matrix B, Matrix C, ref History_message history)
          {
-            if ((A.Type == B.Type) && (A.N == B.N) && (B.V == 0) && (A.V == 0))
+            if (A.N == B.N)
 	        {
+                Category ourType = Category.none;
+                Matrix Result = new Matrix('C', A.N, A.V, Category.none, null);
+
+                for(Category type = Category.top_left; type <= Category.bot_right && ourType == Category.none; type++)
+                {
+                    Result.Type = type;
+                    ourType = TypeCorrect(A, B, Result);
+                } 
+                if(ourType == Category.none)
+                {
+                    history = history.Add("Операция прервана. Матрица не будет треугольной формы");
+                    return C;
+                }
                 int sizePackedForm = A.N * (A.N + 1) / 2;
-                Matrix Result = new Matrix('C', A.N, A.V, A.Type, new double[sizePackedForm]);
+                Result.Packed_form = new double[sizePackedForm];
                 for (int i = 0; i < Result.N; i++)
                     for (int j = 0; j < Result.N; j++)
                     {
@@ -214,38 +227,58 @@ namespace Calculator_of_triangular_matrix
                                 Result.Packed_form[getIndexK(i, j, Result)] += aik * bkj;
                             }
                         }
-                        else
-                        {
-                            double tempElement = A.V;
-                            for (int k = 0; k < Result.N; k++)
-                            {
-                                double aik = 0, bkj = 0;
-                                if (!isV(i, k, A))
-                                {
-                                    aik = getElement(i, k, A);
-                                }
-                                if (!isV(k, j, B))
-                                {
-                                    bkj = getElement(k, j, B);
-                                }
-                                tempElement += aik * bkj;
-                            }
-                            if (Math.Abs(tempElement) >= 1E-15)
-                            {
-                                history = history.Add("Операция прервана. Матрица не будет треугольной формы");
-                                return C;
-                            }
-                        }
                     }
                 history = history.Add("Операция успешно выполнена");
                 return Result;
             }
             else
             {
-                history = history.Add("Не совпадают типы или размерности матриц или значения V не равны 0");
+                history = history.Add("Не совпадают размерности матриц");
                 return C;
             }
          }
+
+
+//-------------------Подфункция для проверки матрицы на тип------------
+        public static Category TypeCorrect(Matrix A, Matrix B, Matrix Result)
+        {
+            bool isfirst = true;
+            double a0 = 0, a1;
+            for (int i = 0; i < A.N; i++)
+                for (int j = 0; j < A.N; j++)
+                {
+                    if (isV(i, j, Result))
+                    {
+                        a1 = 0;
+                        for (int k = 0; k < Result.N; k++)
+                        {
+                            double aik = 0, bkj = 0;
+                            if (!isV(i, k, A))
+                            {
+                                aik = getElement(i, k, A);
+                            }
+                            if (!isV(k, j, B))
+                            {
+                                bkj = getElement(k, j, B);
+                            }
+                            if (isfirst)
+                                a0 += aik * bkj;
+                            else
+                                a1 += aik * bkj;
+                        }
+                        if (isfirst)
+                            isfirst = false;
+                        else
+                        {
+                            if (Math.Abs(a0 - a1) > 1E-15)
+                                return Category.none;
+                        }
+                    }
+                }
+            Result.V = a0;
+            return Result.Type;
+        }
+
 
 //-------------- Функция перестановки матриц --------------
 // Предупреждение: История сообщений и матрицы передаются по ссылке, так как они изменяются

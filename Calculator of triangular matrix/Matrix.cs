@@ -30,7 +30,7 @@ namespace Calculator_of_triangular_matrix
         // Аксессоры
         public char Name { get { return name; } }
         public int N { get { return n; } }
-        public double V { get { return v; } }
+        public double V { get { return v; } set { v = value; } }
         public Category Type { get { return type; } set { type = value; } }
         public double[] Packed_form { get { return packed_form; } set { packed_form = value; } }
                

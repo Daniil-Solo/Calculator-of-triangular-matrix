@@ -383,6 +383,10 @@ namespace Calculator_of_triangular_matrix
                     MometalShowMessage("Выполнение операции (A)^-1. Пожалуйста подождите...");
                     C = Operations.Reverse(A, C, ref ourHistory, detA);
                 }
+                else
+                {
+                    MometalShowMessage("Обратная матрица не может быть вычислена!");
+                }
                 ShowOnlyChangesInC();
 
             }
@@ -400,6 +404,10 @@ namespace Calculator_of_triangular_matrix
                 {
                     MometalShowMessage("Выполнение операции (B)^-1. Пожалуйста подождите...");
                     C = Operations.Reverse(B, C, ref ourHistory, detB);
+                }
+                else
+                {
+                    MometalShowMessage("Обратная матрица не может быть вычислена!");
                 }
                 ShowOnlyChangesInC();
             }
