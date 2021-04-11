@@ -544,8 +544,8 @@ namespace Calculator_of_triangular_matrix
                 for (int i = 0; i < m; i++)
                 {
                     column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
-                    column[i].HeaderText = i.ToString();
-                    column[i].Name = i.ToString();
+                    column[i].HeaderText = (i+1).ToString();
+                    column[i].Name = (i+1).ToString();
                 }
                 // задание новой
                 this.GridView_A.Columns.AddRange(column); // добавление столбцов
@@ -582,8 +582,8 @@ namespace Calculator_of_triangular_matrix
                 for (int i = 0; i < m; i++)
                 {
                     column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
-                    column[i].HeaderText = i.ToString();
-                    column[i].Name = i.ToString();
+                    column[i].HeaderText = (i+1).ToString();
+                    column[i].Name = (i+1).ToString();
                 }
                 // задание новой
                 this.GridView_B.Columns.AddRange(column); // добавление столбцов
@@ -621,8 +621,8 @@ namespace Calculator_of_triangular_matrix
                 for (int i = 0; i < m; i++)
                 {
                     column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
-                    column[i].HeaderText = i.ToString();
-                    column[i].Name = i.ToString();
+                    column[i].HeaderText = (i+1).ToString();
+                    column[i].Name = (i+1).ToString();
                 }
                 // задание новой
                 this.GridView_C.Columns.AddRange(column); // добавление столбцов
@@ -647,7 +647,7 @@ namespace Calculator_of_triangular_matrix
             object head = this.GridView_A.Rows[e.RowIndex].HeaderCell.Value;
             if (head == null)
                 this.GridView_A.Rows[e.RowIndex].HeaderCell.Value =
-                    (e.RowIndex).ToString();
+                    (e.RowIndex+1).ToString();
         }
 
         private void GridView_B_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -655,7 +655,7 @@ namespace Calculator_of_triangular_matrix
             object head = this.GridView_B.Rows[e.RowIndex].HeaderCell.Value;
             if (head == null)
                 this.GridView_B.Rows[e.RowIndex].HeaderCell.Value =
-                    (e.RowIndex).ToString();
+                    (e.RowIndex+1).ToString();
         }
 
         private void GridView_C_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -663,7 +663,7 @@ namespace Calculator_of_triangular_matrix
             object head = this.GridView_C.Rows[e.RowIndex].HeaderCell.Value;
             if (head == null)
                 this.GridView_C.Rows[e.RowIndex].HeaderCell.Value =
-                    (e.RowIndex).ToString();
+                    (e.RowIndex+1).ToString();
         }
 
 //----------------История сообщений скроллинг вниз------------

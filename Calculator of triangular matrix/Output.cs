@@ -14,6 +14,9 @@ namespace Calculator_of_triangular_matrix
     {
         Matrix CurrentMatrix;
         int mode_show;
+        int prirost;
+        int left, right, up, down;
+
 
         public Output()
         {
@@ -27,6 +30,13 @@ namespace Calculator_of_triangular_matrix
             mode_show = (int)DataTransfer.data[1];
             DataTransfer.dataNull();
             label_matrix.Text = "Матрица " + CurrentMatrix.Name;
+            
+            prirost = 50;
+            left = 0;
+            right = left + prirost;
+            up = 0;
+            down = up + prirost;
+            
             if (mode_show == 0)
             {
                 this.Text = "Печать значений";
@@ -39,14 +49,19 @@ namespace Calculator_of_triangular_matrix
                 // печать адрессов
                 ShowMatrixAdress(CurrentMatrix);
             }
-            
+            labelDiapzonShow();
         }
 
 
         private void ShowMatrix(Matrix A)
         {
-            int n = A.N;
-            int m = A.N;
+            int n = prirost;
+            int m = prirost;
+            if (isLastYPage())
+                n = A.N % prirost;
+            if (isLastXPage())
+                m = A.N % prirost;
+         
             // очистка
             this.dataGridViewOutput.Rows.Clear();  // удаление всех строк
             int count = this.dataGridViewOutput.Columns.Count;
@@ -54,36 +69,37 @@ namespace Calculator_of_triangular_matrix
             {
                 this.dataGridViewOutput.Columns.RemoveAt(0);
             }
-            if (A.Type != Category.none)
-            {
 
-                // создание новой
-                DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
-                for (int i = 0; i < m; i++)
-                {
-                    column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
-                    column[i].HeaderText = i.ToString();
-                    column[i].Name = i.ToString();
-                }
-                // задание новой
-                this.dataGridViewOutput.Columns.AddRange(column); // добавление столбцов
-                for (int i = 0; i < n && i < A.N; i++)
-                {
-                    object[] row = new object[m];
-                    for (int j = 0; j < m; j++)
-                        row[j] = ServiceFunctions.DeletZerosInEndString(String.Format("{0:F" + Epsilon.value.ToString() + "}", Operations.getElement(i, j, A)));
-                    dataGridViewOutput.Rows.Add(row);// добавление строк
-                }
-                foreach (DataGridViewColumn col in dataGridViewOutput.Columns)
-                {
-                    col.SortMode = DataGridViewColumnSortMode.NotSortable;
-                }
+            // создание новой
+            DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
+            for (int i = 0; i < m; i++)
+            {
+                column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
+                column[i].HeaderText = (i + 1 + left).ToString();
+                column[i].Name = (i + 1 + left).ToString();
+            }
+            // задание новой
+            this.dataGridViewOutput.Columns.AddRange(column); // добавление столбцов
+            for (int i = 0; i < n; i++)
+            {
+                object[] row = new object[m];
+                for (int j = 0; j < m; j++)
+                    row[j] = ServiceFunctions.DeletZerosInEndString(String.Format("{0:F" + Epsilon.value.ToString() + "}", Operations.getElement(up+i, left+j, A)));
+                dataGridViewOutput.Rows.Add(row);// добавление строк
+            }
+            foreach (DataGridViewColumn col in dataGridViewOutput.Columns)
+            {
+                col.SortMode = DataGridViewColumnSortMode.NotSortable;
             }
         }
          private void ShowMatrixAdress(Matrix A)
         {
-            int n = A.N;
-            int m = A.N;
+            int n = prirost;
+            int m = prirost;
+            if (isLastYPage())
+                n = A.N % prirost;
+            if (isLastXPage())
+                m = A.N % prirost;
             // очистка
             this.dataGridViewOutput.Rows.Clear();  // удаление всех строк
             int count = this.dataGridViewOutput.Columns.Count;
@@ -91,52 +107,46 @@ namespace Calculator_of_triangular_matrix
             {
                 this.dataGridViewOutput.Columns.RemoveAt(0);
             }
-            if (A.Type != Category.none)
+            // создание новой
+            DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
+            for (int i = 0; i < m; i++)
             {
-
-                // создание новой
-                DataGridViewTextBoxColumn[] column = new DataGridViewTextBoxColumn[m];
-                for (int i = 0; i < m; i++)
+                column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
+                column[i].HeaderText = (i + 1 + left).ToString();
+                column[i].Name = (i + 1 + left).ToString();
+            }
+            // задание новой
+            this.dataGridViewOutput.Columns.AddRange(column); // добавление столбцов
+            unsafe {
+                uint Adress;
+                for (int i = 0; i < n && i < A.N; i++)
                 {
-                    column[i] = new DataGridViewTextBoxColumn(); // выделяем память для объекта
-                    column[i].HeaderText = i.ToString();
-                    column[i].Name = i.ToString();
-                }
-                // задание новой
-                this.dataGridViewOutput.Columns.AddRange(column); // добавление столбцов
-                unsafe {
-                    uint Adress;
-                    for (int i = 0; i < n && i < A.N; i++)
+                    object[] row = new object[m];
+                    for (int j = 0; j < m; j++)
                     {
-
-                        object[] row = new object[m];
-                        for (int j = 0; j < m; j++)
+                        if (Operations.isV(i + up, j + left, A))
                         {
-                            if (Operations.isV(i, j, A))
+                            fixed (double* p = &A.v)
                             {
-                                fixed (double* p = &A.v)
-                                {
-                                    Adress = (uint)p;
-                                    row[j] = ServiceFunctions.DeletZerosInEndString(
-                                        String.Format("{0:F" + Epsilon.value.ToString() + "}", A.V))
-                                        + " | " + "0x" + Adress.ToString("X2");
-                                }
+                                Adress = (uint)p;
+                                row[j] = ServiceFunctions.DeletZerosInEndString(
+                                    String.Format("{0:F" + Epsilon.value.ToString() + "}", A.V))
+                                    + " | " + "0x" + Adress.ToString("X2");
                             }
-                            else
-                            {
-                                fixed (double* p = &A.Packed_form[Operations.getIndexK(i, j, A)])
-                                {
-                                    Adress = (uint)p;
-                                    row[j] = ServiceFunctions.DeletZerosInEndString(
-                                        String.Format("{0:F" + Epsilon.value.ToString() + "}", 
-                                        Operations.getElement(i, j, A))) + " | " + "0x" + Adress.ToString("X2");
-                                }
-                            }
-                            
                         }
-                        dataGridViewOutput.Rows.Add(row);// добавление строк
-
+                        else
+                        {
+                            fixed (double* p = &A.Packed_form[Operations.getIndexK(i + up, j + left, A)])
+                            {
+                                Adress = (uint)p;
+                                row[j] = ServiceFunctions.DeletZerosInEndString(
+                                    String.Format("{0:F" + Epsilon.value.ToString() + "}", 
+                                    Operations.getElement(i + up, j + left, A))) + " | " + "0x" + Adress.ToString("X2");
+                            }
+                        }
+                            
                     }
+                    dataGridViewOutput.Rows.Add(row);// добавление строк
                 }
                 foreach (DataGridViewColumn col in dataGridViewOutput.Columns)
                 {
@@ -151,7 +161,49 @@ namespace Calculator_of_triangular_matrix
             object head = this.dataGridViewOutput.Rows[e.RowIndex].HeaderCell.Value;
             if (head == null)
                 this.dataGridViewOutput.Rows[e.RowIndex].HeaderCell.Value =
-                    (e.RowIndex).ToString();
+                    (e.RowIndex+up+1).ToString();
+        }
+
+// ---------------Кноки перемещения-----------------
+        private void Up_Click(object sender, EventArgs e)
+        {
+            up -= prirost;
+            down -= prirost;
+            if (up < 0)
+            {
+                up += prirost;
+                down += prirost;
+                return;
+            }
+            ShowChange();
+        }
+        private void Down_Click(object sender, EventArgs e)
+        {
+            if (isLastYPage())
+                return;
+            down += prirost;
+            up += prirost;
+            ShowChange();
+        }
+        private void Left_Click(object sender, EventArgs e)
+        {
+            left -= prirost;
+            right -= prirost;
+            if (left < 0)
+            {
+                left += prirost;
+                right += prirost;
+                return;
+            }
+            ShowChange();
+        }
+        private void Right_Click(object sender, EventArgs e)
+        {
+            if (isLastXPage())
+                return;
+            left += prirost;
+            right += prirost;
+            ShowChange();
         }
 
         private void Output_FormClosing(object sender, FormClosingEventArgs e)
@@ -172,6 +224,39 @@ namespace Calculator_of_triangular_matrix
                 ((DataGridView)sender).SelectedCells[0].Selected = false;
             }
             catch { }
+        }
+
+// ------------Отобразить диапазон---------------
+        private void labelDiapzonShow()
+        {
+            if (isLastXPage())
+                labelDiapazon.Text = "По горизонтали\n\r[" + (left + 1).ToString() + "; " + (left + CurrentMatrix.N % prirost).ToString() + "]\n\r";
+            else
+                labelDiapazon.Text = "По горизонтали\n\r[" + (left + 1).ToString() + "; " + right.ToString() + "]\n\r";
+            if (isLastYPage())
+                labelDiapazon.Text += "По вертикали\n\r[" + (up + 1).ToString() + "; " + (up + CurrentMatrix.N % prirost).ToString() + "]";
+            else
+                labelDiapazon.Text += "По вертикали\n\r[" + (up + 1).ToString() + "; " + down.ToString() + "]";
+        }
+
+// --------- Проверка на последнюю страницу---------
+        private bool isLastXPage()
+        {
+            return (left + prirost > CurrentMatrix.N);
+        }
+        private bool isLastYPage()
+        {
+            return (up + prirost > CurrentMatrix.N);
+        }
+
+// -----------Показать изменения-----------------
+        private void ShowChange()
+        {
+            labelDiapzonShow();
+            if (mode_show == 0)
+                ShowMatrix(CurrentMatrix);
+            else
+                ShowMatrixAdress(CurrentMatrix);
         }
     }
 }
