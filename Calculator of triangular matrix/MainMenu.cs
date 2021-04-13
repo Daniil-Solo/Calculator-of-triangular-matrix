@@ -369,7 +369,7 @@ namespace Calculator_of_triangular_matrix
                 BlockButtonsOperations();
             }
             else
-                MometalShowMessage("Ни одна матрица не задана");
+                MometalShowMessage("Матрицы А и В не заданы");
             
         }
         private void A_on_C_Click(object sender, EventArgs e)
@@ -383,7 +383,7 @@ namespace Calculator_of_triangular_matrix
                 BlockButtonsOperations();
             }
             else
-                MometalShowMessage("Ни одна матрица не задана");
+                MometalShowMessage("Матрицы А и С не заданы");
         }
         private void B_on_C_Click(object sender, EventArgs e)
         {
@@ -396,7 +396,7 @@ namespace Calculator_of_triangular_matrix
                 BlockButtonsOperations();
             }
             else
-                MometalShowMessage("Ни одна матрица не задана");
+                MometalShowMessage("Матрицы B и С не заданы");
         }
         private void obrA_Click(object sender, EventArgs e)
         {
