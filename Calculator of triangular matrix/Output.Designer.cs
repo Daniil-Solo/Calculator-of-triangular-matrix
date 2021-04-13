@@ -190,7 +190,7 @@ namespace Calculator_of_triangular_matrix
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(650, 422);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.MinimumSize = new System.Drawing.Size(490, 279);
+            this.MinimumSize = new System.Drawing.Size(668, 469);
             this.Name = "Output";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Печать значений";

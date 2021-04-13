@@ -40,13 +40,11 @@ namespace Calculator_of_triangular_matrix
             if (mode_show == 0)
             {
                 this.Text = "Печать значений";
-                // печать значений
                 ShowMatrix(CurrentMatrix);
             }
             else
             {
                 this.Text = "Печать значений и адресов";
-                // печать адрессов
                 ShowMatrixAdress(CurrentMatrix);
             }
             labelDiapzonShow();
@@ -59,9 +57,12 @@ namespace Calculator_of_triangular_matrix
             int m = prirost;
             if (isLastYPage())
                 n = A.N % prirost;
+            if (n == 0)
+                n = A.N;
             if (isLastXPage())
                 m = A.N % prirost;
-         
+            if (m == 0)
+                m = A.N;
             // очистка
             this.dataGridViewOutput.Rows.Clear();  // удаление всех строк
             int count = this.dataGridViewOutput.Columns.Count;
@@ -98,8 +99,12 @@ namespace Calculator_of_triangular_matrix
             int m = prirost;
             if (isLastYPage())
                 n = A.N % prirost;
+            if (n == 0)
+                n = A.N;
             if (isLastXPage())
                 m = A.N % prirost;
+            if (m == 0)
+                m = A.N;
             // очистка
             this.dataGridViewOutput.Rows.Clear();  // удаление всех строк
             int count = this.dataGridViewOutput.Columns.Count;
@@ -175,6 +180,7 @@ namespace Calculator_of_triangular_matrix
                 down += prirost;
                 return;
             }
+            BlockButton();
             ShowChange();
         }
         private void Down_Click(object sender, EventArgs e)
@@ -183,6 +189,7 @@ namespace Calculator_of_triangular_matrix
                 return;
             down += prirost;
             up += prirost;
+            BlockButton();
             ShowChange();
         }
         private void Left_Click(object sender, EventArgs e)
@@ -195,6 +202,7 @@ namespace Calculator_of_triangular_matrix
                 right += prirost;
                 return;
             }
+            BlockButton();
             ShowChange();
         }
         private void Right_Click(object sender, EventArgs e)
@@ -203,6 +211,7 @@ namespace Calculator_of_triangular_matrix
                 return;
             left += prirost;
             right += prirost;
+            BlockButton();
             ShowChange();
         }
 
@@ -230,11 +239,22 @@ namespace Calculator_of_triangular_matrix
         private void labelDiapzonShow()
         {
             if (isLastXPage())
-                labelDiapazon.Text = "По горизонтали\n\r[" + (left + 1).ToString() + "; " + (left + CurrentMatrix.N % prirost).ToString() + "]\n\r";
+            {
+                if(CurrentMatrix.N % prirost == 0)
+                    labelDiapazon.Text = "По горизонтали\n\r[" + (left + 1).ToString() + "; " + (left + CurrentMatrix.N).ToString() + "]\n\r";
+                else
+                    labelDiapazon.Text = "По горизонтали\n\r[" + (left + 1).ToString() + "; " + (left + CurrentMatrix.N % prirost).ToString() + "]\n\r";
+            }
             else
                 labelDiapazon.Text = "По горизонтали\n\r[" + (left + 1).ToString() + "; " + right.ToString() + "]\n\r";
+            
             if (isLastYPage())
-                labelDiapazon.Text += "По вертикали\n\r[" + (up + 1).ToString() + "; " + (up + CurrentMatrix.N % prirost).ToString() + "]";
+            {
+                if (CurrentMatrix.N % prirost == 0)
+                    labelDiapazon.Text += "По вертикали\n\r[" + (up + 1).ToString() + "; " + (up + CurrentMatrix.N).ToString() + "]";
+                else
+                    labelDiapazon.Text += "По вертикали\n\r[" + (up + 1).ToString() + "; " + (up + CurrentMatrix.N % prirost).ToString() + "]";
+            }
             else
                 labelDiapazon.Text += "По вертикали\n\r[" + (up + 1).ToString() + "; " + down.ToString() + "]";
         }
@@ -242,11 +262,11 @@ namespace Calculator_of_triangular_matrix
 // --------- Проверка на последнюю страницу---------
         private bool isLastXPage()
         {
-            return (left + prirost > CurrentMatrix.N);
+            return (left + prirost > CurrentMatrix.N || right == CurrentMatrix.N);
         }
         private bool isLastYPage()
         {
-            return (up + prirost > CurrentMatrix.N);
+            return (up + prirost > CurrentMatrix.N || down == CurrentMatrix.N);
         }
 
 // -----------Показать изменения-----------------
@@ -257,6 +277,16 @@ namespace Calculator_of_triangular_matrix
                 ShowMatrix(CurrentMatrix);
             else
                 ShowMatrixAdress(CurrentMatrix);
+            BlockButton();
+        }
+
+//--------Блокировка/Разблокировка кнопок--------
+        private void BlockButton()
+        {
+            Up.Enabled = !Up.Enabled;
+            Down.Enabled = !Down.Enabled;
+            Left.Enabled = !Left.Enabled;
+            Right.Enabled = !Right.Enabled;
         }
     }
 }
