@@ -734,6 +734,21 @@ namespace Calculator_of_triangular_matrix
             catch { }
         }
 
-       
+        private void началоРаботы_Click(object sender, EventArgs e)
+        {
+            HelpNavigator navigator = HelpNavigator.Topic;
+            Help.ShowHelp(this, "Triangular matrix help.chm", navigator, "Newtopic7.htm");
+        }
+
+        private void справка_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "Triangular matrix help.chm");
+        }
+
+        private void обАвторе_Click(object sender, EventArgs e)
+        {
+            HelpNavigator navigator = HelpNavigator.Topic;
+            Help.ShowHelp(this, "Triangular matrix help.chm", navigator, "Newtopic6.htm");
+        }
     }
 }
