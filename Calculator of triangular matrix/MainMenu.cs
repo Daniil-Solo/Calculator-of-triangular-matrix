@@ -265,13 +265,27 @@ namespace Calculator_of_triangular_matrix
         }
 
 // -------------Кнопки операций----------------------
+        // Блокировщик кнопок
+        private void BlockButtonsOperations()
+        {
+            AplusB.Enabled = !AplusB.Enabled;
+            AminB.Enabled = !AminB.Enabled;
+            AmultB.Enabled = !AmultB.Enabled;
+            A_on_B.Enabled = !A_on_B.Enabled;
+            A_on_C.Enabled = !A_on_C.Enabled;
+            B_on_C.Enabled = !B_on_C.Enabled;
+            obrA.Enabled = !obrA.Enabled;
+            obrB.Enabled = !obrB.Enabled;
+        }
         private void AplusB_Click(object sender, EventArgs e)
         {
             if (ServiceFunctions.Check2Matrix(A, B))
             {
                 MometalShowMessage("Выполнение операции A+B");
+                BlockButtonsOperations();
                 C = Operations.Summ(A, B, C, ref ourHistory);
                 ShowOnlyChangesInC();
+                BlockButtonsOperations();
             }
             else
             {
@@ -294,8 +308,10 @@ namespace Calculator_of_triangular_matrix
             if (ServiceFunctions.Check2Matrix(A, B))
             {
                 MometalShowMessage("Выполнение операции A-B");
+                BlockButtonsOperations();
                 C = Operations.Subtraction(A, B, C, ref ourHistory);
                 ShowOnlyChangesInC();
+                BlockButtonsOperations();
             }
             else
             {
@@ -318,8 +334,10 @@ namespace Calculator_of_triangular_matrix
             if (ServiceFunctions.Check2Matrix(A, B))
             {
                 MometalShowMessage("Выполнение операции A*B. Пожалуйста подождите...");
+                BlockButtonsOperations();
                 C = Operations.Multiply(A, B, C, ref ourHistory);
                 ShowOnlyChangesInC();
+                BlockButtonsOperations();
             }
             else
             {
@@ -342,8 +360,10 @@ namespace Calculator_of_triangular_matrix
             if (ServiceFunctions.Check1Matrix(A, B))
             {
                 MometalShowMessage("Выполнение операции " + A.Name + "<->" + B.Name);
+                BlockButtonsOperations();
                 Operations.Replace_A_B(ref A, ref B, ref ourHistory);
                 UpdateInfo();
+                BlockButtonsOperations();
             }
             else
                 MometalShowMessage("Ни одна матрица не задана");
@@ -354,8 +374,10 @@ namespace Calculator_of_triangular_matrix
             if (ServiceFunctions.Check1Matrix(A, C))
             {
                 MometalShowMessage("Выполнение операции " + A.Name + "<->" + C.Name);
+                BlockButtonsOperations();
                 Operations.Replace_A_B(ref A, ref C, ref ourHistory);
                 UpdateInfo();
+                BlockButtonsOperations();
             }
             else
                 MometalShowMessage("Ни одна матрица не задана");
@@ -365,8 +387,10 @@ namespace Calculator_of_triangular_matrix
             if (ServiceFunctions.Check1Matrix(B, C))
             {
                 MometalShowMessage("Выполнение операции " + B.Name + "<->" + C.Name);
+                BlockButtonsOperations();
                 Operations.Replace_A_B(ref B, ref C, ref ourHistory);
                 UpdateInfo();
+                BlockButtonsOperations();
             }
             else
                 MometalShowMessage("Ни одна матрица не задана");
@@ -376,6 +400,7 @@ namespace Calculator_of_triangular_matrix
             if (ServiceFunctions.CheckMatrix(A))
             {
                 MometalShowMessage("Вычисление определителя матрицы A");
+                BlockButtonsOperations();
                 double detA = Operations.DeterminantReverseMatrix(A, ref ourHistory);
                 message_history.Text = ourHistory.Print(n_sms);
                 if (!Double.IsNaN(detA) && !Double.IsInfinity(detA))
@@ -388,7 +413,7 @@ namespace Calculator_of_triangular_matrix
                     MometalShowMessage("Обратная матрица не может быть вычислена!");
                 }
                 ShowOnlyChangesInC();
-
+                BlockButtonsOperations();
             }
             else
                 MometalShowMessage("Матрица А не задана");
@@ -398,6 +423,7 @@ namespace Calculator_of_triangular_matrix
             if (ServiceFunctions.CheckMatrix(B))
             {
                 MometalShowMessage("Вычисление определителя матрицы B");
+                BlockButtonsOperations();
                 double detB = Operations.DeterminantReverseMatrix(B, ref ourHistory);
                 message_history.Text = ourHistory.Print(n_sms);
                 if (!Double.IsNaN(detB) && !Double.IsInfinity(detB))
@@ -410,6 +436,7 @@ namespace Calculator_of_triangular_matrix
                     MometalShowMessage("Обратная матрица не может быть вычислена!");
                 }
                 ShowOnlyChangesInC();
+                BlockButtonsOperations();
             }
             else
                 MometalShowMessage("Матрица B не задана");
