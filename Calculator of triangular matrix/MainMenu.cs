@@ -98,6 +98,7 @@ namespace Calculator_of_triangular_matrix
 
             ourHistory = ourHistory.Add("Матрица А была очищена!");
             ShowMatrixA();
+            labelMatrixShow();
         }
         private void очиститьМатрицуВToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -113,6 +114,7 @@ namespace Calculator_of_triangular_matrix
 
             ourHistory = ourHistory.Add("Матрица В была очищена!");
             ShowMatrixB();
+            labelMatrixShow();
         }
 
         private void очиститьМатрицуСToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,6 +131,7 @@ namespace Calculator_of_triangular_matrix
 
             ourHistory = ourHistory.Add("Матрица С была очищена!");
             ShowMatrixC();
+            labelMatrixShow();
         }
 
         private void очиститьВсеМатрицыToolStripMenuItem_Click(object sender, EventArgs e)
