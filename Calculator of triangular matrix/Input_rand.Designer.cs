@@ -56,13 +56,14 @@ namespace Calculator_of_triangular_matrix
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.помощьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(345, 30);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(388, 33);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -75,38 +76,39 @@ namespace Calculator_of_triangular_matrix
             this.размерностьМатрицыToolStripMenuItem,
             this.значениеVToolStripMenuItem});
             this.помощьToolStripMenuItem.Name = "помощьToolStripMenuItem";
-            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(83, 26);
+            this.помощьToolStripMenuItem.Size = new System.Drawing.Size(100, 29);
             this.помощьToolStripMenuItem.Text = "Помощь";
             this.помощьToolStripMenuItem.Click += new System.EventHandler(this.помощьToolStripMenuItem_Click);
             // 
             // справкаToolStripMenuItem
             // 
             this.справкаToolStripMenuItem.Name = "справкаToolStripMenuItem";
-            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.справкаToolStripMenuItem.Size = new System.Drawing.Size(298, 34);
             this.справкаToolStripMenuItem.Text = "Справка";
+            this.справкаToolStripMenuItem.Click += new System.EventHandler(this.справкаToolStripMenuItem_Click);
             // 
             // заполнениеСлучайнымиЧисламиToolStripMenuItem
             // 
             this.заполнениеСлучайнымиЧисламиToolStripMenuItem.Name = "заполнениеСлучайнымиЧисламиToolStripMenuItem";
-            this.заполнениеСлучайнымиЧисламиToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.заполнениеСлучайнымиЧисламиToolStripMenuItem.Size = new System.Drawing.Size(298, 34);
             this.заполнениеСлучайнымиЧисламиToolStripMenuItem.Text = "Способы ввода";
             // 
             // типМатрицыToolStripMenuItem
             // 
             this.типМатрицыToolStripMenuItem.Name = "типМатрицыToolStripMenuItem";
-            this.типМатрицыToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.типМатрицыToolStripMenuItem.Size = new System.Drawing.Size(298, 34);
             this.типМатрицыToolStripMenuItem.Text = "Тип матрицы";
             // 
             // размерностьМатрицыToolStripMenuItem
             // 
             this.размерностьМатрицыToolStripMenuItem.Name = "размерностьМатрицыToolStripMenuItem";
-            this.размерностьМатрицыToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.размерностьМатрицыToolStripMenuItem.Size = new System.Drawing.Size(298, 34);
             this.размерностьМатрицыToolStripMenuItem.Text = "Размерность матрицы";
             // 
             // значениеVToolStripMenuItem
             // 
             this.значениеVToolStripMenuItem.Name = "значениеVToolStripMenuItem";
-            this.значениеVToolStripMenuItem.Size = new System.Drawing.Size(249, 26);
+            this.значениеVToolStripMenuItem.Size = new System.Drawing.Size(298, 34);
             this.значениеVToolStripMenuItem.Text = "Значение V";
             // 
             // tableLayoutPanel1
@@ -122,7 +124,7 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.label3, 0, 5);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 30);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 33);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
@@ -134,16 +136,16 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.617647F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 24.08759F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.62774F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(345, 286);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(388, 362);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // button_ready
             // 
             this.button_ready.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_ready.Location = new System.Drawing.Point(3, 223);
+            this.button_ready.Location = new System.Drawing.Point(3, 280);
             this.button_ready.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_ready.Name = "button_ready";
-            this.button_ready.Size = new System.Drawing.Size(339, 61);
+            this.button_ready.Size = new System.Drawing.Size(382, 80);
             this.button_ready.TabIndex = 6;
             this.button_ready.Text = "Готово";
             this.button_ready.UseVisualStyleBackColor = true;
@@ -159,9 +161,10 @@ namespace Calculator_of_triangular_matrix
             "Верхний-правый",
             "Нижний-левый",
             "Верхний-левый"});
-            this.comboBox_type.Location = new System.Drawing.Point(3, 3);
+            this.comboBox_type.Location = new System.Drawing.Point(3, 4);
+            this.comboBox_type.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.comboBox_type.Name = "comboBox_type";
-            this.comboBox_type.Size = new System.Drawing.Size(339, 24);
+            this.comboBox_type.Size = new System.Drawing.Size(382, 28);
             this.comboBox_type.TabIndex = 2;
             this.comboBox_type.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox_type_KeyDown);
             // 
@@ -169,19 +172,19 @@ namespace Calculator_of_triangular_matrix
             // 
             this.label_V.AutoSize = true;
             this.label_V.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_V.Location = new System.Drawing.Point(3, 84);
+            this.label_V.Location = new System.Drawing.Point(3, 105);
             this.label_V.Name = "label_V";
-            this.label_V.Size = new System.Drawing.Size(339, 21);
+            this.label_V.Size = new System.Drawing.Size(382, 26);
             this.label_V.TabIndex = 4;
             this.label_V.Text = "Значение V";
             // 
             // textBox_V
             // 
             this.textBox_V.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_V.Location = new System.Drawing.Point(3, 107);
+            this.textBox_V.Location = new System.Drawing.Point(3, 133);
             this.textBox_V.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_V.Name = "textBox_V";
-            this.textBox_V.Size = new System.Drawing.Size(339, 22);
+            this.textBox_V.Size = new System.Drawing.Size(382, 26);
             this.textBox_V.TabIndex = 5;
             this.textBox_V.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_V_KeyDown);
             // 
@@ -189,10 +192,10 @@ namespace Calculator_of_triangular_matrix
             // 
             this.tableLayoutPanel1.SetColumnSpan(this.textBox_n, 3);
             this.textBox_n.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_n.Location = new System.Drawing.Point(3, 57);
+            this.textBox_n.Location = new System.Drawing.Point(3, 71);
             this.textBox_n.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox_n.Name = "textBox_n";
-            this.textBox_n.Size = new System.Drawing.Size(339, 22);
+            this.textBox_n.Size = new System.Drawing.Size(382, 26);
             this.textBox_n.TabIndex = 0;
             this.textBox_n.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_n_KeyDown);
             // 
@@ -200,9 +203,9 @@ namespace Calculator_of_triangular_matrix
             // 
             this.label_n.AutoSize = true;
             this.label_n.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_n.Location = new System.Drawing.Point(3, 31);
+            this.label_n.Location = new System.Drawing.Point(3, 39);
             this.label_n.Name = "label_n";
-            this.label_n.Size = new System.Drawing.Size(339, 24);
+            this.label_n.Size = new System.Drawing.Size(382, 30);
             this.label_n.TabIndex = 3;
             this.label_n.Text = "Размерность";
             // 
@@ -216,12 +219,13 @@ namespace Calculator_of_triangular_matrix
             this.tableLayoutPanel2.Controls.Add(this.textBox_ot, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.textBox_do, 1, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 157);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 197);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(339, 61);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(382, 77);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // label1
@@ -230,7 +234,7 @@ namespace Calculator_of_triangular_matrix
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 30);
+            this.label1.Size = new System.Drawing.Size(53, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "От:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -239,9 +243,9 @@ namespace Calculator_of_triangular_matrix
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 30);
+            this.label2.Location = new System.Drawing.Point(3, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 31);
+            this.label2.Size = new System.Drawing.Size(53, 39);
             this.label2.TabIndex = 1;
             this.label2.Text = "До:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -249,18 +253,20 @@ namespace Calculator_of_triangular_matrix
             // textBox_ot
             // 
             this.textBox_ot.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_ot.Location = new System.Drawing.Point(56, 3);
+            this.textBox_ot.Location = new System.Drawing.Point(62, 4);
+            this.textBox_ot.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_ot.Name = "textBox_ot";
-            this.textBox_ot.Size = new System.Drawing.Size(280, 22);
+            this.textBox_ot.Size = new System.Drawing.Size(317, 26);
             this.textBox_ot.TabIndex = 2;
             this.textBox_ot.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_ot_KeyDown);
             // 
             // textBox_do
             // 
             this.textBox_do.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox_do.Location = new System.Drawing.Point(56, 33);
+            this.textBox_do.Location = new System.Drawing.Point(62, 42);
+            this.textBox_do.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox_do.Name = "textBox_do";
-            this.textBox_do.Size = new System.Drawing.Size(280, 22);
+            this.textBox_do.Size = new System.Drawing.Size(317, 26);
             this.textBox_do.TabIndex = 3;
             this.textBox_do.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox_do_KeyDown);
             // 
@@ -268,20 +274,21 @@ namespace Calculator_of_triangular_matrix
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 136);
+            this.label3.Location = new System.Drawing.Point(3, 170);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(339, 18);
+            this.label3.Size = new System.Drawing.Size(382, 23);
             this.label3.TabIndex = 8;
             this.label3.Text = "Диапазон значений";
             // 
             // Input_rand
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(345, 316);
+            this.ClientSize = new System.Drawing.Size(388, 395);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Input_rand";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

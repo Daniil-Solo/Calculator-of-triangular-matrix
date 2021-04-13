@@ -170,5 +170,34 @@ namespace Calculator_of_triangular_matrix
                 button_ready_Click(sender, e);
             }
         }
+
+        private void справкаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Help.ShowHelp(this, "Triangular matrix help.chm");
+        }
+
+        private void заполнениеСлучайнымиЧисламиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelpNavigator navigator = HelpNavigator.Topic;
+            Help.ShowHelp(this, "Triangular matrix help.chm", navigator, "Newtopic10.htm");
+        }
+
+        private void типМатрицыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelpNavigator navigator = HelpNavigator.Topic;
+            Help.ShowHelp(this, "Triangular matrix help.chm", navigator, "Newtopic4.htm");
+        }
+
+        private void размерностьМатрицыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelpNavigator navigator = HelpNavigator.Topic;
+            Help.ShowHelp(this, "Triangular matrix help.chm", navigator, "Newtopic3.htm");
+        }
+
+        private void значениеVToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            HelpNavigator navigator = HelpNavigator.Topic;
+            Help.ShowHelp(this, "Triangular matrix help.chm", navigator, "V.htm");
+        }
     }
 }
